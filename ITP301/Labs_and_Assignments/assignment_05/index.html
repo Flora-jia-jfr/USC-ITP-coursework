@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 05: Form Validation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		body{
+			width: 800px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		h1{
+			margin:30px;
+			text-align: center;
+		}
+		p{
+			font-size:10px;
+			float:right;
+		}
+		.clearfloat{
+			clear:both;
+		}
+		.star{
+			color:red;
+			font-size:5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Contact Form</h1>
+	<form id="contact" action="confirmation.html">
+		<div class="form-group row">
+			<label for="fullname" class="col-sm-2 col-form-label">Full name:<span class="star">*</span></label>
+			<div class="col-sm-10">
+				<input type="text" name="fullname" class="form-control" placeholder="ttrojan" id="fullname">
+				<small id="fullname-error" class="form-text text-danger"></small>
+			</div>
+		</div>
+		<div id="either">
+		<h6> Please provide either email or phone:<span class="star">*</span></h6>
+		<div class="form-group row">
+			<label for="email" class="col-sm-2 col-form-label">Email:</label>
+			<div class="col-sm-10">
+				<input type="text" name="email" class="form-control" placeholder="ttrojan@usc.edu" id="email">
+
+			</div>
+		</div> 
+		<div class="form-group row">
+			<label for="phone" class="col-sm-2 col-form-label">Phone:</label>
+			<div class="col-sm-10">
+				<input type="text" name="phone" class="form-control" placeholder="1234567890" id="phone">
+				<small id="either-error" class="form-text text-danger"></small>
+			</div>
+		</div>
+		</div>
+		<div class="form-group row">
+			<label for="message" class="col-sm-2 col-form-label">Message:<span class="star">*</span></label>
+			<div class="col-sm-10">
+				<textarea name="message" class="form-control" rows="5" id="message"></textarea>
+				<p><span id="count">0</span>/500</p>
+				<div class="clearfloat"></div>
+				<small id="message-error" class="form-text text-danger"></small>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="terms" class="col-sm-2 col-form-label"></label>
+			<div class="col-sm-10">
+				<input class="form-check-input" type="checkbox" id="terms" value="terms">
+					<label class="form-check-label my-1" for="terms">I accept Terms & Conditions.<span class="star">*</span></label>
+					<small id="terms-error" class="form-text text-danger"></small>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div> <!-- .col -->
+		</div> <!-- .form-group -->
+	</form>
+
+	<script>
+		document.querySelector("#message").oninput = function(){
+			var input = document.querySelector("#message").value;
+			document.querySelector("#count").innerHTML = input.length;
+		}
+		
+		document.querySelector("#contact").onsubmit = function(){
+			var isValid = true;
+			var name = document.querySelector("#fullname").value;
+			var email = document.querySelector("#email").value.trim;
+			var phone = document.querySelector("#phone").value.trim;
+			var message = document.querySelector("#message").value.trim;
+
+			if(name.length == 0){
+				isValid = false;
+				document.querySelector("#fullname-error").innerHTML = "Name cannot be empty.";
+			}
+			else if(name.indexOf(" ") == -1){
+				isValid = false;
+				document.querySelector("#fullname-error").innerHTML = "You must provide full name.";
+			}
+			else{
+				document.querySelector("#fullname-error").innerHTML = "";
+			}
+
+			if(phone.length == 0 && email.length == 0){
+				isValid = false;
+				document.querySelector("#either-error").innerHTML = "You mush provide either email or phone."
+			}
+			else if(email.length != 0 && email.indexOf("@") == -1){
+				isValid = false;
+				document.querySelector("#either-error").innerHTML = "Invalid email."
+			}
+			else{
+				document.querySelector("#either-error").innerHTML = "";
+			}
+
+			if(message.length == 0){
+				isValid = false;
+				document.querySelector("#message-error").innerHTML = "Message cannot be empty."
+			}
+			else if(message.length > 500){
+				isValid = false;
+				document.querySelector("#message-error").innerHTML = "Message cannot exceed 500 characters."
+			}
+			else{
+				document.querySelector("#message-error").innerHTML = "";
+			}
+
+			if(document.querySelector("#terms").checked == false){
+				isValid = false;
+				document.querySelector("#terms-error").innerHTML = "You must accept Terms & Conditions."
+			}
+			else{
+				document.querySelector("#terms-error").innerHTML = "";
+			}
+			
+
+			return isValid;
+		}
+	</script>
+</body>
+</html>

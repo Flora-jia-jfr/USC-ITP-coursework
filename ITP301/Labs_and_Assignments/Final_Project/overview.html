@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Overview of Expected and Actual Spending on shopping</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="format.css">
+	<style>
+		.table{
+			margin:20px;
+			width:960px;
+		}
+		thead{
+			background-color: #1D3557;
+			color:white;
+		}
+		td, tr{
+			text-align: center;
+			vertical-align: middle;
+		}
+		#chart{
+			margin:20px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="navbar">
+		<div id="nav">
+			<ul>
+				<li> <a href="shopping.html">My Shopping List</a></li>
+				<li> <a class="active">Overview</a></li>
+				<li> <a href="spend.html">Spending Analysis</a></li>
+			</ul>
+			<div class="clearfloat"></div>
+			</div>
+		</div> <!-- close nav -->
+	<div id="header">
+		<div id="title">
+			<h1>Overview</h1>
+			<p>Here is the overview for your shopping activities!</p>
+		</div>
+	</div>
+	<!-- do local storage -->
+	<!-- then make charts -->
+	<div id="tbody"></div>
+
+	<div id="chart">
+		<canvas id="mixed-chart"> </canvas>
+	</div>
+	<div class="clearfloat"></div>
+
+
+
+	</div>
+
+	<script src="handlebars.min-v4.7.7.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script id="tbodyTemplate" type="text/x-handlebars-template">
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th scope="col">Type</th>
+	      <th scope="col">Budget($)</th>
+	      <th scope="col">Actual Spending($)</th>
+	    </tr>
+	  </thead>
+		<tbody>
+	    <tr>
+	      <th scope="row">Food</th>
+	      <td>{{food_b}}</td>
+	      <td>{{food_a}}</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Necessities</th>
+	      <td>{{necessities_b}}</td>
+	      <td>{{necessities_a}}</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Entertainment</th>
+	      <td>{{entertainment_b}}</td>
+	      <td>{{entertainment_a}}</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Study</th>
+	      <td>{{study_b}}</td>
+	      <td>{{study_a}}</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Work</th>
+	      <td>{{work_b}}</td>
+	      <td>{{work_a}}</td>
+	    </tr>
+	    <tr>
+	    	<th scope="row">Total</th>
+	    	<td>{{sum_b}}</td>
+	    	<td>{{sum_a}}</td>
+	    </tr>
+	  </tbody>
+	</table>
+	</script>
+
+	<script>
+
+		if(localStorage.category_budget != undefined){
+			var category_budget = JSON.parse(localStorage.category_budget);
+		} else {
+			var category_budget = [0,0,0,0,0];
+		}
+		if(localStorage.category_cost != undefined){
+			var category_cost = JSON.parse(localStorage.category_cost);
+		} else {
+			var category_cost = [0,0,0,0,0];
+		}
+		if (localStorage.item_to_buy != undefined){
+			var item_to_buy = JSON.parse(localStorage.item_to_buy);
+		} else{
+			var item_to_buy = [];
+		}
+		if (localStorage.budget_to_buy != undefined){
+			var budget_to_buy = JSON.parse(localStorage.budget_to_buy);
+		} else{
+			var budget_to_buy = [];
+		}
+		if (localStorage.priority_to_buy != undefined){
+			var priority_to_buy = JSON.parse(localStorage.priority_to_buy);
+		} else{
+			var priority_to_buy = [];
+		}
+		if (localStorage.type_to_buy != undefined){
+			var type_to_buy = JSON.parse(localStorage.type_to_buy);
+		} else{
+			var type_to_buy = [];
+		}
+
+		if (localStorage.item_bought != undefined){
+			var item_bought = JSON.parse(localStorage.item_bought);
+		} else{
+			var item_bought = [];
+		}
+		if (localStorage.budget_bought != undefined){
+			var budget_bought = JSON.parse(localStorage.budget_bought);
+		} else{
+			var budget_bought = [];
+		}
+		if (localStorage.type_bought != undefined){
+			var type_bought = JSON.parse(localStorage.type_bought);
+		} else{
+			var type_bought = [];
+		}
+
+		var source = document.querySelector('#tbodyTemplate').innerHTML;
+		var template = Handlebars.compile(source);
+		var data = {
+			"food_b":JSON.stringify(category_budget[0]),
+			"necessities_b":JSON.stringify(category_budget[1]),
+			"entertainment_b":JSON.stringify(category_budget[2]),
+			"study_b":JSON.stringify(category_budget[3]),
+			"work_b":JSON.stringify(category_budget[4]),
+			"food_a":JSON.stringify(category_cost[0]),
+			"necessities_a":JSON.stringify(category_cost[1]),
+			"entertainment_a":JSON.stringify(category_cost[2]),
+			"study_a":JSON.stringify(category_cost[3]),
+			"work_a":JSON.stringify(category_cost[4]),
+			"sum_a":JSON.stringify(category_cost[0]+category_cost[1]+category_cost[2]+category_cost[3]+category_cost[4]),
+			"sum_b":JSON.stringify(category_budget[0]+category_budget[1]+category_budget[2]+category_budget[3]+category_budget[4])
+		}
+
+		document.querySelector('#tbody').innerHTML = template(data);
+
+		var mixedChart = new Chart(document.getElementById('mixed-chart'), {
+		    data: {
+		        datasets: [{
+		            type: 'bar',
+		            label: 'Actual Spending',
+		            data: category_cost,
+		            backgroundColor:[
+		            	'rgb(37,167,67)',
+		            	'rgb(108,117,124)',
+		            	'rgb(97,190,205)',
+		            	'rgb(0,122,255)' ,
+		            	'rgb(50,56,62)'
+				    ],
+		            order:2
+		        }, {
+		            type: 'bar',
+		            label: 'Expected Spending',
+		            data: category_budget,
+		            backgroundColor:[
+		            	'rgb(65,219,101)',
+		            	'rgb(183,195,204)',
+		            	'rgb(166,233,244)',
+		            	'rgb(64,128,197)' ,
+		            	'rgb(77,94,112)'
+	            	],
+		            order:1
+		        }],
+		        labels: ['Food', 'Necessities', 'Entertainment', 'Study','Work']
+		    },
+		});
+	</script>
+</body>
+</html>

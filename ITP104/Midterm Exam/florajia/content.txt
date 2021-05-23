@@ -1,0 +1,24 @@
+Header (logo image)
+	NO CONTENT
+
+First Section (Switch Hero cover image):
+	My Way to Play (h1)
+
+Second Section (Nintendo Switch Products and Prices, use images, respectively):
+
+	Nintendo Switch, $299.99 (h2)
+	Fully-featured for home and on-the-go gaming. (h3)
+	
+	Nintendo Switch Lite, $199.99 (h2)
+	Dedicated to handheld play. (h3)
+
+Third Section (Nintendo Switch Online image):
+	Nintendo Switch Online (h2)
+	Online multiplayer, classic games, and more. (p)
+	Learn more (p tag setup as a button)
+
+Fourth Section 
+	* Manufacturer’s Suggested Retail Price, actual price may vary. See retailer for details. (p)
+
+Footer:
+	© 2020 Nintendo. Games are property of their respective owners. Nintendo of America Inc. Headquarters are in Redmond, Washington (p)

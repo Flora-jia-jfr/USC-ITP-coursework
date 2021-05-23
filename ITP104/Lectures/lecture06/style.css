@@ -1,0 +1,87 @@
+	body {
+		margin: 0px;
+		background-color:#fff;
+	}
+	h1 {
+		margin: 0px;
+	}
+		
+	h2 {
+		color: rgb(128,0,0);
+	}
+	
+	h3 {
+		font-size:1.2em;
+	}
+	
+	h4 {
+		color:darkgreen;
+	}
+	
+	#header {
+		background-image: url('img/usc.jpg');
+		height: 500px;
+		background-size: cover;
+		background-position: bottom;
+		color: #FFF;
+		font-size: 1.5em;
+		text-align: center;
+		line-height: 500px;
+		text-shadow: 5px 5px 10px #000;
+	}
+		
+	#content {
+		width: 950px;
+		line-height:1.5;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 15px;
+		}
+		
+	#footer {
+		background-color: #777;
+		color: #FFF;
+		text-align: center;
+		font-size:1em;
+		line-height:50px;
+		height:50px;
+	}
+	
+	#footer p {margin:0px;}
+	
+	.clearfloat {
+		clear: both;
+	}
+	
+	/* Styles the NAV */
+	#nav {
+		width:950px;
+		margin-left:auto;
+		margin-right:auto;
+		font-size:0; /* get rid of the gap between in-line blocks*/
+	}
+
+	#nav a{
+		text-decoration:none; /*delete the underline*/
+		width:230px;
+		height:50px;
+		line-height:50px;
+		text-align: center;
+		color:#000;
+		font-size: 21px;
+		display:inline-block;
+	}
+
+	#nav-wrapper {
+		background-color: #fc0;
+	}
+
+	#nav a:hover{
+		background-color: maroon;
+		color:white;
+	}
+
+	#nav a.active{
+		background-color: black;
+		color:white;
+	}

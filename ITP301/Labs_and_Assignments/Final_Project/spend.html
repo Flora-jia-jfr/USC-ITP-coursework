@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Goods-List</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="format.css">
+	
+	<style>
+		#analysis{
+			float:left;
+			width:50%;
+			margin-top: 40px;
+			margin-left:40px;
+		}
+		#cost-chart-div{
+			width:40%;
+			height:auto;
+			margin-top:30px;
+			margin-left:0px;
+			float:left;
+		}
+		#analysis img{
+			width:200px;
+			display:block;
+			margin:10px;
+		}
+		embed{
+			margin-left: 10%;
+			margin-right: auto;
+			width:80%;
+			height:800px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="navbar">
+		<div id="nav">
+			<ul>
+				<li> <a href="shopping.html">My Shopping List</a></li>
+				<li> <a href="overview.html">Overview</a></li>
+				<li> <a class="active">Spending Analysis</a></li>
+			</ul>
+			<div class="clearfloat"></div>
+			</div>
+		</div> <!-- close nav -->
+	<div id="header">
+		<div id="title">
+			<h1>Spending Analysis</h1>
+			<p>Generate an Analysis of your shopping expenditure</p>
+		</div>
+	</div>
+	<div id="analysis">
+		<img src="image/hug.gif" alt="hug">
+	</div>
+	<div id="cost-chart-div">
+		<canvas id="cost-chart"> </canvas>
+	</div>
+	<div class="clearfloat"></div>
+
+	<embed src="Summary.pdf"></div>
+
+	</div>
+	<script src="handlebars.min-v4.7.7.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<script id="analysisTemplate" type="text/x-handlebars-template">
+		<p>{{attitude}}</p>
+		<p>Your total expenditure is {{sum_a}}$, while your expected expenditure is {{sum_b}}$.</p>
+		<p>Among all your spendings, you spent most on {{max_category}} and least on {{min_category}}. {{max_category}} accounts for {{max}}% of all your spendings, while {{min_category}} accounts for {{min}}% of all your spendings.</p>
+		<p>The pie chart on this page represent the actual component and expenditure of the five categories. You can click on the labels to interact with the pie chart!</p>
+
+	</script>
+	<script src="https://www.wpromotions.eu/confetti.min.js"></script>
+	<script>
+		if(localStorage.category_cost != undefined){
+			var category_cost = JSON.parse(localStorage.category_cost);
+		} else {
+			var category_cost = [0,0,0,0,0];
+		}
+		if(localStorage.category_budget != undefined){
+			var category_budget = JSON.parse(localStorage.category_budget);
+		} else {
+			var category_budget = [0,0,0,0,0];
+		}
+		var attitude = "Your expenditure exceeds your expectation. Try to plan better next time!"
+		var max_category = "food";
+		var min_category;
+		var max = 0;
+		var min = 1;
+		sum_a = category_cost[0]+category_cost[1]+category_cost[2]+category_cost[3]+category_cost[4];
+		sum_b = category_budget[0]+category_budget[1]+category_budget[2]+category_budget[3]+category_budget[4];
+		if (sum_a <= sum_b){
+			attitude = "Congratulations! Your expenditure is lower than your expectation!";
+			document.querySelector("img").style.display = "none";
+			confetti.start();
+			setTimeout(function(){confetti.stop();},3000);
+		}
+		var food_percentage = category_cost[0]/sum_a;
+		var necessities_percentage = category_cost[1]/sum_a;
+		var entertainment_percentage = category_cost[2]/sum_a;
+		var study_percentage = category_cost[3]/sum_a;
+		var work_percentage = category_cost[4]/sum_a;
+		var category_array = ["food","necessities","entertainment","study","work"]
+		var category_percentage = [food_percentage,necessities_percentage,entertainment_percentage,study_percentage,work_percentage]
+		
+		for (var i = 0 ; i < 5; i++){
+			if (max < category_percentage[i]){
+				max = category_percentage[i];
+				max_category = category_array[i];
+			}
+			if (min > category_percentage[i]){
+				min = category_percentage[i];
+				min_category = category_array[i];
+			}
+		}
+		max = max.toFixed(3);
+		min = min.toFixed(3);
+
+
+		var data = {
+		  labels: ['Food','Necessities','Entertainment','Work','Study'],
+		  datasets: [{
+		    label: 'Cost dataset',
+		    data: category_cost,
+		    backgroundColor: [
+		      'rgb(37,167,67)',
+		      'rgb(108,117,124)',
+		      'rgb(97,190,205)',
+		      'rgb(50,56,62)',
+		      'rgb(0,122,255)'
+		    ],
+		    hoverOffset: 4
+		  }]
+		};
+		const config = {
+		  type: 'pie',
+		  data: data,
+		};
+		var myChart = new Chart(
+			document.getElementById('cost-chart'),
+		    config
+		);
+
+		var source = document.querySelector('#analysisTemplate').innerHTML;
+		var template = Handlebars.compile(source);
+		var data = {
+			"sum_a":JSON.stringify(sum_a),
+			"sum_b":JSON.stringify(sum_b),
+			"attitude":attitude,
+			"max_category":max_category,
+			"min_category":min_category,
+			"max":JSON.stringify(max*100),
+			"min":JSON.stringify(min*100)
+
+		}
+		document.querySelector('#analysis').innerHTML = document.querySelector('#analysis').innerHTML + template(data);
+
+	</script>
+</body>
+</html>

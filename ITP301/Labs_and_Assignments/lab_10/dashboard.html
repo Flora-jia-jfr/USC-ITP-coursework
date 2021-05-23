@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	<title>Dashboard with Storage</title>
+
+</head>
+
+<body class="bg-light">
+
+	<div class="container">
+		<div class="pt-5 pb-3 text-center">
+			<h2>Dashboard</h2>
+			<p id="msg" class="text-success"></p>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="mb-3">User Information</h4>
+				<form id="user-form">
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="firstName">First name</label>
+							<input type="text" class="form-control" id="firstName">
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="lastName">Last name</label>
+							<input type="text" class="form-control" id="lastName">
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<label for="instagram">Instagram</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">@</span>
+							</div>
+							<input type="text" class="form-control" id="instagram">
+						</div>
+					</div>
+
+					<div class="mb-3">
+						<label for="twitter">Twitter</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">@</span>
+							</div>
+							<input type="text" class="form-control" id="twitter">
+						</div>
+					</div>
+
+					<button class="btn btn-primary btn-lg btn-block mt-4" type="submit">Save</button>
+					<button id="clear-btn" class="btn btn-secondary btn-lg btn-block mt-4" type="button">Clear</button>
+				</form>
+			</div>
+		</div>
+
+		<footer class="my-5 text-muted text-center text-small">
+			<p class="mb-1">&copy; 2019 ITP Web Dev</p>
+		</footer>
+	</div>
+
+	<script>
+		if (localStorage.firstName != undefined){
+			document.querySelector('#firstName').value = localStorage.firstName;
+		}
+		if (localStorage.lastName != undefined){
+			document.querySelector('#lastName').value = localStorage.lastName;
+		}
+		if (localStorage.socialMedia != undefined){
+			var social = JSON.parse(localStorage.socialMedia);
+			document.querySelector('#instagram').value = social.ins;
+			document.querySelector('#twitter').value = social.twitter;
+		}
+
+
+		document.querySelector('#user-form').onsubmit = function(){
+			var firstName = document.querySelector('#firstName').value.trim();
+			var lastName = document.querySelector('#lastName').value.trim();
+			var ins = document.querySelector('#instagram').value.trim();
+			var twitter = document.querySelector('#twitter').value.trim();
+			var social = {};
+
+			if (firstName.length > 0){
+				localStorage.firstName = firstName;
+			}
+			if (lastName.length > 0){
+				localStorage.lastName = lastName;
+			}
+			if (ins.length > 0){
+				social.ins = ins;
+			}
+			if (twitter.length > 0){
+				social.twitter = twitter;
+			}
+			if (ins.length > 0 || twitter.length > 0){
+				localStorage.socialMedia = JSON.stringify(social);
+			}
+			document.querySelector('#msg').innerHTML = "User Information Saved.";
+
+			return false;
+		}
+
+		document.querySelector('#clear-btn').onclick = function(){
+			localStorage.clear();
+			document.querySelector('#firstName').value = "";
+			document.querySelector('#lastName').value = "";
+			document.querySelector('#instagram').value = "";
+			document.querySelector('#twitter').value = "";
+			document.querySelector('#msg').innerHTML = "User Information Cleared.";
+
+		}
+
+	</script>
+</body>
+</html>

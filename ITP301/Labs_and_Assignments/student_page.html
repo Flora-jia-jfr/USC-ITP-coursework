@@ -1,0 +1,139 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>Furong(Flora) Jia | Student Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body{
+			background-color: #A9B8A4;
+		}
+		#container{
+			background-color: white;
+			width:80%;
+			padding:0px;
+			margin-top:0px;
+			margin-bottom: 0px;
+			margin-left: auto;
+			margin-right: auto;
+			font-family: "Times New Roman", serif;
+		}
+		h1{
+			padding-top:10px;
+			font-size: 50px;
+		}
+		#row1{
+			background-color: black;
+			color:#A9B8A4;
+			padding-bottom:20px;
+			text-align: center;
+			margin:0px;
+		}
+		button{
+			width:200px;
+			height:50px;
+			border-radius: 15px;
+			font-family: "Georgia", serif;
+			font-size:20px;
+			cursor: pointer;
+		}
+		.column{
+			float:left;
+			width:50%;
+			margin:0px;
+			text-align: center;
+			line-height: 2;
+		}
+		.clearfloat{
+			clear:both;
+		}
+		#row1 a{
+			color:#A9B8A4;
+		}
+		.column a{
+			color:black;
+		}
+		li{
+			list-style-type:none;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+	<div id="row1">
+		<h1> Furong Jia</h1>
+		<p> Preferred name: Flora Jia </p>
+		<p> My USC email: <a href="mailto:florajia@usc.edu">florajia@usc.edu</a></p>
+		<button>Favorite Color</button>
+	</div> <!-- close row1 -->
+
+	<div class="column">
+		<h3>Assignments:</h3>
+		<ul>
+			<li><a href="assignment_01/index.html">Assignment 01: JS Photo Gallery</a></li>
+			<li><a href="assignment_02/index.html">Assignment 02: Shopping Cart</a></li>
+			<li><a href="assignment_03/calculator.html">Assignment 03: Calculator</a></li>
+			<li><a href="assignment_04/index.html">Assignment 04: Liar's Dice</a></li>
+			<li><a href="assignment_05/index.html">Assignment 05: Form Validation</a></li>
+			<li><a href="assignment_06/index.html">Assignment 06: Registration Form Validation</a></li>
+			<li><a href="assignment_07/index.html">Assignment 07: DOM Manipulation</a></li>
+			<li><a href="assignment_08/index.html">Assignment 08: Final Project Proposal</a></li>
+			<li><a href="assignment_09/index.html">Assignment 09: Final Project Homepage</a></li>
+			<li><a href="assignment_10/shopping.html">Assignment 10: Final Project Static Pages</a></li>
+			<li><a href="Final_Project/shopping.html">Final Project</a></li>
+
+
+		</ul>
+	</div> <!--close assignment column -->
+	<div class="column">
+		<h3>Labs:</h3>
+		<ul>
+			<li><a href="student_page.html">Lab 01: Student Page</a></li>
+			<li><a href="lab_02/lab_02.html">Lab 02: Currency Converter</a></li>
+			<li><a href="lab_03/index.html">Lab 03: Shopping Cart with Funds</a></li>
+			<li><a href="lab_04/index.html">Lab 04: Updated Photo Gallery</a></li>
+			<li><a href="lab_05/index.html">Lab 05: Password Validation</a></li>
+			<li><a href="lab_06/lab_06.html">Lab 06: Password Validation with RegEx</a></li>
+			<li><a href="lab_07/lab.html">Lab 07: Dynamic Photo Gallery</a></li>
+			<li><a href="lab_08/lab_08.html">Lab 08: Contact List using Objects</a></li>
+			<li><a href="lab_09/movies.html">Lab 09: the Movie DB API</a></li>
+			<li><a href="lab_10/dashboard.html">Lab 10: Dashboard w/Storage</a></li>
+			<li><a href="lab_11/gallery.html">Lab 11: jQuery Photo Gallery</a></li>
+			<li><a href="lab_12/stopwatch.html">Lab 12: Analog Stopwatch</a></li>
+		</ul>
+
+	</div> <!--close lab column -->
+	<div class="clearfloat"></div>
+	</div> <!--close container -->
+	<script>
+		function changeButton(){
+			document.querySelector("button").style.borderLeftColor = "#4877B1";
+			document.querySelector("button").style.borderRightColor = "#93C4EF";
+			document.querySelector("button").style.borderTopColor = "#4877B1";
+			document.querySelector("button").style.borderBottomColor = "#93C4EF";
+			document.querySelector("button").style.backgroundColor = "#0D143A";
+			document.querySelector("button").style.color = "#B6D9FD";
+		}
+		function changeBG(){
+			document.querySelectorAll(".column")[0].style.backgroundColor = "#CFE7FF";
+			document.querySelectorAll(".column")[1].style.backgroundColor = "#CFE7FF";
+			document.querySelectorAll(".column")[0].style.color = "#0D143A";
+			document.querySelectorAll(".column")[1].style.color = "#0D143A";
+			document.querySelectorAll(".column a")[0].style.color = "#0D143A";
+			document.querySelectorAll(".column a")[1].style.color = "#0D143A";
+		}
+		function changeRow1(){
+			document.querySelector("#row1").style.backgroundColor = "#0D143A";
+			document.querySelector("#row1").style.color = "#B6D9FD";
+			document.querySelector("#row1 a").style.color = "#B6D9FD";
+		}
+		document.querySelector("button").onclick = function(){
+			document.body.style.backgroundColor = "#0A020E";
+			changeRow1();
+			changeBG();
+			changeButton();
+		}
+
+	</script>
+</body>
+</html>

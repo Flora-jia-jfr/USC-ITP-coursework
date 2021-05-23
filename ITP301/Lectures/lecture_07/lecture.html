@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To Do List | DOM Manipulation</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link href="lib/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+	<style>
+		.todo-remove {
+			cursor: pointer;
+			color: #CCC;
+		}
+		.todo-remove:hover {
+			color: #dc3545;
+		}
+		.todo-remove:active {
+			color: #ba1323;
+		}
+	</style>
+
+</head>
+<body class="py-4">
+
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12">USC Task Manager</h1>
+		</div> <!-- .row -->
+
+		<div class="row mt-4">
+			<h2 class="col-12">Simple To Do List</h2>
+			<div class="col-12 mt-4">
+				<form id="simple-todo">
+					<div class="form-row">
+						<div class="col-12 mt-2 col-sm-6 mt-sm-0">
+							<label for="simple-item" class="sr-only">To do item:</label>
+
+							<input type="text" class="form-control" id="simple-item" placeholder="New To Do Item...">
+
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+							<button role="button" type="submit" class="btn btn-primary">Add</button>
+						</div> <!-- .col -->
+					</div> <!-- .form-row -->
+				</form>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+		<div class="row">
+			<div class="col-12 mt-3">
+
+				<button id="simple-delete" class="btn btn-outline-danger mb-3">Delete All</button>
+
+				<table id="simple-list" class="table table-hover">
+					<thead>
+						<tr>
+							<th>Item</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr>
+							<td>Cras justo odio</td>
+						</tr>
+
+						<tr>
+							<td>Dapibus ac facilisis in</td>
+						</tr>
+
+						<tr>
+							<td>Morbi leo risus</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+		<div class="row mt-4">
+			<h2 class="col-12">Prioritized To Do List</h2>
+			<div class="col-12 mt-4">
+				<form id="prio-todo">
+					<div class="form-row">
+						<div class="col-12 mt-2 col-sm-6 mt-sm-0">
+							<label for="prio-item" class="sr-only">To do item:</label>
+
+							<input type="text" class="form-control" id="prio-item" placeholder="New To Do Item...">
+
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-3 mt-sm-0">
+							<label for="priority" class="sr-only">Priority:</label>
+
+							<select id="priority" class="form-control">
+								<option value="High">High</option>
+								<option value="Medium">Medium</option>
+								<option value="Low">Low</option>
+							</select>
+
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+							<button role="button" type="submit" class="btn btn-primary">Add</button>
+						</div> <!-- .col -->
+					</div> <!-- .form-row -->
+				</form>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+		<div class="row">
+			<div class="col-12 col-sm-8 mt-3">
+
+				<button id="prio-delete" class="btn btn-outline-danger mb-3">Delete All</button>
+
+				<ul id="prio-list" class="list-group">
+					
+					<li class="list-group-item d-flex justify-content-between">
+						<div class="todo-item">Cras justo odio</div>
+						<div class="todo-info">
+							<span class="badge badge-pill mr-3 badge-danger">High</span>
+							<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						</div>
+					</li>
+					
+					<li class="list-group-item d-flex justify-content-between">
+						<div class="todo-item">Dapibus ac facilisis in</div>
+						<div class="todo-info">
+							<span class="badge badge-pill mr-3 badge-warning">Medium</span>
+							<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						</div>
+					</li>
+					
+					<li class="list-group-item d-flex justify-content-between">
+						<div class="todo-item">Morbi leo risus</div>
+						<div class="todo-info">
+							<span class="badge badge-pill mr-3 badge-success">Low</span>
+							<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						</div>
+					</li>
+
+				</ul>
+
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<script>
+		document.querySelector('#simple-delete').onclick = function(){
+			document.querySelector('#simple-list tbody').innerHTML = '';
+		}
+		document.querySelector('#prio-delete').onclick = function(){
+			document.querySelector('#prio-list').innerHTML = '';
+		}
+		document.querySelector('#simple-todo').onsubmit = function(){
+			var item = document.querySelector('#simple-item').value.trim()
+			if (item.length > 0){
+				//check whether the input is already on list.
+				var listItems = document.querySelectorAll('#simple-list tbody tr')
+				for (var i = 0; i <= listItems.length-1; i ++){
+					//var.children[0]
+					var listItem = listItems[i].children[0].innerHTML.trim();
+					if(item == listItem){
+						alert(item + ' is already on the list.')
+						return false;
+					}
+				}
+				var tr = document.createElement('tr');
+				var td = document.createElement('td');
+				td.innerHTML = item;
+				tr.appendChild(td);
+				document.querySelector('#simple-list tbody').appendChild(tr);
+				document.querySelector('#simple-item').value = '';
+			}
+
+			return false;
+		}
+
+		document.querySelector('#prio-todo').onsubmit = function(){
+			var item = document.querySelector('#prio-item').value.trim();
+			var priority = document.querySelector('#priority').value.trim();
+
+			if (item.length > 0 ){
+				var li = document.createElement('li');
+				var divItem = document.createElement('div');
+				var divBadge = document.createElement('div');
+				var spanPrio = document.createElement('span');
+				var spanRemove = document.createElement('span');
+
+				divItem.innerHTML = item;
+				spanPrio.innerHTML = priority;
+
+				li.classList.add('list-group-item','d-flex','justify-content-between');
+				divItem.classList.add('todo-item');
+				divBadge.classList.add('todo-info');
+				spanPrio.classList.add('badge','badge-pill','mr-3');
+				if (priority == "High"){
+					spanPrio.classList.add('badge-danger');
+				}
+				else if (priority == "Medium"){
+					spanPrio.classList.add('badge-warning');
+				}
+				else{
+					spanPrio.classList.add('badge-success');
+				}
+				spanRemove.classList.add('todo-remove','oi','oi-circle-x');
+				spanRemove.title = "Remove";
+
+				li.appendChild(divItem);
+				li.appendChild(divBadge);
+				divBadge.appendChild(spanPrio);
+				divBadge.appendChild(spanRemove);
+
+				document.querySelector('#prio-list').appendChild(li);
+				bindRemoveBtns();
+				document.querySelector('#prio-item').value = '';
+			}
+			return false;
+		}
+
+		bindRemoveBtns();
+
+		function bindRemoveBtns(){
+			var removeBtns = document.querySelectorAll('.todo-remove')
+			for (var i = 0 ; i < removeBtns.length; i++){
+				removeBtns[i].onclick = function(){
+					this.parentNode.parentNode.remove();
+				}
+			}
+		}	
+
+	</script>
+
+</body>
+</html>

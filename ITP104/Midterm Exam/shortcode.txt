@@ -1,0 +1,42 @@
+Question 1:
+
+<a href="http://www.usc.edu" target="_blank"> USC </a>
+
+Question 2:
+
+<label for="name">Your Name:</label>
+<input id="name" type="text" placeholder="Tommy Trojan" required>
+
+Question 3:
+<p>Attendance:</p>
+<ol>
+	<li>Tommy Trojan</li>
+	<li>Traveler</li>
+</ol>
+
+Question 4:
+
+@media(min-width:500px){
+	img{display:none;}
+}
+
+Question 5:
+<!DOCTYPE HTML >
+<html>
+<head>
+	<title>Question5</title>
+</head>
+<body>
+	content to be displayed
+</body>
+</html>
+
+Question 6:
+p:hover{
+	color:red;
+}
+
+Question 7:
+.overlay{
+	background-color: rgb(0,0,0,.6);
+}

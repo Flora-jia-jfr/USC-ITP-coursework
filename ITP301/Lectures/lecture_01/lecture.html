@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Intro to JavaScript</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="lecture.css">
+</head>
+<body>
+	<div class="section">
+		<h1>JS Playground</h1>
+	</div> <!-- .section -->
+
+	<div id="button-section" class="section">
+		<h2>Alert Window</h2>
+		<p>Test these buttons:</p>
+		<button id="btn-click">Don't Click Me</button>
+		<button id="btn-touch">Don't Touch Me</button>
+	</div> <!-- #button-section -->
+
+	<div id="color-boxes" class="section">
+		<h2>Background Color Change</h2>
+		<p>Click on a square to change background color:</p>
+
+		<div id="color-wrapper">
+			<div class="color-box" id="color-1">
+				#000
+			</div>
+			<div class="color-box" id="color-2">
+				#FFF
+			</div>
+			<div class="color-box" id="color-3">
+				#CCC
+			</div>
+			<div class="color-box" id="color-4">
+				#777
+			</div>
+			<div class="color-box" id="color-5">
+				#FC0
+			</div>
+			<div class="color-box" id="color-6">
+				#900
+			</div>
+
+			<div class="clearfloat"></div>
+		</div> <!-- #color-wrapper -->
+	</div> <!-- #color-boxes -->
+
+	<div id="kanye-section" class="section">
+		<h2>Image Switch</h2>
+		<p>Hover over the image to flip it:</p>
+		<img id="kanye" src="img/kanye-1.jpg" alt="Kanye West">
+	</div> <!-- #kanye-section -->
+	<script>
+		// alert("Hello World!");
+		console.log("Hello World from the console!"); //只显示在控制台的内容
+
+		console.log(document.querySelector('#btn-click'));
+		console.log(document.querySelectorAll('.color-box')[1]);
+		console.log(document.querySelector('body')); // select a body tag
+		console.log(document.body); //shortcut to select a body tag
+
+		document.querySelector('#kanye').src = 'img/kanye-2.jpg';
+		document.querySelector('#kanye').alt = 'New Alt Text';
+		document.body.style.backgroundColor = '#ccc';
+
+		document.querySelector('#btn-click').onclick = function(){
+			alert('No Clicking!');
+			console.log('Button was clicked');
+		}
+		document.querySelector('#btn-touch').onmouseenter = function(){
+			alert('No touching!');
+		}
+		
+		document.querySelector('#color-1').onclick = function(){
+			document.body.style.backgroundColor = document.querySelector('#color-1').innerHTML;
+		}
+		/*
+		document.querySelector('#color-2').onclick = function(){
+			document.body.style.backgroundColor = '#FFF';
+		}
+		document.querySelector('#color-3').onclick = function(){
+			document.body.style.backgroundColor = '#CCC';
+		}
+		document.querySelector('#color-4').onclick = function(){
+			document.body.style.backgroundColor = '#777';
+		}
+		document.querySelector('#color-5').onclick = function(){
+			document.body.style.backgroundColor = '#FC0';
+		}
+		document.querySelector('#color-6').onclick = function(){
+			document.body.style.backgroundColor = '#900';
+		}
+		*/
+		document.querySelector('#kanye').onmouseenter = function(){
+			document.querySelector('#kanye').src = "img/kanye-1.jpg"
+			document.querySelector('#kanye').alt = "Kanye West"
+		}
+		document.querySelector('#kanye').onmouseout = function(){
+			document.querySelector('#kanye').src = "img/kanye-2.jpg"
+			document.querySelector('#kanye').alt = "Kanye East"
+		}
+
+		console.log(document.querySelector('#color-1').innerHTML)
+	</script>
+
+
+</body>
+</html>

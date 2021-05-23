@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>iTunes API | Plain JS</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		.table th, .table td {
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12 mt-4">iTunes Search API w/ Plain JS</h1>
+		</div> <!-- .row -->
+
+		<div class="row">
+			<form class="col-12" id="search-form">
+				<div class="form-row">
+					<div class="col-12 mt-4 col-sm-6 col-lg-4">
+						<label for="search-term" class="sr-only">Search:</label>
+						<input type="text" class="form-control" id="search-term" placeholder="Search...">
+					</div>
+					<div class="col-12 mt-4 col-sm-4 col-md-3 col-lg-2">
+						<label for="search-limit" class="sr-only">Number of results:</label>
+						<select class="form-control" id="search-limit">
+							<option value="5">5 results</option>
+							<option value="10">10 results</option>
+							<option value="25">25 results</option>
+							<option value="50">50 results</option>
+							<option value="100">100 results</option>
+						</select>
+					</div>
+					<div class="col-12 mt-4 col-sm-auto">
+						<button type="submit" class="btn btn-primary">Search</button>
+					</div>
+				</div> <!-- .form-row -->
+			</form>
+		</div> <!-- .row -->
+		<div class="row">
+			<div class="col-12 mt-4">
+
+				Showing <span id="num-results" class="font-weight-bold">0</span> result(s).
+
+			</div>
+			<table class="table table-responsive table-striped col-12 mt-3">
+				<thead>
+					<tr>
+						<th>Cover</th>
+						<th>Artist</th>
+						<th>Track</th>
+						<th>Album</th>
+						<th>Preview</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<!-- <tr>
+						<td><img src="http://is2.mzstatic.com/image/thumb/Music/v4/40/d0/29/40d029b5-4c32-53d2-69d1-ea04a513c345/source/100x100bb.jpg" alt="Abbey Road Cover"></td>
+						<td>The Beatles</td>
+						<td>Here Comes the Sun</td>
+						<td>Abbey Road</td>
+						<td><audio src="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview71/v4/46/48/7d/46487d90-d40c-7c47-7285-5edbfd0fd2c0/mzaf_5516723347634890825.plus.aac.p.m4a" controls></audio></td>
+					</tr> -->
+
+				</tbody>
+			</table>
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+	<script>
+
+		document.querySelector('#search-form').onsubmit = function(){
+			var term = document.querySelector('#search-term').value.trim();
+			var limit = document.querySelector('#search-limit').value.trim();
+
+			var url = "https://itunes.apple.com/search?term=" + term + "&limit=" + limit;
+
+			ajax(url, displayData);
+
+			return false;
+		}
+
+
+		function ajax(url){
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', url);
+			xhr.onload = function(){
+				if (xhr.status == 200) {
+					// success
+					// console.log( JSON.parse(xhr.responseText) );
+					displayData( JSON.parse(xhr.responseText) );
+				} else {
+					// error
+					alert('AJAX Error');
+					console.log(xhr);
+				}
+			};
+			xhr.send();
+		}
+
+
+		function displayData(data){
+			// console.log( data );
+
+			/*
+			<tr>
+				<td><img src="" alt="Abbey Road Cover"></td>
+				<td>The Beatles</td>
+				<td>Here Comes the Sun</td>
+				<td>Abbey Road</td>
+				<td><audio src="" controls></audio></td>
+			</tr>
+			*/
+
+			// Clear old results.
+			document.querySelector('tbody').innerHTML = '';
+
+			document.querySelector('#num-results').innerHTML = data.resultCount;
+			
+			for ( var i = 0; i < data.results.length; i++ ) {
+				var tr = document.createElement('tr');
+				var tdImg = document.createElement('td');
+				var tdArtist = document.createElement('td');
+				var tdTrack = document.createElement('td');
+				var tdAlbum = document.createElement('td');
+				var tdPreview = document.createElement('td');
+				var img = document.createElement('img');
+				var audio = document.createElement('audio');
+
+				img.src = data.results[i].artworkUrl100;
+				img.alt = data.results[i].collectionName;
+
+				audio.src = data.results[i].previewUrl;
+				audio.controls = true;
+
+				tdArtist.innerHTML = data.results[i].artistName;
+				tdTrack.innerHTML = data.results[i].trackName;
+				tdAlbum.innerHTML = data.results[i].collectionName;
+
+				tdImg.appendChild(img);
+				tdPreview.appendChild(audio);
+
+				tr.appendChild(tdImg);
+				tr.appendChild(tdArtist);
+				tr.appendChild(tdTrack);
+				tr.appendChild(tdAlbum);
+				tr.appendChild(tdPreview);
+
+				document.querySelector('tbody').appendChild(tr);
+			}
+
+		}
+
+	</script>
+</body>
+</html>

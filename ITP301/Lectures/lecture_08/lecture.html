@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact List | JS Objects</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body class="py-4">
+
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12">Contact List</h1>
+		</div> <!-- .row -->
+
+		<div class="row mt-3">
+			<h2 class="col-12">Add New Contact</h2>
+			<div class="col-12 mt-3">
+
+				<form id="contact-form">
+					<div class="form-group row">
+						<label for="first-name" class="col-sm-3 col-lg-2 col-form-label">First Name: <span class="text-danger">*</span></label>
+						<div class="col-sm-9 col-lg-10">
+							<input type="text" class="form-control" id="first-name">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="last-name" class="col-sm-3 col-lg-2 col-form-label">Last Name: <span class="text-danger">*</span></label>
+						<div class="col-sm-9 col-lg-10">
+							<input type="text" class="form-control" id="last-name">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="email" class="col-sm-3 col-lg-2 col-form-label">Email:</label>
+						<div class="col-sm-9 col-lg-10">
+							<input type="email" class="form-control" id="email">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="phone" class="col-sm-3 col-lg-2 col-form-label">Phone:</label>
+						<div class="col-sm-9 col-lg-10">
+							<input type="text" class="form-control" id="phone">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-sm-3 col-lg-2"></div>
+						<div class="col-sm-9 col-lg-10">
+							<button type="submit" class="btn btn-primary">Add</button>
+						</div>
+					</div>
+				</form>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+		<div class="row">
+
+			<h2 class="col-12 mt-4">Contacts</h2>
+
+			<div class="col-12 mt-3">
+
+				<table id="contact-list" class="table table-hover">
+					<thead>
+						<tr>
+							<th>Full Name</th>
+							<th>Contact Info</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<!-- <tr>
+							<td>Tommy Trojan</td>
+							<td>ttrojan@usc.edu, 123-123-1234</td>
+						</tr> -->
+
+					</tbody>
+
+				</table>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<script>
+
+		/********************
+		*
+		*	JS Objects: Literal Syntax
+		*
+		********************/
+
+		var rectangle = {
+			width:10,
+			height:20,
+			getArea:function(){
+				var area = this.width * this.height;
+				return area;
+			}
+		}
+
+		var rectangle2 = {
+			width:30,
+			height:45,
+			getArea:function(){
+				var area = this.width * this.height;
+				return area;
+			}
+		}
+
+		/********************
+		*
+		*	JS Objects: Class Declaration Syntax
+		*
+		********************/
+
+		class Rectangle {
+			width;
+			height;
+			constructor(newWidth, newHeight){
+				this.width = newWidth;
+				this.height = newHeight;
+			}
+			getArea(){
+				var area = this.width * this.height;
+				return area;
+			}
+		}
+
+		var rectangle_template = new Rectangle(100,20);
+		var rectangle_template_2 = new Rectangle(8,9);
+
+		/********************
+		*
+		*	Contact List Example
+		*
+		********************/
+
+		class Person{
+			firstName;
+			lastName;
+			contact = {};
+
+			constructor(nFirstName, nLastName){
+				this.firstName = nFirstName;
+				this.lastName = nLastName;
+			}
+			setEmail(newEmail){
+				this.contact.email = newEmail;
+			}
+			setPhone(newPhone){
+				this.contact.phone = newPhone;
+			}
+			getFullName(){
+				return (this.firstName + " " + this.lastName)
+			}
+			getContactInfo(){
+				var info = '';
+				if (this.contact.email != undefined && this.contact.phone != undefined){
+					info = this.contact.email + ',' + this.contact.phone;
+				}
+				else if(this.contact.email != undefined){
+					info += this.contact.email;
+				}
+				else if(this.contact.phone != undefined){
+					info += this.contact.phone;
+				}
+				return info;
+			}
+		}
+
+		var tommy = new Person('tommy','trojan');
+
+		var contactList = [];
+
+		document.querySelector('#contact-form').onsubmit = function(){
+			var fname = document.querySelector('#first-name').value.trim();
+			var lname = document.querySelector('#last-name').value.trim();
+			var email = document.querySelector('#email').value.trim();
+			var phone = document.querySelector('#phone').value.trim();
+			if (fname.length > 0 && lname.length > 0){
+				var person = new Person(fname,lname);
+				if (email.length > 0 ){
+					person.setEmail(email);
+				}
+				if (phone.length > 0 ){
+					person.setPhone(phone);
+				}
+				contactList.push(person);
+				var tr = document.createElement('tr');
+				var tdName = document.createElement('td');
+				var tdContact = document.createElement('td');
+				
+				tdName.innerHTML = person.getFullName();
+				tdContact.innerHTML = person.getContactInfo();
+
+				tr.appendChild(tdName);
+				tr.appendChild(tdContact);
+				document.querySelector('#contact-list tbody').appendChild(tr);
+				document.querySelector('#first-name').value = '';
+				document.querySelector('#last-name').value = '';
+				document.querySelector('#email').value = '';
+				document.querySelector('#phone').value = '';
+			}
+
+			return false;
+		}
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to USC</title>
+
+<style>
+	body {
+		margin: 0px;
+		background-color:black;
+		/* final change add background color of black */
+	}
+	h1 {
+		margin: 0px;
+	}
+		
+	h2 {
+		color: rgb(128,0,0);
+	}
+	
+	h3 {
+		font-size:1.2em;
+	}
+	
+	h4 {
+		color:darkgreen;
+	}
+	
+	#header {
+		background-image: url('img/usc.jpg');
+		height: 500px;
+		background-size: cover;
+		background-position: bottom;
+		color: #FFF;
+		font-size: 1.5em;
+		text-align: center;
+		line-height: 500px;
+		text-shadow: 5px 5px 5px #000;
+	}
+		
+	/* add #wrapper CSS, background color of pink, set width to 1000px and margin left and right auto */
+	/* then make background color same as sidebar at the end */
+	#wrapper{
+		background-color: aliceblue; 
+		/* trick: make the color of the wrapper the color of the shortest div (here, the sidebar)*/
+		width:1000px;
+		margin:0px auto;
+	}
+
+
+	#content {
+		width: 750px;
+		line-height:1.5;
+		margin-left: auto; /*assumed zero*/
+		margin-right: auto;
+		padding: 15px;
+			
+		/* add background-color, float left */
+		float:left;
+		background-color: #FFFFE0;
+		}
+		
+		
+	/* add #sidebar CSS, background color, width, float left and padding */
+	/* #sidebar width = (#wrapper width minus #content width) minus ((SUM of #content left AND right padding/margins/borders) plus */ 
+	/* SUM of #sidebar left AND right padding/margins/borders)) */
+	#sidebar{
+		background-color: aliceblue;
+		width:210px;
+		float:left;
+		padding: 0px 5px;
+	}
+		
+	#footer {
+		background-color: #777;
+		color: #FFF;
+		text-align: center;
+		font-size:1em;
+		line-height:50px;
+		height:50px;
+	}
+	
+	/* added #footer p because p tag by default has margins */
+		
+	/* change img to use a class instead since img exist in gallery */
+	.usclogo {
+		width: 100px;
+		height: auto;
+		float: right;
+		padding-left:15px;
+		padding-top:75px;
+	}
+		
+	/* add thumbnail class background-color of lightgreen, calculate width, set same height, float left, add margin of 5 and border, overflow hidden*/
+	/* WIDTH = ((#content width) - (SUM of this CSS left AND right padding/margins/borders)/4  (round down) */
+	.thumbnail{
+		background-color: lightgreen;
+		float:left;
+		border:1px solid #000;
+		margin:5px;
+		width:175px;
+		height:175px;
+		overflow: hidden;
+
+	}
+	/* thumbnail-img class set to auto width, height 100% */
+	.landscape{
+		width:auto;
+		height:100%;
+	}
+
+	.portrait{
+		width:100%;
+		height:auto;
+	}
+	/* width-100 class to fix portrait width 100%, height auto */
+
+	/* add clearfloat class */
+	.clearfloat{
+		clear:both;
+	}
+
+	#footer p {margin:0;}
+			
+	</style>
+
+</head>
+<body>
+<!-- h1 tag -->
+<div id="header">
+<h1>Welcome to USC</h1>
+</div><!-- #header -->
+
+<!-- add the #wrapper div below -->
+<div id="wrapper">
+<!-- keep #content right after BUT end after the Contact paragraph  -->
+
+
+<div id="content">
+<img src="img/usc_logo.png" alt="USC Logo" class="usclogo" />
+
+<h2>A Leading Private Research University</h2>
+
+<p><a href="http://www.usc.edu">The University of Southern California</a> is one of the world’s leading private research universities. An anchor institution in Los Angeles, a global center for arts, technology and international business, USC’s diverse curricular offerings provide extensive opportunities for interdisciplinary study and collaboration with leading researchers in highly advanced learning environments.</p>
+
+<p>In a comprehensive 2018 ranking, <em>The Wall Street Journal and Times Higher Education</em> ranked <strong>USC 17th among more than 1,000 public and private universities</strong>. Among all California institutions - public and private - only USC, Caltech and Stanford University ranked within the top 20. Of the 150 universities surveyed in the western U.S., USC ranks No. 3. Among the top 25 schools, USC ranked No. 2 in engagement and No. 4 in environment, a measure of diversity and inclusion.</p>
+
+<h2>Contact</h2>
+<p>For questions, email <a href="mailto:welcome@usc.edu">welcome@usc.edu</a>.</p>
+
+<h2>Image Gallery</h2>
+
+<div id="gallery">
+
+<!-- add four images, img_1.png, img_2.png, img_3.png and img4.png -->
+<!-- wrap each img tag in a thumbnail div class -->
+<!-- assign thumbnail-img class to the img tag for each image -->
+<div class="thumbnail">
+	<img src="img/img_1.png" alt="image1" class="landscape"/>
+</div>
+<div class="thumbnail">
+	<img src="img/img_2.png" alt="image2" class="portrait"/>
+</div>
+<div class="thumbnail">
+	<img src="img/img_3.png" alt="image3" class="landscape"/>
+</div>
+<div class="thumbnail">
+	<img src="img/img_4.png" alt="image4" class="landscape"/>
+</div>
+
+<!-- add clearfloat div below this comment -->
+
+</div><!-- Gallery -->
+
+<!-- close content tag below this comment line -->
+</div> <!-- #content -->
+
+<!-- add #sidebar div below here -->
+<div id="sidebar">
+<h3>Top Three To Do near USC</h3>
+
+<ol>
+	<li><a href="https://www.lacoliseum.com/">Los Angeles Memorial Coliseum</a></li>
+	<li><a href="https://nhm.org/site/" target="_blank">Natural History Museum</a></li>
+	<li><a href="https://californiasciencecenter.org/">California Science Center</a></li>
+</ol>
+
+<h3>Neighborhood Information</h3>
+
+<h4>Restaurants Near By</h4>
+
+<ul>
+	<li>Moreton Fig</li>
+	<li>Blaze Pizza</li>
+	<li>Study Hall</li>
+</ul>
+
+<h4>Shopping Near By</h4>
+
+<ul>
+	<li>USC Village</li>
+	<li>Figat7th</li>
+	<li>Little Tokyo</li>
+</ul>
+<!-- close #sidebar below this comment -->
+</div>
+<!-- add the clearfloat div class below this comment -->
+<div class="clearfloat"></div>
+<!-- close the #wrapper tag below this comment -->
+</div>
+</div> <!-- #content -->
+	
+<div id="footer">
+<p>University of Southern California &copy; 2019</p>
+</div><!-- Footer -->
+
+</body>
+</html>

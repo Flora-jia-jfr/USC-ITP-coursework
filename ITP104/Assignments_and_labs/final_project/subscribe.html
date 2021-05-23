@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Amazing Stationeries | Subscribe Application</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Furong(Flora) Jia">
+	<meta name="description" content="Application to the ISOT">
+	<meta name="keywords" content="contact, stationeries, ISOT">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<style>
+	body{
+		background-color: #252832;
+		width:800px;
+		margin-left: auto;
+		margin-right:auto;
+	}
+	form{
+		color:#c9cfdc;
+	}
+	p{
+		margin:3px;
+		font-size:15px;
+	}
+	.form-row{
+		font-size:20px;
+		margin:10px 0px;
+		line-height:25px;
+	}
+	.labels{
+		width:50%;
+		float:left;
+	}
+	#notes{
+		margin:10px 0px;
+		width:100%;
+		height:50px;
+	}
+	button{
+		margin:10px 5px;
+		font-family:"bodoni 72 smallcaps", "Times New Roman", serif;
+		font-size:15px;
+		border-radius: 10px;
+	}
+	#submit-button{
+		background-color:#323d4f;
+		color:#c9cfdc;
+	}
+	#reset{
+		background-color:#c9cfdc;
+		color:#323d4f;
+	}
+
+
+	</style>
+</head>
+
+<body>
+	<h2>Subscribe Application</h2>
+	<form action="confirmation.html">
+<div class="form-row">
+	<label for="first-name" class="labels">First Name:</label>
+	<input id="first-name" type="text" placeholder="Your First Name" required>
+</div>
+<div class="form-row">
+	<label for="last-name" class="labels">Last Name:</label>
+	<input id="last-name" type="text" placeholder="Your Last Name" required>
+</div>
+<div class="form-row">
+	<label for="email" class="labels">Email:</label>
+	<input id="email" type="email" placeholder="Your Email" required>
+</div>
+<div class="form-row">
+	<label for="phone" class="labels">Phone: </label>
+	<input id="phone" type="text" placeholder="Your phone number" required>
+</div>
+<div class="form-row">
+	<label class="question">What news do you what to subcribe:</label><br>
+	<p>Choose from the three options below. You may choose one or more options as you want.</p>
+	<input type="checkbox" name="Subscribe to 2021 ISOT" value="subscribe">Subscribe to 2021 ISOT<br>
+	<input type="checkbox" name="exhibitions" value="exhibitions">New Exhibitions<br>
+	<input type="checkbox" name="award-winning stationeries" value="award-winning">Award-winning stationeries<br>
+</div>
+<div class="form-row">
+	<label for="notes" class="labels">Message:</label>
+	<textarea placeholder="Enter your notes here" id="notes"></textarea>
+</div>
+<input type="checkbox" name="terms" value="Terms" required> I accept terms and conditions
+<div>
+	<button type="submit" id="submit-button"> Send </button>
+	<button type="Reset" id="reset"> Reset Form </button>
+</div>
+</form>
+
+</body>
+</html>

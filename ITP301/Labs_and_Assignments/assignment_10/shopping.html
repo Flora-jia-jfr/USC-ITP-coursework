@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping List</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="format.css">
+	<style>
+		#header img{
+			float:left;
+			width:13%;
+			height: auto;
+			margin:0px;
+			padding:0px 10px 0px 10px;
+		}
+		#title{
+			width:48%;
+			float:left;
+		}
+		#sort{
+			margin-left:10px;
+		}
+		.check{
+			cursor:pointer;
+			color:#CCC;
+		}
+		#immediate-sort{
+			color:#E63946;
+			font-size:30px;
+		}
+		#priority-sort img{
+			width:50px;
+			height:auto;
+			float:left;
+			padding:0px 5px 0px 5px;
+			margin:0px 5px 10px 5px;
+		}
+		#priority-sort h4{
+			font-family: "bodoni 72 smallcaps", "Times New Roman", serif;
+			float:left;
+		}
+		#week-sort{
+			color:#457B9D;
+		}
+		#month-sort{
+			color:#457B9D;
+		}
+		#need-purchased{
+			margin:25px 25px;
+			width:500px;
+			float:left;
+		}
+		#purchased{
+			margin:25px 20px;
+			width:400px;
+			float:left;
+		}
+		.bought{
+			 text-decoration:line-through;
+			 color:darkgray;
+		}
+		.bought-icon{
+			color:darkgray;
+		}
+	</style>
+</head>
+<body> <div id="container">
+	<div id="navbar">
+		<div id="nav">
+			<ul>
+				<li> <a class="active">My Shopping List</a></li>
+				<li> <a href="overview.html">Overview</a></li>
+				<li> <a href="spend.html">Spending tracker</a></li>
+			</ul>
+			<div class="clearfloat"></div>
+		</div>
+	</div> <!-- close nav -->
+
+	<div id="header">
+	<img src="image/1.png" alt="food icon">
+	<img src="image/2.png" alt="food icon">
+	<div id="title">
+		<h1>Good(S) List</h1>
+		<p>Add the items you would like to buy in your list!</p>
+	</div>
+	<img src="image/3.png" alt="food icon">
+	<img src="image/4.png" alt="food icon">
+	</div>
+	<div class="clearfloat"></div>
+
+	<div id="toshoplist">
+		<div class="col-12 mt-4">
+			<form id="prio-todo">
+				<div class="form-row">
+					<div class="col-12 mt-2 col-sm-5">
+						<label for="item" class="sr-only">Item to buy:</label>
+
+						<input type="text" class="form-control" id="item" placeholder="New shopping item...">
+
+					</div> <!-- .col -->
+
+					<div class="col-12 mt-2 col-sm-2">
+						<label for="budget" class="sr-only">Money</label>
+						<div class="input-group">
+							<div class="input-group-append"><div class="input-group-text">$</div></div>
+							<input type="text" class="form-control" id="budget" placeholder="budget...">
+						</div>
+					</div> <!-- .col -->
+
+					<div class="col-12 mt-2 col-sm-2">
+						<label for="priority" class="sr-only">Priority:</label>
+
+						<select id="priority" class="form-control">
+							<option value="High">Today</option>
+							<option value="Medium">This week</option>
+							<option value="Low">This month</option>
+						</select>
+
+					</div> <!-- .col -->
+					<div class="col-12 mt-2 col-sm-2">
+						<label for="type" class="sr-only">Type</label>
+
+						<select id="type" class="form-control">
+							<option value="food">Food</option>
+							<option value="necessities">Necessities</option>
+							<option value="entertainment">Entertainment</option>
+							<option value="study">Study</option>
+							<option value="work">Work</option>
+						</select>
+
+					</div> <!-- .col -->
+					<div class="col-12 mt-2 col-sm-auto">
+						<button type="submit" class="btn btn-outline-dark">Add</button>
+					</div> <!-- .col -->
+				</div> <!-- .form-row -->
+			</form>
+		</div> <!-- .col -->
+	</div>
+
+	<div id="need-purchased">
+		<p>Need to purchase: (and budget)</p>
+		<ul class="list-group list-group-hover">	
+			<li class="list-group-item d-flex justify-content-between list-group-item-action">
+				<!-- how to add icon instead of this long thing -->
+				<div class="col-8 col-sm-1">&#9634;</div>
+				<div class="col-8 col-sm-2">orange</div>
+				<div class="col-8 col-sm-1">$10</div>
+				<div class="todo-time col-8 col-sm-2">
+					<span class="badge badge-pill mr-3 badge-danger">Today</span>
+				</div>
+				<div class="todo-info col-8 col-sm-2">
+					<span class="badge rounded-pill mr-3 badge-success">Food</span>
+				</div>
+			</li>
+			
+			<li class="list-group-item d-flex justify-content-between list-group-item-action">
+
+				<div class="col-8 col-sm-1">&#9634;</div>
+				<div class="col-8 col-sm-2">paper</div>
+				<div class="col-8 col-sm-1">$2</div>
+				<div class="todo-time col-8 col-sm-2">
+					<span class="badge badge-pill mr-3 badge-warning">This week</span>
+				</div>
+				<div class="todo-info col-8 col-sm-2">
+					<span class="badge rounded-pill mr-3 badge-primary">Study</span>
+				</div>
+			</li>
+			
+			<li class="list-group-item d-flex justify-content-between list-group-item-action">
+
+				<div class="col-8 col-sm-1">&#9634;</div>
+				<div class="col-8 col-sm-2">calculator</div>
+				<div class="col-8 col-sm-1">$10</div>
+				<div class="todo-time col-8 col-sm-2">
+					<span class="badge badge-pill mr-3 badge-light">This month</span>
+				</div>
+				<div class="todo-info col-8 col-sm-2">
+					<!-- <span class="badge rounded-pill mr-3 badge-info">Entertainment</span> -->
+					<span class="badge rounded-pill mr-3 badge-dark">Work</span>
+					<!-- <span class="badge rounded-pill mr-3 badge-secondary">Necessities</span> -->
+				</div>
+			</li>
+		</ul>
+		<button id="delete" class="btn btn-outline-danger mb-3 mt-3">Delete All</button>
+	</div>
+	<div id="purchased">
+		<p>Purchased:</p>
+		<ul id="prio-list" class="list-group" >
+			<li class="list-group-item d-flex justify-content-between list-group-item-action">
+				<div class="col-12 col-sm-1 bought-icon">&#x2713;</div>
+				<div class="col-12 col-sm-10 bought">2B pencil</div>
+			</li>
+			<li class="list-group-item d-flex justify-content-between list-group-item-action">
+				<div class="col-12 col-sm-1 bought-icon">&#x2713;</div>
+				<div class="col-12 col-sm-10 bought">beef</div>
+			</li>
+			<li class="list-group-item d-flex justify-content-between list-group-item-action">
+				<div class="col-12 col-sm-1 bought-icon">&#x2713;</div>
+				<div class="col-12 col-sm-10 bought">Christmas tree</div>
+			</li>
+		</ul>
+	</div>
+	<div class="clearfloat"></div>
+
+	<div class="col-12 col-sm-12 mt-3">
+	<button id="sort" class="btn btn-outline-success mb-3">Sort By Priority</button>
+	<!-- <button id="sort" class="btn btn-outline-success mb-3">Sort By Category</button> -->
+	</div>
+	
+	<div id="priority-sort" class="row justify-content-center">
+		<div class="col-5 mt-3">
+			<img src="image/day.png" alt="today">
+			<h4 id="immediate-sort">Today:</h4>
+			<div class="clearfloat"></div>
+			<ul class="list-group">
+				<li class="list-group-item d-flex justify-content-between">orange</li>
+			</ul>
+		</div>
+		<div class="col-3 mt-3">
+			<img src="image/week.png" alt="week">
+			<h4 id="week-sort">This week:</h4>
+			<div class="clearfloat"></div>
+			<ul class="list-group">
+				<li class="list-group-item d-flex justify-content-between">wallpaper</li>
+				<li class="list-group-item d-flex justify-content-between">paper</li>
+			</ul>
+		</div>
+		<div class="col-3 mt-3">
+			<img src="image/month.png" alt="month">
+			<h4 id="month-sort">This month:</h4>
+			<div class="clearfloat"></div>
+			<ul class="list-group">
+				<li class="list-group-item d-flex justify-content-between">calculator</li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+<script>
+	//can add fade effect for list items with bootstrap
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Overview of Expected and Actual Spending on shopping</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="format.css">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style>
+		.table{
+			margin:20px;
+			width:960px;
+		}
+		thead{
+			background-color: #1D3557;
+			color:white;
+		}
+		td, tr{
+			text-align: center;
+			vertical-align: middle;
+		}
+		#chart{
+			margin:20px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="navbar">
+		<div id="nav">
+			<ul>
+				<li> <a href="shopping.html">My Shopping List</a></li>
+				<li> <a class="active">Overview</a></li>
+				<li> <a href="spend.html">Spending tracker</a></li>
+			</ul>
+			<div class="clearfloat"></div>
+			</div>
+		</div> <!-- close nav -->
+	<div id="header">
+		<div id="title">
+			<h1>Overview</h1>
+			<p>Here is the overview for your shopping activities!</p>
+		</div>
+	</div>
+	<!-- do local storage -->
+	<!-- then make charts -->
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th scope="col">Type</th>
+	      <th scope="col">Budget($)</th>
+	      <th scope="col">Actual Spending($)</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <th scope="row">Food</th>
+	      <td>10</td>
+	      <td>20</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Necessities</th>
+	      <td>0</td>
+	      <td>0</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Entertainment</th>
+	      <td>0</td>
+	      <td>0</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Work</th>
+	      <td>10</td>
+	      <td>10</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">Study</th>
+	      <td>2</td>
+	      <td>2</td>
+	    </tr>
+	  </tbody>
+	</table>
+
+	<div id="chart">
+		<canvas id="mixed-chart"> </canvas>
+	</div>
+	<div class="clearfloat"></div>
+
+
+
+	</div>
+
+	<script>
+		var food_a = 20;
+		var necessities_a = 0;
+		var entertainment_a = 0;
+		var work_a = 10;
+		var study_a = 2;
+		var food_b = 10;
+		var necessities_b = 0;
+		var entertainment_b = 0;
+		var work_b = 10;
+		var study_b = 2;
+
+		var mixedChart = new Chart(document.getElementById('mixed-chart'), {
+		    data: {
+		        datasets: [{
+		            type: 'bar',
+		            label: 'Actual Spending',
+		            data: [food_a, necessities_a, entertainment_a, work_a, study_a],
+		            backgroundColor:[
+		            	'rgb(37,167,67)',
+		            	'rgb(108,117,124)',
+		            	'rgb(97,190,205)',
+		            	'rgb(50,56,62)',
+		            	'rgb(0,122,255)' 
+				    ],
+		            order:2
+		        }, {
+		            type: 'bar',
+		            label: 'Expected Spending',
+		            data: [food_b, necessities_b, entertainment_b, work_b, study_b],
+		            backgroundColor:[
+		            	'rgb(65,219,101)',
+		            	'rgb(183,195,204)',
+		            	'rgb(166,233,244)',
+		            	'rgb(77,94,112)',
+		            	'rgb(64,128,197)' 
+	            	],
+		            order:1
+		        }],
+		        labels: ['Food', 'Necessities', 'Entertainment', 'Work','Study']
+		    },
+		});
+	</script>
+</body>
+</html>

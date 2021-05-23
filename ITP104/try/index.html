@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Try</title>
+	<style>
+		.square{
+			margin:100px;
+			width:500px;
+			height:200px;
+			background-color: blue;
+			position:relative;
+		}
+		.square2{
+			width:700px;
+			height:200px;
+			background-color: blue;
+			position:absolute;
+			right:-300px;
+			transition:transform 0.5s linear;
+		}
+		#arrow:hover .square2{
+			transform:skew(45deg);
+		}
+		#parallel .square{
+			transition:all 1s;
+		}
+		#parallel:hover .square{
+			transform:skew(45deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="arrow">
+		<div class="square">
+		<div class="square2">
+		</div>
+		</div>
+	</div>
+	<div id="parallel">
+		<div class="square">
+		</div>
+	</div>
+</body>
+</html>

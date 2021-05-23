@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Keyboard Events, Form Validation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		#pixel-box {
+			height: 200px;
+		}
+		#box {
+			width: 150px;
+			height: 150px;
+			line-height: 150px;
+			text-align: center;
+			font-size: 1.2em;
+			margin: auto;
+			background-color: #CCC;
+			border: 1px solid #000;
+			border-radius: 5px;
+			position:relative;
+			left:0px;
+		}
+	</style>
+</head>
+<body class="pb-5">
+
+	<div class="container">
+		<div class="row">
+			<h2 class="col-12 mt-5 mb-4">Move your Mouse</h2>
+
+			<p class="col-12">
+				Pixels Across: <span id="pixel-msg"></span>
+			</p>
+
+			</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<div class="container-fluid">
+		<div class="row">
+			<div id="pixel-box" class="col-12 border border-dark"></div>
+			</div> <!-- .row -->
+	</div> <!-- .container-fluid -->
+
+		
+
+	<div class="container">
+		<div class="row">
+			<h2 class="col-12 mt-5 mb-4">Move the Box</h2>
+
+			<div id="box" tabindex="1">
+				Move Me
+			</div>
+
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<div class="container">
+		<div class="row">
+			<h2 class="col-12 mt-5 mb-4">Signup Form</h2>
+
+			<div class="col-12">
+				Validation rules:
+				<ul>
+					<li class="mt-2">Username cannot be empty.</li>
+					<li>Username cannot contain uppercase letters.</li>
+					<li class="mt-2">Email cannot be empty.</li>
+					<li>Email must contain "@" character.</li>
+					<li class="mt-2">Class Standing field is required for current students.</li>
+					<li class="mt-2 mb-4">At least one subscription is required.</li>
+				</ul>
+			</div> <!-- .col -->
+			
+			<div class="col-12">
+
+				<form id="signup-form" action="confirmation.html">
+
+					<div class="form-group row">
+						<label for="username" class="col-sm-2 col-form-label">Username:</label>
+						<div class="col-sm-10">
+							<input type="text" name="username" class="form-control" placeholder="ttrojan" id="username">
+
+							<small id="username-error" class="form-text text-danger"></small>
+
+						</div>
+					</div> <!-- .form-group -->
+
+					<div class="form-group row">
+						<label for="email" class="col-sm-2 col-form-label">Email:</label>
+						<div class="col-sm-10">
+							<input type="text" name="email" class="form-control" placeholder="ttrojan@usc.edu" id="email">
+
+							<small id="email-error" class="form-text text-danger"></small>
+
+						</div>
+					</div> <!-- .form-group -->
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Current Student?</label>
+						<div class="col-sm-10">
+							<div class="align-middle form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="student" id="student-yes" value="yes" checked>
+								<label class="form-check-label my-1" for="student-yes">
+									Yes
+								</label>
+							</div> <!-- .form-check -->
+
+							<div class="align-middle form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="student" id="student-no" value="no">
+								<label class="form-check-label my-1" for="student-no">
+									No
+								</label>
+							</div> <!-- .form-check -->
+						</div> <!-- .col -->
+					</div> <!-- .form-group -->
+
+					<div class="form-group row">
+						<label for="class-standing" class="col-sm-2 col-form-label">Class Standing:</label>
+						<div class="col-sm-10">
+							<select class="form-control" id="class-standing">
+								<option value="-1" disabled selected>-- Select One --</option>
+								<option value="freshman">Freshman</option>
+								<option value="sophomore">Sophomore</option>
+								<option value="junior">Junior</option>
+								<option value="senior">Senior</option>
+								<option value="na">N/A</option>
+							</select>
+
+							<small id="class-error" class="form-text text-danger"></small>
+
+						</div>
+					</div> <!-- .form-group -->
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Subscribe:</label>
+						<div class="col-sm-10">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="newsletters" value="newsletters">
+								<label class="form-check-label my-1" for="newsletters">Newsletters</label>
+							</div> <!-- .form-check -->
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="events" value="events">
+								<label class="form-check-label my-1" for="events">Events</label>
+							</div> <!-- .form-check -->
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="marketing" value="marketing">
+								<label class="form-check-label my-1" for="marketing">Marketing</label>
+							</div> <!-- .form-check -->
+
+							<small id="subscribe-error" class="form-text text-danger"></small>
+
+						</div><!-- .col -->
+					</div> <!-- .form-group -->
+
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div> <!-- .col -->
+					</div> <!-- .form-group -->
+
+				</form>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<script>
+		document.querySelector('#pixel-box').onmousemove = function(e){
+			// console.log(e.clientX);
+			this.style.backgroundColor = 'hsl(' + e.clientX + ',80%, 50%)';
+		}
+		/*
+		document.onkeydown = function(e){
+			console.log(e);
+		}
+		document.onkeyup = function(){
+			console.log('onkeyup')
+		}
+		document.onkeypress = function(){
+			console.log('onkeypress')
+		}
+		*/
+		document.querySelector('#box').onkeydown = function(e){
+			// console.log(e.code);
+			var left = getComputedStyle(this).getPropertyValue('left');
+			left = parseInt(left);
+			if (e.code == 'ArrowRight'){
+				left = left + 10;
+			}
+			else if(e.code == 'ArrowLeft'){
+				left = left - 10;
+			}
+			this.style.left = left+'px';
+		}
+		
+		document.querySelector('#username').oninput = function(){
+			console.log("1" + this.value);
+		}
+		document.querySelector('#username').onchange = function(){
+			console.log("2" + this.value);
+		}
+		document.querySelector('#username').onsubmit = function(){
+			console.log("3" + this.value);
+		}
+		
+		document.querySelector('#student-no').onclick = function(){
+			document.querySelector('#class-standing').disabled = true;
+		}
+		document.querySelector('#student-yes').onclick = function(){
+			document.querySelector('#class-standing').disabled = false;
+		}
+
+		document.querySelector('#signup-form').onsubmit = function(){
+			var isValid = true;
+			var username = document.querySelector('#username').value;
+			username = username.trim();
+			var email = document.querySelector("#email").value;
+			
+			/*
+				1. Username cannot be empty
+				2. Username cannot contain uppercase letters.
+			*/
+			if (username.length == 0){
+				isValid = false;
+				document.querySelector('#username-error').innerHTML = "Username cannot be empty.";
+			}
+			else if(username != username.toLowerCase()){
+				isValid = false;
+				document.querySelector('#username-error').innerHTML = "Username cannot contain uppercase letters."
+			}
+			else{
+				document.querySelector('#username-error').innerHTML = "";
+			}
+			/*
+				1. Email cannot be empty.
+				2. Email must contain "@" character
+			*/
+			if (email.length == 0){
+				isValid = false;
+				document.querySelector('#email-error').innerHTML = "Email cannot be empty."
+			}
+			else if(email.indexOf("@") == -1){
+				isValid = false;
+				document.querySelector('#email-error').innerHTML = "Email must contain '@' character."
+			}
+			else{
+				document.querySelector('#email-error').innerHTML = '';
+			}
+ 
+			// Class standing is required for current students.
+
+			if (document.querySelector('#class-standing').disabled == false && document.querySelector('#class-standing').value == -1){
+				isValid = false;
+				document.querySelector('#class-error').innerHTML = "Class standing field is required for current students.";
+			}
+			else{
+				document.querySelector('#class-error').innerHTML = "";
+			}
+
+			//At least one subscription is required.
+
+			if(document.querySelector('#newsletters').checked == false && document.querySelector('#events').checked == false && document.querySelector('#marketing').checked == false){
+				isValid = false;
+				document.querySelector('#subscribe-error').innerHTML = "At least one subscription is required."
+			}
+			else{
+				document.querySelector('#subscribe-error').innerHTML = "";
+			}
+
+			return isValid;
+
+
+		}
+	</script>
+
+</body>
+</html>

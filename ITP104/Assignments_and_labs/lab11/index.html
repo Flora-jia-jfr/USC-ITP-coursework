@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Animation</title>
+	<style>
+		body{
+			width:1000px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		h1{
+			text-align: center;
+		}
+		img{
+			width:250px;
+			height:auto;
+		}
+		#cat{
+			transition:all 10s;
+			position:relative;
+		}
+		.bubble1{
+			background-color: white;
+			width:10px;
+			height:10px;
+			border:1px solid black;
+			border-radius: 50%;
+			position:relative;
+			left:140px;
+			transition:all 1s;
+			opacity:0;
+		}
+		.bubble2{
+			background-color: white;
+			width:15px;
+			height:15px;
+			border:1px solid black;
+			border-radius: 50%;
+			position:relative;
+			left:120px;
+			transition:all 1.5s;
+			opacity:0;
+		}
+		.word{
+			background-color: white;
+			width:150px;
+			height:20px;
+			border:1px solid black ;
+			border-radius: 20px;
+			position:relative;
+			text-align: center;
+			padding-top:6px;
+			left:20px;
+			transition:all 2s;
+			opacity:0;
+		}
+		#cat:hover{
+			transform: translate(750px);
+		}
+		#cat:hover .bubble1{
+			transform: translate(0px, 90px);
+			opacity:1;
+		}
+		#cat:hover .bubble2{
+			transform: translate(0px, 60px);
+			opacity:1;
+		}
+		#cat:hover .word{
+			transform: translate(0px, 60px);
+			opacity:1;
+		}
+	</style>
+</head>
+<body>
+	<h1>Animation</h1>
+	<div id="cat">
+	<div id="text">
+	<div class="word">Have a nice day!</div>
+	<div class="bubble1"></div>
+	<div class="bubble2"></div>
+	</div>
+	<img src="cat.gif" alt="cat">
+	</div>
+
+</body>
+</html>

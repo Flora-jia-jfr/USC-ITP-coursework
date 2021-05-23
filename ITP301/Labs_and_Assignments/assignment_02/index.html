@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment_02: Shopping Cart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body{
+			width:900px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		p{
+			text-align: center;
+		}
+		h1{
+			background-color: seagreen;
+			padding:20px;
+			text-align: center;
+			color:white;
+		}
+		.product{
+			width:300px;
+			text-align:center;
+			float:left;
+		}
+		img{
+			width:200px;
+			height:auto;
+			cursor: pointer;
+		}
+		b{
+			margin-top:20px;
+		}
+		#footer{
+			background-color: gray;
+			color:white;
+			text-align: center;
+			position:fixed;
+			bottom:0px;
+			width:900px;
+			height:40px;
+		}
+		.clearfloat{
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div id ="header">
+		<h1>My Cart</h1>
+	</div>
+	<div id="content">
+		<p> Please click on the image of the product you want to add in your cart. </p>
+		<div class="product">
+			<img class="img1" src="1.jpg" alt="AP English Literature and Composition">
+			<p>AP Computer Science A<br>$<span>12</span></p>
+		</div>
+		<div class="product">
+			<img class="img2" src="2.jpg" alt="AP English Language and Composition">
+			<p>AP English Language and Composition<br>$<span>16</span></p>
+		</div>
+		<div class="product">
+			<img class="img3" src="3.jpg" alt="AP Calculus">
+			<p>AP Calculus<br>$<span>15</span></p>
+		</div>
+	<div class="clearfloat"></div>
+	<b><strong>Cart Subtotal: $<span>0</span></strong></b>
+	</div> <!-- close content -->
+	<div id="footer">
+		<p>@Flora | 2021 | ITP 301</p>
+	</div>
+	<script>
+		var subtotal = document.querySelector('b span').innerHTML;
+		subtotal = parseInt(subtotal);
+		document.querySelector('.img1').onclick = function(){
+			subtotal += 12;
+			document.querySelector('b span').innerHTML = subtotal;
+		}
+		document.querySelector('.img2').onclick = function(){
+			subtotal += 16;
+			document.querySelector('b span').innerHTML = subtotal;
+		}
+		document.querySelector('.img3').onclick = function(){
+			subtotal += 15;
+			document.querySelector('b span').innerHTML = subtotal;
+		}
+	</script>
+
+
+</body>
+</html>

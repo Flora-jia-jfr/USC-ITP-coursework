@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Meta Tag, Responsive Web Design</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Kimberly">
+	<meta name="description" content="ITP104 class on Responsive Design">
+	<meta name="keywords" content="Kimberly, ITP104, Responsive">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<style>
+		/* Default CSS (Desktops) */
+		/*background-color: red;*/
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0px;
+			padding-top: 50px;
+			background-color: red;
+		}
+		.clearfloat {
+			clear: both;
+		}
+		#container, #nav {
+			width: 980px;
+			margin: auto;
+		}
+		#container {
+			border-right: 1px solid #777;
+			border-left: 1px solid #777;
+		}
+		#left {
+			width: 680px;
+			border-right: 1px solid #777;
+			padding-left: 14px;
+			padding-right: 15px;
+			float: left;
+		}
+		#right {
+			width: 240px;
+			padding-left: 15px;
+			padding-right: 15px;
+			float: left;
+		}
+		.thumbnail {
+			margin: 5px;
+			width: 160px;
+			height: 160px;
+			float: left;
+			overflow: hidden;
+		}
+		.thumbnail img {
+			width: auto;
+			height: 100%;
+		}
+		.thumbnail .width-100 {
+			width: 100%;
+			height: auto;
+		}
+		#nav ul {
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
+		}
+		#nav li {
+			background-color: #900;
+			float: left;
+			width: 245px;
+			line-height: 50px;
+			text-align: center;
+		}
+		#nav li:hover {
+			background-color: #FC0;
+		}
+		#nav a {
+			display: block;
+			color: #FFF;
+			text-decoration: none;
+		}
+		#navbar {
+			background-color: #900;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			right: 0px;
+			z-index: 1;
+		}
+		#footer {
+			background-color: #777;
+			color: #FFF;
+			text-align: center;
+			height: 50px;
+			line-height: 50px;
+			font-size: 0.8em;
+		}
+		
+		/* Tablets - Screen Sizes ≤ 991px */
+		/*background-color: green;*/
+		@media(max-width:991px){
+			body{background-color: orange;}
+			#left, #right{float:none;}
+			#container, #left{border: none;}
+			#container, #nav, #left, #right {width: auto;}
+			#nav li{width:25%;}
+			.thumbnail{width:23%;height:width;}
+			.thumbnail img {width: auto;height:100%;}
+		}
+
+		
+		/* Mobile – Screen Sizes ≤ 767px */
+		/*background-color: blue;*/
+		@media(max-width:767px){
+			body{background-color: yellow;padding:0;margin:0;}
+			#navbar{position:static;}
+			#nav li{float:none;width:100%;}
+			.thumbnail{float:none;width:100%;}
+			.thumbnail img {width:100%;height:auto;}
+			.thumbnail .width-100 {position:relative;top:-50%;}
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div id="navbar">
+
+		<div id="nav">
+
+			<ul>
+				<li><a href="">Menu 1</a></li>
+				<li><a href="">Menu 2</a></li>
+				<li><a href="">Menu 3</a></li>
+				<li><a href="">Menu 4</a></li>
+			</ul>
+
+			<div class="clearfloat"></div>
+
+		</div> <!-- #nav -->
+
+	</div> <!-- #navbar -->
+
+	<div id="container">
+
+	<div id="left">
+
+		<h1>Meta Tags, Responsive Web Design</h1>
+
+		<h2>Left Column</h2>
+
+		<p>You wanna know how I got them? So I had a wife. She was beautiful, like you, who tells me I worry too much, who tells me I ought to smile more, who gambles and gets in deep with the sharks. Hey. One day they carve her face. And we have no money for surgeries. She can't take it. I just wanna see her smile again. I just want her to know that I don't care about the scars. So, I do this to myself. And you know what? She can't stand the sight of me. She leaves. Now I see the funny side. Now I'm always smiling.</p>
+
+		<p>Every year, I took a holiday. I went to Florence, this cafe on the banks of the Arno. Every fine evening, I would sit there and order a Fernet Branca. I had this fantasy, that I would look across the tables and I would see you there with a wife maybe a couple of kids. You wouldn't say anything to me, nor me to you. But we would both know that you've made it, that you were happy. I never wanted you to come back to Gotham. I always knew there was nothing here for you except pain and tragedy and I wanted something more for you than that. I still do.</p>
+
+		<p>You wanna know how I got them? So I had a wife. She was beautiful, like you, who tells me I worry too much, who tells me I ought to smile more, who gambles and gets in deep with the sharks. Hey. One day they carve her face. And we have no money for surgeries. She can't take it. I just wanna see her smile again. I just want her to know that I don't care about the scars. So, I do this to myself. And you know what? She can't stand the sight of me. She leaves. Now I see the funny side. Now I'm always smiling.</p>
+
+		<div id="thumbnails">
+
+			<div class="thumbnail">
+				<img src="img/img_1.jpg" alt="USC Village">
+			</div> <!-- .thumbnail -->
+
+			<div class="thumbnail">
+				<img src="img/img_2.jpg" alt="Tutor Campus Center">
+			</div> <!-- .thumbnail -->
+
+			<div class="thumbnail">
+				<img src="img/img_3.jpg" alt="Tommy Trojan" class="width-100">
+			</div> <!-- .thumbnail -->
+
+			<div class="thumbnail">
+				<img src="img/img_4.jpg" alt="VKC">
+			</div> <!-- .thumbnail -->
+
+			<div class="clearfloat"></div>
+
+		</div>
+
+		<p>My name is Merely Ducard but I speak for Ra's al Ghul... a man greatly feared by the criminal underworld. A mon who can offer you a path. Someone like you is only here by choice. You have been exploring the criminal fraternity but whatever your original intentions you have to become truly lost. The path of a man who shares his hatred of evil and wishes to serve true justice. The path of the League of Shadows.</p>
+
+		<p>No, no, no. A vigilante is just a man lost in scramble for his own gratification. He can be destroyed or locked up. But if you make yourself more than just a man, if you devote yourself to an idel and if they can't stop you then you become something else entirely. Legend, Mr Wayne.</p>
+
+	</div> <!-- #left -->
+
+	<div id="right">
+		<h2>Right Column</h2>
+
+		<p>Let me get this straight.</p>
+
+		<p>Breathe in your fears. Face them. To conquer fear, you must become fear. You must bask in the fear of other men. And men fear most what they cannot see. You have to become a terrible thought. A wraith. You have to become an idea! Feel terror cloud your senses. Feel its power to distort. To control. And know that this power can be yours. Embrace your worst fear. Become one with the darkness.</p>
+	</div> <!-- #right -->
+
+	<div class="clearfloat"></div>
+
+</div> <!-- #container -->
+
+<div id="footer">
+	University of Southern California &copy; 2018
+</div> <!-- #footer -->
+
+</body>
+</html>

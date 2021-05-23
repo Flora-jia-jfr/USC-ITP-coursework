@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link href="lib/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="lecture.css">
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="row">
+			<h1 class="col-12">jQuery</h1>
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<div id="color-boxes" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Background Color Change</h2>
+			<p class="col-12">Click on a square to change background color:</p>
+		</div> <!-- .row -->
+
+		<div id="color-wrapper" class="row">
+			<div class="color-box text-center border border-dark col-4 col-md mx-1 my-1" id="color-1">
+				#000
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-1 my-1" id="color-2">
+				#FFF
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-1 my-1" id="color-3">
+				#CCC
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-1 my-1" id="color-4">
+				#777
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-1 my-1" id="color-5">
+				#FC0
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-1 my-1" id="color-6">
+				#900
+			</div>
+		</div> <!-- #color-wrapper -->
+	</div> <!-- #color-boxes -->
+
+	<div id="kanye-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Image Switch</h2>
+		</div> <!-- .row -->
+		<div class="text-center my-3">
+			<button id="fade-in" class="btn btn-primary">Fade In</button>
+			<button id="fade-out" class="btn btn-secondary">Fade Out</button>
+		</div>
+		<p class="text-center">Hover over the image to flip it:</p>
+		<img id="kanye" src="img/kanye-1.jpg" alt="Kanye West">
+	</div> <!-- #kanye-section -->
+
+	<div id="dom-section" class="container mt-5">
+		<div class="row">
+			<h2 class="col-12">DOM Traversal</h2>
+		</div> <!-- .row -->
+
+		<div class="row">
+			<h3 id="title-1" class="title col-12 border border-dark py-2 my-2">Lorem ipsum dolor sit amet</h3>
+			<p class="col-12">Consectetur adipiscing elit. Proin nibh eros, tincidunt at metus non, ultrices vulputate felis. Suspendisse potenti. Vivamus sit amet cursus dolor, at lacinia dui. Pellentesque fringilla enim nibh, quis lobortis ante dictum vel. Etiam tortor turpis, venenatis sit amet est et, dictum auctor dolor. Etiam vehicula iaculis pharetra. Sed viverra interdum efficitur.</p>
+
+			<h3 id="title-2" class="title col-12 border border-dark py-2 my-2">Quisque volutpat eros ullamcorper</h3>
+			<p class="col-12">Velit pulvinar, at tincidunt orci placerat. Morbi blandit neque est, id posuere urna accumsan non. Pellentesque a ligula sed velit elementum efficitur. Proin ex lectus, porta vitae accumsan ut, mattis ac ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam nec mauris tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed diam volutpat odio mollis accumsan. Proin tempus erat sed lacinia condimentum. Fusce molestie ornare finibus. Nunc dictum vulputate scelerisque. Donec elementum semper arcu, eget blandit magna varius et. Integer pulvinar sem non sem volutpat varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+
+			<h3 id="title-3" class="title col-12 border border-dark py-2 my-2">Nulla elit eros</h3>
+			<p class="col-12">Interdum sed, finibus in nibh. Praesent eros lectus, fermentum at enim non, porta ultrices nisi. Aliquam odio libero, commodo id pulvinar eget, gravida non turpis. In mi massa, placerat ut ex sed, mollis imperdiet elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ultrices scelerisque fermentum. Quisque luctus sapien vitae dignissim ornare. Donec non lorem sagittis, condimentum augue vel, suscipit nisl. Praesent blandit eu ligula eu dictum. Donec faucibus purus in urna mollis, nec vulputate sem mollis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vulputate dignissim libero, ut blandit massa ultrices et. Fusce mattis luctus nibh. Donec rhoncus pretium lectus id sodales.</p>
+		</div> <!-- .row -->
+
+	</div> <!-- #dom-section -->
+
+
+	<div id="animation-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Custom Animation</h2>
+		</div> <!-- .row -->
+		<div class="text-center my-3">
+			<button id="animation-start" class="btn btn-success">Animate</button>
+			<button id="animation-reset" class="btn btn-danger">Reset</button>
+		</div>
+		<img id="animation-img" src="img/kanye-1.jpg" alt="Kanye West">
+	</div> <!-- #animation-section -->
+	
+
+	<div class="container">
+		<div class="row mt-5">
+			<h2 class="col-12">USC Task Manager</h2>
+
+			<div class="col-12 mt-4">
+				<form id="todo-form">
+					<div class="form-row">
+						<div class="col-12 mt-2 col-sm-6 mt-sm-0">
+							<label for="todo-item" class="sr-only">Task:</label>
+							<input type="text" class="form-control" id="todo-item" placeholder="Task">
+							<small class="invalid-feedback">This field cannot be empty.</small>
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+							<button role="button" type="submit" class="btn btn-primary">Add</button>
+						</div> <!-- .col -->
+					</div> <!-- .form-row -->
+				</form>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+		<div class="row mb-5">
+			<h3 class="col-12 mt-4">To Do List:</h3>
+
+			<div class="col-12 col-sm-8 mt-3">
+
+				<button id="todo-delete-all" class="btn btn-outline-danger mb-3">Delete All</button>
+
+				<ul id="todo-list" class="list-group">
+
+					<li class="list-group-item">
+						<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						<span>Cras justo odio</span>
+					</li>
+					
+					<li class="list-group-item">
+						<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						<span>Dapibus ac facilisis in</span>
+					</li>
+					
+					<li class="list-group-item">
+						<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						<span>Morbi leo risus</span>
+					</li>
+
+				</ul>
+
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script>
+		console.log($('body')); //get jQuery object
+		console.log($('body').css('background-color'));
+		console.log($('#kanye').attr('src'));
+		console.log($('h1').html());
+
+		// $('body').css('background-color','#000'); // set things when provide two parameters
+		$('#kanye').attr('src','img/kanye-2.jpg');
+		$('h1').html('New Page Title');
+
+		$('.color-box').click(function(){
+			// console.log('Clicked');
+			var color = $(this).css('background-color'); //jQuery this: $(this)
+			// var color = $(this).html().trim();
+			// console.log(color);
+			$('body').css('background-color',color);
+		});
+
+		$('#kanye').mouseenter(function(){
+			$(this).attr('src','img/kanye-2.jpg');
+			$(this).attr('alt','Kanye West');
+		})
+		$('#kanye').mouseleave(function(){
+			$(this).attr('src','img/kanye-1.jpg');
+			$(this).attr('alt','Kanye East');
+		})
+
+		$('#fade-out').click(function(){
+			$('#kanye').fadeOut();
+		})
+		$('#fade-in').click(function(){
+			$('#kanye').fadeIn();
+		})
+
+		$('.title').click(function(){
+			var display = $(this).next().css('display');
+			if (display == "block"){
+				$(this).next().slideUp();
+			}
+			else{
+				$(this).next().slideDown();
+			}
+
+			// $(this).next().slideToggle();
+		})
+
+		$('#animation-start').click(function(){
+			$('#animation-img').animate({
+				width: "150px",
+				borderRadius:"50%"
+			});
+		})
+		$('#animation-reset').click(function(){
+			$('#animation-img').animate({
+				width: "300px",
+				borderRadius:"0px"
+			});
+		})
+
+		$('#todo-delete-all').click(function(){
+			$('#todo-list').empty();
+		})
+
+		bindRemoveBts();
+
+		$('#todo-form').submit(function(){
+			var item = $('#todo-item').val().trim();
+			if (item.length > 0 ) {
+				//value provided
+				$('#todo-item').removeClass('is-invalid');
+				$('#todo-item').val('');
+
+				//create html elements
+				var li = $('<li>');
+				var spanRemove = $('<span>');
+				var spanText = $('<span>');
+
+				//add classes to elements
+				li.addClass('list-group-item');
+				spanRemove.addClass('todo-remove oi oi-circle-x');
+				spanRemove.attr('title','Remove');
+				spanText.html(item);
+
+				li.append(spanRemove);
+				li.append(spanText);
+				$('ul').append(li);
+				bindRemoveBts();
+			}
+			else{
+				//form input empty
+				$('#todo-item').addClass('is-invalid');
+			}
+			return false;
+		})
+
+		function bindRemoveBts(){
+			$('.todo-remove').click(function(){
+				$(this).parent().remove();
+			})
+		}
+
+	</script>
+
+
+</body>
+</html>

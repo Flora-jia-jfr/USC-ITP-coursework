@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab_03: Shopping Cart with Funds</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		body{
+			width:900px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		p{
+			text-align: center;
+		}
+		h1{
+			background-color: seagreen;
+			padding:20px;
+			text-align: center;
+			color:white;
+		}
+		.product{
+			width:300px;
+			text-align:center;
+			float:left;
+		}
+		img{
+			width:200px;
+			height:auto;
+			cursor: pointer;
+		}
+		#remain{	
+			float:left;
+			margin-top:20px;
+		}
+		#subtotal{	
+			float:right;
+			margin-top:20px;
+		}
+		#footer{
+			background-color: gray;
+			color:white;
+			text-align: center;
+			position:fixed;
+			bottom:0px;
+			width:900px;
+			height:40px;
+		}
+		#input-section{
+			margin-top:20px;
+		}
+		.btn-primary {
+		 	color: #ffffff;
+			background-color: seagreen;
+		 	border-color: darkgreen;
+		}
+
+		.clearfloat{
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div id ="header">
+		<h1>My Cart</h1>
+	</div>
+	<div id="content">
+		<p> Please click on the image of the product you want to add in your cart. </p>
+		<div class="product">
+			<img class="img1" src="1.jpg" alt="AP English Literature and Composition">
+			<p>AP Computer Science A<br>$<span>12</span></p>
+		</div>
+		<div class="product">
+			<img class="img2" src="2.jpg" alt="AP English Language and Composition">
+			<p>AP English Language and Composition<br>$<span>16</span></p>
+		</div>
+		<div class="product">
+			<img class="img3" src="3.jpg" alt="AP Calculus">
+			<p>AP Calculus<br>$<span>15</span></p>
+		</div>
+	<div class="clearfloat"></div>
+	<b id="remain"><strong>Remaining Funds: $<span>0</span></strong></b>
+	<b id="subtotal"><strong>Cart Subtotal: $<span>0</span></strong></b>
+	<div class="clearfloat"></div>
+	<div id="input-section">
+		<div class="row mt-3">
+			<div class="col-4 col-md-3 col-lg-2">
+				<div class="input-group">
+					<div class="input-group-append"><div class="input-group-text">$</div></div>
+					<input type="text" id="money-input" class="form-control">
+				</div> <!-- .input-group -->
+			</div>
+			<button id="add-input" class="btn btn-primary">Add Input</button>
+		</div>
+	</div> <!-- close content -->
+
+	<div id="footer">
+		<p>@Flora | 2021 | ITP 301</p>
+	</div>
+	<script>
+		document.querySelector('.img1').onclick = function(){
+			var subtotal = document.querySelector('#subtotal span').innerHTML;
+			subtotal = parseInt(subtotal);
+			subtotal += 12;
+			var remain = document.querySelector('#remain span').innerHTML;
+			if(remain >= 12){
+				remain = remain - 12;
+				document.querySelector("#remain span").innerHTML = remain;
+				document.querySelector('#subtotal span').innerHTML = subtotal;
+			}
+			else{
+				alert('Insufficient funds');
+			}
+		}
+		document.querySelector('.img2').onclick = function(){
+			var subtotal = document.querySelector('#subtotal span').innerHTML;
+			subtotal = parseInt(subtotal);
+			subtotal += 16;
+			var remain = document.querySelector('#remain span').innerHTML;
+			if(remain >= 16){
+				remain = remain - 16;
+				document.querySelector("#remain span").innerHTML = remain;
+				document.querySelector('#subtotal span').innerHTML = subtotal;
+			}
+			else{
+				alert('Insufficient funds');
+			}
+		}
+		document.querySelector('.img3').onclick = function(){
+			var subtotal = document.querySelector('#subtotal span').innerHTML;
+			subtotal = parseInt(subtotal);
+			subtotal += 15;
+			var remain = document.querySelector('#remain span').innerHTML;
+			if(remain >= 15){
+				remain = remain - 15;
+				document.querySelector("#remain span").innerHTML = remain;
+				document.querySelector('#subtotal span').innerHTML = subtotal;
+			}
+			else{
+				alert('Insufficient funds');
+			}
+		}
+		/*** Calculate input ***/
+		document.querySelector("#add-input").onclick = function(){
+			var remain = document.querySelector('#remain span').innerHTML;
+			remain = parseInt(remain);
+			var inputNum = document.querySelector('#money-input').value;
+			if (inputNum == ''){
+				inputNum = 0;
+			}
+			else{
+				inputNum = parseInt(inputNum);
+			}
+			remain = inputNum + remain;
+			document.querySelector("#remain span").innerHTML = remain;
+			document.querySelector('#money-input').value = "";
+		}
+	</script>
+
+
+</body>
+</html>

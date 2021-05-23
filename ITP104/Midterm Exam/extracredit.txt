@@ -1,0 +1,10 @@
+Extra Credit Question:
+
+#big{
+	position:relative;
+}
+#small{
+	position:absolute;
+	right:50px;
+	bottom:0px;
+}

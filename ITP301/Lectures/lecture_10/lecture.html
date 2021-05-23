@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>iTunes API</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		.table th, .table td {
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12 mt-4">iTunes Search API</h1>
+		</div> <!-- .row -->
+
+		<div class="row">
+			<form class="col-12" id="search-form">
+				<div class="form-row">
+					<div class="col-12 mt-4 col-sm-6 col-lg-4">
+						<label for="search-term" class="sr-only">Search:</label>
+						<input type="text" class="form-control" id="search-term" placeholder="Search...">
+					</div>
+					<div class="col-12 mt-4 col-sm-4 col-md-3 col-lg-2">
+						<label for="search-limit" class="sr-only">Number of results:</label>
+						<select class="form-control" id="search-limit">
+							<option value="5">5 results</option>
+							<option value="10">10 results</option>
+							<option value="25">25 results</option>
+							<option value="50">50 results</option>
+							<option value="100">100 results</option>
+						</select>
+					</div>
+					<div class="col-12 mt-4 col-sm-auto">
+						<button type="submit" class="btn btn-primary">Search</button>
+					</div>
+				</div> <!-- .form-row -->
+			</form>
+		</div> <!-- .row -->
+		<div class="row">
+			<div class="col-12 mt-4">
+
+				Showing <span id="num-results" class="font-weight-bold">0</span> result(s).
+
+			</div>
+			<table class="table table-responsive table-striped col-12 mt-3">
+				<thead>
+					<tr>
+						<th>Cover</th>
+						<th>Artist</th>
+						<th>Track</th>
+						<th>Album</th>
+						<th>Preview</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td><img src="http://is2.mzstatic.com/image/thumb/Music/v4/40/d0/29/40d029b5-4c32-53d2-69d1-ea04a513c345/source/100x100bb.jpg" alt="Abbey Road Cover"></td>
+						<td>The Beatles</td>
+						<td>Here Comes the Sun</td>
+						<td>Abbey Road</td>
+						<td><audio src="https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview71/v4/46/48/7d/46487d90-d40c-7c47-7285-5edbfd0fd2c0/mzaf_5516723347634890825.plus.aac.p.m4a" controls></audio></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://viterbi-web.usc.edu/~zune/itp301/math.js"></script>
+
+	<script>
+
+		/*
+		console.log('before add()');
+
+		add(1,2,function(result){
+			console.log('Callback Invoked:');
+			console.log(result);
+		});
+
+		add(2,3,processAddition);
+		add(4,5,processAddition);
+		add(6,8,processAddition);
+
+		console.log('after add()');
+
+		function processAddition(response){
+			console.log('Callback Invoked:');
+			console.log(response);
+		}
+
+		var personJson = {
+			"firstName":"Tommy",
+			"lastName":"Trojan",
+			"age":18,
+			"phone":{
+				"cell":"123-123-1234",
+				"home":"456-456-4567"
+			},
+			"friends":[
+				{
+					"firstName":"Jane",
+					"lastName":"Doe"
+				},
+				{
+					"firstName":"Traveler",
+					"lastName":"van Horse"
+				}
+			]
+		};
+
+		console.log(personJson);
+		console.log(personJson.firstName);
+		*/
+
+		document.querySelector('#search-form').onsubmit = function(){
+			var term = document.querySelector('#search-term').value.trim();
+			var limit = document.querySelector('#search-limit').value.trim();
+
+			if(term.length > 0 ){
+				$.ajax({
+				url:"https://itunes.apple.com/search?limit=" + limit + "&term=" + term,
+				dataType:"json",
+				success:function(data){
+					// console.log(data);
+					// console.log(data.resultCount);
+					// console.log(data.results[0]);
+					document.querySelector("#num-results").innerHTML = data.results.length;
+					document.querySelector('tbody').innerHTML = "";
+					for (var i = 0; i < data.results.length; i++){
+						console.log(data.results[i]);
+						createRow(data.results[i]);
+					}
+				},
+				error:function(error){
+					alert('AJAX error');
+					console.log(error);
+				}
+			});
+			}
+
+			return false;
+		}
+
+		function createRow(song){
+			var tr = document.createElement('tr');
+			var tdImg = document.createElement('td');
+			var tdArtist = document.createElement('td');
+			var tdTrack = document.createElement('td');
+			var tdAlbum = document.createElement('td');
+			var tdAudio = document.createElement('td');
+			var img = document.createElement('img');
+			var audio = document.createElement('audio');
+
+			tdArtist.innerHTML = song.artistName;
+			tdTrack.innerHTML = song.trackName;
+			tdAlbum.innerHTML = song.collectionName;
+			img.src = song.artworkUrl100;
+			img.alt = song.collectionName + 'Cover';
+			audio.src = song.previewUrl;
+			audio.controls = true;
+
+			tdImg.appendChild(img);
+			tdAudio.appendChild(audio);
+			tr.appendChild(tdImg);
+			tr.appendChild(tdArtist);
+			tr.appendChild(tdTrack);
+			tr.appendChild(tdAlbum);
+			tr.appendChild(tdAudio);
+
+			document.querySelector('tbody').appendChild(tr);
+		}
+
+	</script>
+</body>
+</html>

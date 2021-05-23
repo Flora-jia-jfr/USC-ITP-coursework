@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arrays, Loops, Functions</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="lecture.css">
+</head>
+<body class="py-5">
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12">Arrays, Loops, Functions</h1>
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<div id="color-boxes" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Background Color Change</h2>
+			<p class="col-12">Click on a square to change background color:</p>
+		</div> <!-- .row -->
+
+		<div id="color-wrapper" class="row">
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-1">
+				#000
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-2">
+				#FFF
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-3">
+				#CCC
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-4">
+				#777
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-5">
+				#FC0
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-6">
+				#900
+			</div>
+		</div> <!-- #color-wrapper -->
+	</div> <!-- #color-boxes -->
+
+	<div id="dom-section" class="container mt-5">
+		<div class="row">
+			<h2 class="col-12">Show / Hide Content</h2>
+		</div> <!-- .row -->
+
+		<div class="row">
+			<h3 id="title-1" class="title col-12 border border-dark py-2 my-2">Lorem ipsum dolor sit amet</h3>
+			<p id="content-1" class="col-12">Consectetur adipiscing elit. Proin nibh eros, tincidunt at metus non, ultrices vulputate felis. Suspendisse potenti. Vivamus sit amet cursus dolor, at lacinia dui. Pellentesque fringilla enim nibh, quis lobortis ante dictum vel. Etiam tortor turpis, venenatis sit amet est et, dictum auctor dolor. Etiam vehicula iaculis pharetra. Sed viverra interdum efficitur.</p>
+
+			<h3 id="title-2" class="title col-12 border border-dark py-2 my-2">Quisque volutpat eros ullamcorper</h3>
+			<p id="content-2" class="col-12">Velit pulvinar, at tincidunt orci placerat. Morbi blandit neque est, id posuere urna accumsan non. Pellentesque a ligula sed velit elementum efficitur. Proin ex lectus, porta vitae accumsan ut, mattis ac ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam nec mauris tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed diam volutpat odio mollis accumsan. Proin tempus erat sed lacinia condimentum. Fusce molestie ornare finibus. Nunc dictum vulputate scelerisque. Donec elementum semper arcu, eget blandit magna varius et. Integer pulvinar sem non sem volutpat varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+
+			<h3 id="title-3" class="title col-12 border border-dark py-2 my-2">Nulla elit eros</h3>
+			<p id="content-3" class="col-12">Interdum sed, finibus in nibh. Praesent eros lectus, fermentum at enim non, porta ultrices nisi. Aliquam odio libero, commodo id pulvinar eget, gravida non turpis. In mi massa, placerat ut ex sed, mollis imperdiet elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ultrices scelerisque fermentum. Quisque luctus sapien vitae dignissim ornare. Donec non lorem sagittis, condimentum augue vel, suscipit nisl. Praesent blandit eu ligula eu dictum. Donec faucibus purus in urna mollis, nec vulputate sem mollis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vulputate dignissim libero, ut blandit massa ultrices et. Fusce mattis luctus nibh. Donec rhoncus pretium lectus id sodales.</p>
+		</div> <!-- .row -->
+
+	</div> <!-- #dom-section -->
+
+	<div id="exp-calculator" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12 mb-3">Exponent Calculator</h2>
+			<div class="col-3 col-lg-2"><input type="text" id="calc-num1" class="form-control text-right"></div> <!-- .col -->
+			<big>^</big>
+			<div class="col-3 col-lg-2"><input type="text" id="calc-num2" class="form-control text-right"></div> <!-- .col -->
+			<big>=</big>
+			<div class="col-3 col-lg-2"><input type="text" id="calc-result" class="form-control text-right"></div> <!-- .col -->
+			<button id="calculate" class="btn btn-secondary mx-1">Calculate</button>
+		</div> <!-- .row -->
+	</div> <!-- #exp-calculator -->
+
+	<div id="kanye-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Image Switch</h2>
+		</div> <!-- .row -->
+		<p class="text-center">Hover over the image to flip it:</p>
+		<img id="kanye" src="img/kanye-1.jpg" alt="Kanye West">
+	</div> <!-- #kanye-section -->
+
+	<div id="login-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Login</h2>
+			<div class="col-12 mt-2">
+				<button id="login-btn" class="btn btn-success">Click Here to Login</button>
+			</div>
+			<div id="login-msg" class="col-12 mt-3">
+				<strong>Message:</strong>
+				<span>Messages go here.</span>
+			</div>
+		</div> <!-- .row -->
+	</div> <!-- #login-section -->
+
+	<script>
+
+		/***** Color Boxes *****/
+		var boxes = document.querySelectorAll('.color-box');
+		// console.log(boxes);
+		// function changeColor(colorSelect){
+		// 	var color = getComputedStyle(colorSelect.getPropertyValue('background-color'));
+		// 	document.body.style.backgroundColor = color;
+		// 	console.log(color);
+		// }
+		for (var i = 0; i <= boxes.length-1; i++){
+			boxes[i].onclick = function(){
+				var color = getComputedStyle(this).getPropertyValue('background-color');
+				document.body.style.backgroundColor = color;
+				// console.log(color);
+			}
+		}
+		/***** Show / Hide Content *****/
+		var titles = document.querySelectorAll('.title');
+		for (var i = 0; i < titles.length; i++){
+			titles[i].onclick = function(){
+				var display = getComputedStyle(this.nextElementSibling).getPropertyValue('display');
+				if (display == 'block') {
+					// If it is, hide it.
+					this.nextElementSibling.style.display = 'none';
+				} else {
+					// Otherwise, show it.
+					this.nextElementSibling.style.display = 'block';
+				}
+			}
+		}
+		/***** Exponent Calculator *****/
+		document.querySelector('#calculate').onclick = function(){
+			var num1 = document.querySelector('#calc-num1').value;
+			var num2 = document.querySelector('#calc-num2').value;
+			num1 = parseInt(num1);
+			num2 = parseInt(num2);
+			var result = 1;
+			for (var i = 1; i <= num2; i++){
+				result *= num1;
+			}
+			document.querySelector('#calc-result').value = result;
+		}
+
+
+		/***** Image Switching *****/
+		/*
+		function myFunction(){
+			console.log('hello world!')
+		}
+		myFunction();
+		*/
+		function alert(){
+			alert("HERE")
+		}
+		function changeImg(newSrc, newAlt){
+			document.querySelector('#kanye').src = newSrc;
+			document.querySelector('#kanye').alt = newAlt;
+		}
+
+		/*var KanyEast= 10;
+		var onmouseneter = KanyEast
+
+		var KanyeEast = function (){
+
+		}*/
+
+		function KanyeEast(){
+			changeImg("img/kanye-2.jpg","kanye east")
+		}
+
+		document.querySelector('#kanye').onmouseenter = KanyeEast;
+		
+
+		document.querySelector('#kanye').onmouseleave = function(){ // anoynomous function
+			changeImg('img/kanye-1.jpg','kanye west');
+		};
+
+
+		/***** Login *****/
+
+		// Username = ttrojan
+		// Password = usc
+
+		function isValidLogin(username, password){
+			if(username == 'ttrojan' && password == 'usc'){
+				return true;
+			}else{
+				return false
+			}
+		}
+
+		document.querySelector('#login-btn').onclick = function(){
+			var username = prompt('Enter your username:');
+			var password = prompt('Enter your password:');
+
+			if ( isValidLogin(username,password) ) {
+				document.querySelector('#login-msg span').innerHTML = 'Correct Credentials';
+			} else {
+				document.querySelector('#login-msg span').innerHTML = 'Invalid Credentials';
+			}
+		}
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fonts, Position Property</title>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Sansita+Swashed&display=swap" rel="stylesheet">
+<style>
+	/* Add font-face for Black Rose */
+	/* https://www.dafont.com/black-rose.font */
+		
+	/* Add body font-family, Aria*/
+	@font-face{
+		font-family:"Black Rose";
+		src:url("fonts/BLACKR~1.TTF");
+	}
+	body {
+		line-height:2;
+		font-family: Arial, sans-serif;
+	}
+	h1{
+		font-family:"Black Rose", fantasy, sans-serif;
+		font-size:50px;
+	}
+	h2{
+		font-family: 'Sansita Swashed', cursive, sans-serif;
+	}
+
+
+	/* Set a font-family, first Starbucks then Impact, serif for h1 */
+	/* Add font-weight and font-size of 35px */
+	/* Then change to Black Rose once defined */
+	
+
+	/* Set a font-family of Comic Sans MS for h2 */
+	/* Using Google Fonts get link for Abril Fatface */
+	/* Change to use Abril Fatface */
+	
+		.clearfloat {
+			clear: both;
+		}
+		
+		
+		#main, #nav {
+			width: 720px;
+			margin: auto;
+		}
+		.thumbnail {
+			background-color: #CCC;
+			margin: 10px;
+			width: 220px;
+			height: 220px;
+			float: left;
+			overflow: hidden;		
+			/* add relative position */
+			position:relative;
+		}
+		
+		/* Style the overlay using absolute and adjusting top,left,right,bottom */
+		.overlay{
+			background-color: rgba(0,0,0,.6); 
+			/* using the rgba can only change the background color while not affecting the texts */
+			color:white;
+			position:absolute;
+			top:0px;
+			bottom:0px;
+			left:0px;
+			right:0px;
+			text-align: center;
+			padding-top: 70px;
+			visibility: hidden;
+		}
+		/* Add the overlay hover effect */
+		.thumbnail:hover .overlay{
+			visibility: visible;
+		}
+		
+		.thumbnail > img {
+			width: auto;
+			height: 100%;
+		}
+		
+		.thumbnail > .width-100 {
+			width: 100%;
+			height: auto;
+		}
+		
+		/* Style the #navbar, make fixed, set top left and right to 0 */
+		/* Add z-index */
+		#navbar{
+			background-color: #900;
+			position:fixed;
+			top:0px;
+			right:0px;
+			left:0px;
+			z-index:99;
+		}
+		/* Style #nav ul, removing bullets and no margins or paddings */
+		#nav ul{
+			list-style:none;
+			padding:0px;
+			margin:0px;
+		}
+		/* Style #nav li, make relative, float left and set width and line height and center */
+		/* Calculate width 720px / 4 = 180px */
+		/* Add background color, same as #navbar */
+		#nav li{
+			width:180px;
+			float:left;
+			text-align: center;
+			line-height: 50px;
+			position: relative;
+			}
+		/* Add #nav li:hover background color of #fc0 */
+		#nav li:hover {
+			background-color: #fc0;
+		}
+		/* Fix the #nav a tag making block instead of inline, remove underline and make white */
+		#nav a{
+			display:block;
+			text-decoration: none;
+			color:white;
+		}
+		/* Style #nav ul ul using visibility and absolute */
+		/* Adjust the top based on line-height set in #nav li */
+		#nav ul ul{
+			position:absolute;
+			background-color: #900;
+			top:50px;
+			left:0px;
+			visibility:hidden;
+		}
+		
+		/* Show #nav li:hover > ul */
+		#nav li:hover > ul{
+			visibility: visible;
+		}
+		/* Set left and top for #nav ul ul ul */
+		#nav ul ul ul{
+			positon:relative;
+			left:180px;
+			top:0px;
+		}
+		
+	</style>
+
+</head>
+<body>
+
+	<div id="navbar">
+
+		<div id="nav">
+
+			<ul>
+				<li><a href="">Menu 1</a></li>
+				<li>
+					<a href="">Menu 2</a>
+					<ul>
+						<li><a href="">Sub-menu 1</a></li>
+						<li><a href="">Sub-menu 2</a>
+							<ul>
+								<li><a href="lecture.html#about">Sub-sub-menu 1</a></li>
+								<li><a href="lecture.html#2">Sub-sub-menu 2</a></li>
+								<li><a href="lecture.html#3">Sub-sub-menu 3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="">Menu 3</a></li>
+				<li><a href="">Menu 4</a></li>
+			</ul>
+
+			<div class="clearfloat"></div>
+
+		</div> <!-- #nav -->
+
+	</div> <!-- #navbar -->
+
+	<div id="main">
+		<h1>Fonts, Position Property</h1>
+<div id="about">
+		<h2>Hipster Ipsum</h2>
+
+		<p>Lorem ipsum dolor amet freegan man braid sartorial lumbersexual vinyl mumblecore. Succulents blog listicle helvetica hella enamel pin jean shorts bespoke tumblr. YOLO stumptown lomo af raw denim. Chambray raw denim mumblecore hella. Skateboard unicorn flexitarian next level, whatever asymmetrical affogato man braid.</p>
+
+		<p>Tilde microdosing sriracha cred XOXO. Blog put a bird on it church-key pok pok schlitz fixie kitsch jianbing next level adaptogen listicle roof party mixtape raw denim. 8-bit cray offal pork belly. Cred tote bag af cloud bread offal cardigan hexagon kale chips iPhone iceland truffaut XOXO waistcoat leggings. Kickstarter banjo readymade vice lyft, 90's hell of air plant vaporware meh.</p>
+
+		<p>Venmo kinfolk hell of, raw denim normcore austin ramps 8-bit selvage you probably haven't heard of them. Polaroid craft beer occupy iPhone, put a bird on it sustainable snackwave asymmetrical quinoa cronut meditation etsy. Green juice vaporware poke beard, 8-bit raw denim synth pop-up portland ennui palo santo vice snackwave bicycle rights. Art party etsy chambray flannel. Banh mi bespoke beard gochujang. Twee kombucha hoodie man bun.</p>
+</div>
+<div id="2">
+		<h2>Kombucha</h2>
+
+		<div id="thumbnails">
+
+			<div class="thumbnail">
+				<img src="img/img_1.jpg" alt="USC Village">
+				<div class="overlay">
+					<p>Village</p>
+				</div>
+			</div> <!-- .thumbnail -->
+
+			<div class="thumbnail">
+				<img src="img/img_2.jpg" alt="Tutor Campus Center">
+				<div class="overlay">
+					<p>Tutor Campus Center</p>
+				</div>
+			</div> <!-- .thumbnail -->
+
+			<div class="thumbnail">
+				<img src="img/img_3.jpg" alt="Tommy Trojan" class="width-100">
+				<div class="overlay">
+					<p>Tommy Trojan</p>
+				</div>
+			</div> <!-- .thumbnail -->
+
+			<div class="clearfloat"></div>
+
+		</div>		
+</div>
+		<h2>Hashtag fixie</h2>
+
+		<p>Hashtag fixie small batch pug plaid, gochujang venmo raw denim occupy migas. Sustainable poutine tattooed biodiesel kale chips. Ethical cred fam slow-carb tote bag trust fund edison bulb artisan. Schlitz food truck umami williamsburg hot chicken biodiesel. Before they sold out meditation keffiyeh kickstarter, lomo chillwave everyday carry.</p>
+
+		<p>Meh put a bird on it organic actually hot chicken letterpress helvetica echo park hashtag occupy live-edge humblebrag jean shorts deep v adaptogen. Pour-over intelligentsia kogi mixtape, stumptown celiac umami actually tacos selvage crucifix. Hammock drinking vinegar polaroid tilde ethical sriracha shaman. Succulents mixtape pabst quinoa vinyl.</p>
+
+		<h2>Wolf meditation</h2>
+
+		<p>Wolf meditation wayfarers portland chicharrones, intelligentsia marfa vaporware distillery tattooed. Plaid tattooed put a bird on it franzen hella migas health goth forage cornhole mlkshk tumeric scenester vice. Austin blue bottle tilde readymade sartorial, sriracha celiac messenger bag PBR&B. Keytar artisan etsy twee meggings, VHS pickled art party tattooed kombucha farm-to-table affogato leggings tbh brooklyn. Art party post-ironic meditation shabby chic, pickled microdosing unicorn mixtape four loko readymade biodiesel. Seitan bicycle rights messenger bag occupy migas literally ramps authentic swag microdosing aesthetic church-key.</p>
+
+		<p>Disrupt pitchfork bespoke, fanny pack dreamcatcher edison bulb pork belly cray succulents post-ironic. Tilde la croix pop-up, swag edison bulb DIY roof party sustainable vexillologist drinking vinegar aesthetic schlitz. Knausgaard echo park you probably haven't heard of them lomo copper mug hell of. Fam fashion axe irony, synth austin mlkshk biodiesel. Artisan kombucha taxidermy, keytar glossier wayfarers freegan microdosing lumbersexual trust fund tacos irony succulents migas. Stumptown skateboard kombucha, lomo bespoke shabby chic VHS deep v williamsburg cronut fingerstache sartorial artisan tofu raclette.</p>
+
+		<p>Flannel craft beer iPhone flexitarian kale chips, pinterest microdosing dreamcatcher vape distillery hot chicken skateboard polaroid keytar. Quinoa man bun small batch pickled tacos health goth. Pitchfork hell of umami echo park whatever, snackwave jianbing irony celiac. Air plant tattooed stumptown cornhole plaid vice truffaut VHS typewriter authentic sartorial humblebrag. Farm-to-table man bun mixtape cronut beard fingerstache biodiesel glossier synth chia literally.</p>
+<div id="3">
+		<h2>Normcore cray</h2>
+
+		<p>Normcore cray kickstarter meditation, asymmetrical williamsburg copper mug tote bag chia street art gastropub. Vape etsy normcore pitchfork, affogato trust fund snackwave four dollar toast man bun PBR&B twee wolf photo booth bicycle rights tofu. Bitters readymade hammock raw denim authentic polaroid cred irony master cleanse sustainable selfies offal lo-fi echo park mixtape. Tacos vaporware readymade, tumblr gastropub chambray art party helvetica truffaut cold-pressed intelligentsia schlitz craft beer asymmetrical pug.</p>
+
+		<p>Authentic migas selfies health goth retro, adaptogen before they sold out four loko. Coloring book bushwick salvia, bitters cred photo booth air plant activated charcoal locavore VHS portland craft beer. Fashion axe wayfarers hella, gastropub chambray tote bag retro plaid heirloom godard small batch. Listicle messenger bag copper mug lo-fi. Palo santo roof party chartreuse YOLO fanny pack blue bottle ugh cloud bread woke yuccie.</p>
+</div>
+	</div> <!-- #main -->
+
+</body>
+</html>

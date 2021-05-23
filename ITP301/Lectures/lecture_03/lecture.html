@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conditional Statements</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="lecture.css">
+</head>
+<body class="py-5">
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12">Conditional Statements</h1>
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<div id="kanye-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Image Resizing</h2>
+		</div> <!-- .row -->
+		<div class="col-12 text-center">
+			<button id="kanye-decrease" class="btn btn-danger mx-1 my-3">Decrease by 20px</button>
+			<button id="kanye-increase" class="btn btn-success mx-1 my-3">Increase by 20px</button>
+		</div>
+		<img id="kanye" src="img/kanye-1.jpg" alt="Kanye West">
+	</div> <!-- #kanye-section -->
+
+	<div id="dom-section" class="container mt-5">
+		<div class="row">
+			<h2 class="col-12">Show / Hide Content</h2>
+		</div> <!-- .row -->
+
+		<div class="row">
+			<h3 id="title-1" class="title col-12 border border-dark py-2 my-2">Lorem ipsum dolor sit amet</h3>
+			<p id="content-1" class="col-12">Consectetur adipiscing elit. Proin nibh eros, tincidunt at metus non, ultrices vulputate felis. Suspendisse potenti. Vivamus sit amet cursus dolor, at lacinia dui. Pellentesque fringilla enim nibh, quis lobortis ante dictum vel. Etiam tortor turpis, venenatis sit amet est et, dictum auctor dolor. Etiam vehicula iaculis pharetra. Sed viverra interdum efficitur.</p>
+
+			<h3 id="title-2" class="title col-12 border border-dark py-2 my-2">Quisque volutpat eros ullamcorper</h3>
+			<p id="content-2" class="col-12">Velit pulvinar, at tincidunt orci placerat. Morbi blandit neque est, id posuere urna accumsan non. Pellentesque a ligula sed velit elementum efficitur. Proin ex lectus, porta vitae accumsan ut, mattis ac ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam nec mauris tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed diam volutpat odio mollis accumsan. Proin tempus erat sed lacinia condimentum. Fusce molestie ornare finibus. Nunc dictum vulputate scelerisque. Donec elementum semper arcu, eget blandit magna varius et. Integer pulvinar sem non sem volutpat varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+
+			<h3 id="title-3" class="title col-12 border border-dark py-2 my-2">Nulla elit eros</h3>
+			<p id="content-3" class="col-12">Interdum sed, finibus in nibh. Praesent eros lectus, fermentum at enim non, porta ultrices nisi. Aliquam odio libero, commodo id pulvinar eget, gravida non turpis. In mi massa, placerat ut ex sed, mollis imperdiet elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ultrices scelerisque fermentum. Quisque luctus sapien vitae dignissim ornare. Donec non lorem sagittis, condimentum augue vel, suscipit nisl. Praesent blandit eu ligula eu dictum. Donec faucibus purus in urna mollis, nec vulputate sem mollis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vulputate dignissim libero, ut blandit massa ultrices et. Fusce mattis luctus nibh. Donec rhoncus pretium lectus id sodales.</p>
+		</div> <!-- .row -->
+
+	</div> <!-- #dom-section -->
+
+	<div id="grade-section" class="container mt-4">
+
+		<div class="row">
+			<h2 class="col-12">Letter Grade Checker</h2>
+		</div> <!-- .row -->
+
+		<div class="row mt-3">
+			<div class="col-4 col-md-3 col-lg-2">
+				<div class="input-group">
+
+					<input type="text" id="grade-input" class="form-control">
+
+					<div class="input-group-append"><div class="input-group-text">%</div></div>
+				</div> <!-- .input-group -->
+			</div> <!-- .col -->
+			
+			<button id="grade-btn" class="btn btn-primary">Check Grade</button>
+		</div> <!-- .row -->
+
+		<div class="row mt-2">
+			<div class="col-12">
+				<strong>Your grade:</strong>
+				<span id="grade-msg"></span>
+			</div>
+		</div> <!-- .row -->
+	</div> <!-- #grade-section -->
+
+	<div id="login-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Login</h2>
+			<div class="col-12 mt-2">
+				<button id="login-btn" class="btn btn-success">Click Here to Login</button>
+			</div>
+			<div id="login-msg" class="col-12 mt-3">
+				<strong>Message:</strong>
+				<span>Messages go here.</span>
+			</div>
+		</div> <!-- .row -->
+	</div> <!-- #login-section -->
+
+	<div id="calculator-statements" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Calculator</h2>
+		</div> <!-- .row -->
+
+		<div class="row mt-3">
+			<div class="col-3 col-lg-2">
+
+				<input type="text" id="calc-input" class="form-control">
+
+			</div> <!-- .col -->
+			
+			<button id="calc-add" class="btn btn-secondary mx-1">+</button>
+			<button id="calc-sub" class="btn btn-secondary mx-1">-</button>
+			<button id="calc-equal" class="btn btn-secondary mx-1">=</button>
+		</div> <!-- .row -->
+	</div> <!-- #calculator-section -->
+
+	<script>
+
+		/***** Notes *****/
+
+		/*
+		if(5 =='5'){ // when do  == , JS only looks at the value
+			console.log("Equal")
+		}else{
+			console.log("Not Equal")
+		}
+		*/
+
+		/***** Image Resizing *****/
+
+		var width = getComputedStyle(document.querySelector('#kanye')).getPropertyValue('width');
+		width = parseInt(width);
+		document.querySelector('#kanye-decrease').onclick = function(){
+			if(width >= 200){
+				width = width - 20;
+				document.querySelector('#kanye').style.width = width + "px";
+			}
+		}
+
+		document.querySelector('#kanye-increase').onclick = function(){
+			if(width <= 360){
+				width = width + 20;
+				document.querySelector('#kanye').style.width = width + "px";
+			}
+		}
+
+		/***** Show / Hide Content *****/
+		document.querySelector('#title-1').onclick = function(){
+			var display = getComputedStyle(document.querySelector('#content-1')).getPropertyValue('display');
+
+			if (display == "none"){
+				document.querySelector("#content-1").style.display = 'block';
+			}
+			else{
+				document.querySelector("#content-1").style.display = 'none';
+			}
+		}
+		document.querySelector('#title-2').onclick = function(){
+			var display = getComputedStyle(document.querySelector('#content-2')).getPropertyValue('display');
+
+			if (display == "none"){
+				document.querySelector("#content-2").style.display = 'block';
+			}
+			else{
+				document.querySelector("#content-2").style.display = 'none';
+			}
+		}
+		document.querySelector('#title-3').onclick = function(){
+			var display = getComputedStyle(document.querySelector('#content-3')).getPropertyValue('display');
+
+			if (display == "none"){
+				document.querySelector("#content-3").style.display = 'block';
+			}
+			else{
+				document.querySelector("#content-3").style.display = 'none';
+			}
+		}
+
+		/***** Letter Grade Checker *****/
+		document.querySelector('#grade-btn').onclick = function(){
+			// get user input from the <input> box
+			var grade = document.querySelector("#grade-input").value;
+			//console.log(grade);
+			if (grade >= 90){
+				document.querySelector('#grade-msg').innerHTML = 'A';
+			}
+			else if (grade >= 80){
+				document.querySelector('#grade-msg').innerHTML = 'B';
+			}
+			else if (grade >= 70){
+				document.querySelector('#grade-msg').innerHTML = 'C';
+			}
+			else if (grade >= 60){
+				document.querySelector('#grade-msg').innerHTML = 'D';
+			}
+			else if (grade >= 0){
+				document.querySelector('#grade-msg').innerHTML = 'F';
+			}
+			else{
+				document.querySelector('#grade-msg').innerHTML = 'Invalid Input';
+			}
+		}
+
+		/***** Login *****/
+		//Hard-code to username : ttrojan, password : usc
+		document.querySelector('#login-btn').onclick = function(){
+			var username = prompt('Enter your username:');
+			var password = prompt('Enter your password:');
+			if (username == 'ttrojan' && password == 'usc'){
+				document.querySelector('#login-msg span').innerHTML = "Correct";
+			}
+			else{
+				document.querySelector('#login-msg span').innerHTML = "Incorrect";
+			}
+		}
+
+		/***** Calculator *****/
+
+		/*
+		Workflow:
+			1. Users enter the first number.
+			2. Users click on the operation button (+ or -).
+				- save the number from the <input> field into a global variable.
+				- save the operation (+ or -) into a global variable.
+				- clear the <input> field.
+			3. Users enter the second number.
+			4. Users click on the equal (=) button.
+				- save the number from the <input> field into a local variable.
+				- if the saved operation is +, add two number together.
+				- else if the saved operation is -, subtract 2nd number from the first number.
+				- display the result in the <input> field.
+		*/
+
+		var firstNum;
+		var operation;
+
+		document.querySelector('#calc-add').onclick = function(){
+			firstNum = document.querySelector('#calc-input').value;
+			firstNum = parseInt(firstNum);
+			operation = '+';
+			document.querySelector('#calc-input').value = '';
+		}
+		document.querySelector('#calc-sub').onclick = function(){
+			firstNum = document.querySelector('#calc-input').value;
+			firstNum = parseInt(firstNum);
+			operation = '-';
+		}
+
+		document.querySelector('#calc-equal').onclick = function(){
+			var secondNum = document.querySelector('#calc-input').value;
+			secondNum = parseInt(secondNum);
+			var result;
+			if (operation = '+'){
+				result = firstNum + secondNum;
+			}
+			else if(operation = '-'){
+				result = firstNum - secondNum;
+			}
+			else{
+				result = "Error";
+			}
+			document.querySelector('#calc-input').value = result;
+		}
+
+	</script>
+
+</body>
+</html>

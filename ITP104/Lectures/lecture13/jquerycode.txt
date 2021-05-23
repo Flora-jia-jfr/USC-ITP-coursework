@@ -1,0 +1,10 @@
+	$('.drwhoheader').css('background','black');
+	$('h1').css('text-shadow','2px 2px red');
+	$('footer a').attr('href','http://www.usc.edu');
+	$('footer a').attr('target','_blank');
+
+	$('.click-me').click(function() {	
+		$('footer').css('background-color','black');
+		$('p').css('font-size','2em');
+
+	});

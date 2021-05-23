@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Apple Pencil Case Order Form</title>
+	<style>
+	.form-row{
+		margin:10px 0px;
+	}
+	.labels{
+		width:20%;
+		float:left;
+	}
+	#submit-button{
+		background-color:maroon;
+		color:white;
+	}
+
+	</style>
+</head>
+
+<body>
+	<h1>Apple Pencil Case Order Form</h1>
+	<form action="confirmation.html">
+<div class="form-row">
+	<label for="first-name" class="labels">First Name:</label>
+	<input id="first-name" type="text" placeholder="Your First Name" required>
+</div>
+<div class="form-row">
+	<label for="last-name"class="labels">Last Name:</label>
+	<input id="last-name" type="text" placeholder="Your Last Name" required>
+</div>
+<div class="form-row">
+	<label for="email" class="labels">Email:</label>
+	<input id="email" type="email" placeholder="Your Email" required>
+</div>
+<div class="form-row">
+	<label for="phone" class="labels">Phone: </label>
+	<input id="phone" type="text" placeholder="Your phone number" required>
+</div>
+<div class="form-row">
+	<label class="labels">Case Color:</label>
+	<input type="radio" name="case-color" value="gray">Gray
+	<input type="radio" name="case-color" value="white">White
+	<input type="radio" name="case-color" value="black">Black
+</div>
+<div class="form-row">
+	<label class="labels">Patterns:</label>
+	<input type="checkbox" name="geometric-patterns" value="Geometric-patterns">Geometric patterns
+	<input type="checkbox" name="college-logo" value="College-logo">College logo
+	<input type="checkbox" name="formulas" value="formulas">Mathematical Formulas
+</div>
+<div class="form-row">
+	<label for="type" class="labels">Apple Pencil Type:</label>
+	<select id="type">
+		<option value="type1"> Apple Pencil 1</option>
+		<option value="type2"> Apple Pencil 2</option>
+		<option value="both"> Both Apple Pencil 1 and Apple Pencil 2</option>
+	</select>
+</div>
+<div class="form-row">
+	<label for="notes" class="labels">Message:</label>
+	<textarea placeholder="Enter your notes here" id="notes"></textarea>
+</div>
+
+<input type="checkbox" name="terms" value="Terms" required>I accept terms and conditions
+
+<div>
+	<button type="submit" id="submit-button"> Send </button>
+	<button type="Reset"> Reset Form </button>
+</div>
+
+
+</body>
+</html>

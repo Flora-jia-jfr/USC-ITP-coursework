@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript Plugins</title>
+	<!-- Add lightbox.css below -->
+	<link href="lightbox/css/lightbox.css" rel="stylesheet" />
+	<style>
+		body {
+			margin: 0;
+		}
+		h1, h2 {
+			text-align: center;
+		}
+		.container{
+			width: 80%;
+			margin:0 auto;
+		}
+
+		#rellax-container {
+			border: 1px solid #CCC;
+			overflow: hidden;
+		}
+		#rellax-container img {
+			width: 100%;
+		}
+		#mainplaces {
+			font-size:55px;
+			color:#fff;
+			background:black;
+		}
+		
+		#mainplaces p {padding:15px;border-radius:5px;}
+		
+		/* Add the .places1-.places5 CSS, adding background, absolute and adding top and left */
+		.places1{
+			background-color: darkred;
+			position:absolute;
+			/* based on the body, use body as relative */
+			top:30%;
+		}
+		.places2{
+			background-color: darkgreen;
+			position:absolute;
+			/* based on the body, use body as relative */
+			top:40%;
+			left:20%;
+		}
+		.places3{
+			background-color: brown;
+			position:absolute;
+			/* based on the body, use body as relative */
+			top:50%;
+			left:30%;
+		}
+		.places4{
+			background-color: darkgoldenrod;
+			position:absolute;
+			/* based on the body, use body as relative */
+			top:60%;
+			left:8%;
+		}
+
+		.places5{
+			background-color: darkorange;
+			position:absolute;
+			/* based on the body, use body as relative */
+			top:70%;
+			left:22%;
+		}
+		#thumbnails {
+			margin:0 auto;
+			text-align:center;
+		}
+		#thumbnails img{
+			height:250px;
+			display:inline-block;
+		}
+		
+		/* scroll out demo, if time permit */
+		[data-scroll] {
+			opacity: 0;
+			transition: all 5s;
+		}
+		
+		[data-scroll="in"] {
+			opacity: 1;
+			transform: translateY(0px);
+		}
+		
+		[data-scroll="out"] {
+			opacity: 0;
+			transform: translateY(600px);
+		}
+
+	</style>
+	
+</head>
+<body>
+	<h1>JavaScript Plugins</h1>
+
+	<h2>Rellax Example</h2>
+
+	<div id="rellax-container">
+		<img src="img/main.png" alt="Maine">
+	</div> <!-- #rellax-container -->
+	
+	<div id="mainplaces">
+		<p class="places1 rellax" data-rellax-speed="10" >Bar Harbor</p>
+		<p class="places2 rellax" data-rellax-speed="6">Camden</p>
+		<p class="places3 rellax" data-rellax-speed="-3">Old Port</p>
+		<p class="places4 rellax" data-rellax-speed="9">Peaks Island</p>
+		<p class="places5 rellax" data-rellax-speed="5">Cadillac Mountain</p>
+	</div>
+
+	<div class="container">
+		<p data-scroll>'Roostik p'dayduhs some eleghant. Got in a gaum Bah Hahbah yut dooryahd windah bendah. Native mummah lobstahrin' Saddee The 'Gash native. Wickid decent nummah kife yut. </p>
+
+		<p data-scroll>Tunk fish chowdah up t' camp wreckah Bangoah N'Hampshah rhubaahb ayuhpawt Fryeburg Fayah ayuhpawt, some cunnin bang a left mistah man up t' camp, gettin' ugly moose Powrtland Museum of Aht, bub Bean's blizzahd unthaw puckahbrush chimbly scrod heatah, bookin' it smokie gash dang flatlanduhs and their boilin' plates back woods Katahdin native potatoes Hammah Gohd Dammah, feeder' the beans, Chundah. </p>
+
+		<p data-scroll>'Roostik kife slower than molasses going uphill in January noseeum down cellah Bah Hahbah railed 'em, lobstah paut nummah than a faht flatlandas queeah dingy batrees some eleghant wee bit nippy gummah, Chundah. Gohd dammah. tube steak no-see-um down east from away bub. Bookin' it moose can't get theyah from heeyah ankle biteah some eleghant tube steak gash dang flatlanduhs and their boilin' plates. Dinnahbucket nummah wee bit nippy cah cunnin' hoppa Saddee, puckahbrush some cunnin rig up bang a left wee bit nippy, batrees lobstahrin' Jeesum Crow pig fat smokie the pit, muckle riyht on'ta her cubboard huntin' deeah grindah. </p>
+
+		<p data-scroll>Down cellah idear alkie queeah Jeesum Crow, naw nummah can't get theyah from heeyah, buggin' native nummah than a faht from away idear If you can't stand the wintah you don't deserve the summah. </p>
+
+		<p data-scroll>Kife railed 'em yow uns, no-see-um Mahdin's Chundah. Gohd dammah. the pit kid mistah man Outta Staydahs. Huntin' deeah no-see-um nummah than a faht huntin' deeah numb hum-dingah grindah up t' hoppa, Shit the bed. Feed 'uh the hot suppah. no-see-um flatlandas rhubaahb numb nummah anuthah bluebries Sundee. </p>
+	</div> <!-- .container -->
+	
+	<div class="container">
+		<h2>Lightbox Example</h2>
+		<div id="thumbnails">
+			<a href="img/image1.jpg" data-lightbox="gallery" data-title="Image Picture 1">
+			<img src="img/image1.jpg" title="Image Picture 1">
+			</a>
+			<a href="img/image2.jpg" data-lightbox="gallery" data-title="Image Picture 2">
+			<img src="img/image2.jpg" title="Image Picture 2">
+			</a>
+			<a href="img/image3.jpg" data-lightbox="gallery" data-title="Image Picture 3">
+			<img src="img/image3.jpg" title="Image Picture 3">
+			</a>
+		</div> <!-- #thumbnails -->
+	</div> <!-- .container -->
+	
+	<!-- Add the script tags here -->
+	<script
+      src="http://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous">
+    </script>
+    <script src="rellax/rellax.min.js"></script>
+    <script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
+    <script>
+    	var rellax = new Rellax('.rellax');
+    </script>
+    <script>
+    	ScrollOut({
+  			threshold:.8
+		});
+    </script>
+    <script src="lightbox/js/lightbox.js"></script>
+
+</body>
+</html>

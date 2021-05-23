@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Assignment 08 | Homepage </title>
+	<meta charset="utf-8">
+	<meta name="author" content="Furong(Flora) Jia">
+	<meta name="description" content="An Introduction to some interesting and innovative stationeries">
+	<meta name="keywords" content="Flora, stationeries">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<style>
+		body{
+			margin:0px;
+			background-color: #69779a;
+		}
+		p{
+			font-family: "Times New Roman", serif;
+		}
+		#header{
+			margin-left: auto;
+			margin-right: auto;
+			font-family:"bodoni 72 smallcaps", "Times New Roman", serif;
+			font-weight: bold;
+			color:#323d4f;
+		}
+		#header img{
+			width:100%;
+			height:auto;
+			position: relative;
+		}
+		#header h1{
+			position:absolute;
+			left:50%;
+			top:10%;
+			font-size: 100px;
+		}
+		#navbar{
+			font-family:"bodoni 72 smallcaps", "Times New Roman", serif;
+			background-color: #252832;
+			height:50px;
+		}
+		#nav{
+			width:632px;
+			margin-left:auto;
+			margin-right:auto;
+			background-color: #252832;
+		}
+		#nav ul{
+			list-style: none;
+			padding:0px;
+			margin:0px;
+		}
+		#nav ul li{
+			float:left;
+			position:relative;
+			color:#a6b4d0;
+		}
+		#nav ul li ul{
+			position:absolute;
+			top:50px;
+			left:0px;
+			z-index:99;
+			visibility:hidden;
+			background-color: #252832;
+		}
+		#nav a{
+			display:block;
+			text-decoration: none;
+			width:200px;
+			height:50px;
+			line-height: 50px;
+			font-size:20px;
+			text-align: center;
+			color:#a6b4d0;
+		}
+		#nav li:hover >ul{
+			visibility: visible;
+		}
+		#nav li:hover {
+			background-color: #323d4f;
+		}
+		.active{
+			background-color: #69779a;
+		}
+		#footer{
+			width:100%;
+			height:50px;
+			line-height: 50px;
+			text-align: center;
+			font-size: 20px;
+			margin:0px;
+			color:#c9cfdc;
+			background-color: #252832;
+			font-family:"bodoni 72 smallcaps", "Times New Roman", serif;
+		}
+		#content{
+			width:1059px;
+			margin-top:0px;
+			margin-bottom: 0px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#content h2{
+			background-color: #323d4f;
+			color:#c9cfdc;
+			padding:10px;
+			text-align: center;
+			font-family:"bodoni 72 smallcaps", "Times New Roman", serif;
+			font-size:35px;
+			border-radius: 10px;
+		}
+		#About{
+			width:100%;
+			height: 400px;
+		}
+		#About h2{
+			width:200px;
+		}
+		#About .intro{
+			width:60%;
+			padding:15px;
+			margin-right:10px;
+			height:288px;
+			border-radius: 50px;
+			font-size:20px;
+			float:left;
+			background-color: #c9cfdc;
+		}
+		#About img{
+			width:35%;
+			height:auto;
+			float: left;
+		}
+		#award, #past{
+			width:100%;
+			height:410px;
+		}
+		#award h2{
+			float:right;
+			width:500px;
+		}
+		.wrap{
+			float:left;
+			width:333px;
+			height:333px;
+			margin-left:10px;
+			margin-right: 10px;
+			margin-top: 10px;
+			margin-bottom: 0px;
+			overflow: hidden;
+			position:relative;
+		}
+		#award img{
+			height:100%;
+			width:auto;
+		}
+		#past h2{
+			width:550px;
+		}
+		#past img{
+			width:100%;
+			height:auto;
+		}
+		.wrap:hover .overlay{
+			visibility: visible;
+		}
+		.overlay{
+			background-color: rgba(50,61,79,0.7);
+			color:#c9cfdc;
+			position:absolute;
+			top:0px;
+			bottom:0px;
+			left:0px;
+			right:0px;
+			text-align: center;
+			padding-top: 250px;
+			visibility: hidden;
+			font-size:20px;
+		}
+		.note{
+			margin:0px;
+			visibility:hidden;
+			width:333px;
+			height:70px;
+			background-color: #a6b4d0;
+			font-size: 20px;
+			line-height:70px;
+			text-align: center;
+			color:#323d4f;
+		}
+		.note p{
+			margin: 0px;
+		}
+		.wrap:hover .note{
+			visibility: visible;
+		}
+		.clearfloat{
+			clear:both;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="navbar">
+		<div id="nav">
+			<ul>
+				<li> <a href="index.html" class="active">HomePage</a>
+					<ul>
+						<li><a href="index.html#About">About</a></li>
+						<li><a href="index.html#award">Award-winning</a></li>
+						<li><a href="index.html#past">Past Exhibitions</a></li>
+					</ul>
+				</li>
+				<li> <a href="2020.html">2020 awards</a></li>
+				<li> <a href="past.html"> Past Exhibitions</a></li>
+			</ul>
+			<div class="clearfloat"></div>
+		</div>
+	</div> <!-- close nav -->
+	
+	<div id="header">
+		<img src="img/header.jpg" alt="header background">
+		<h1>Amazing Stationeries</h1>
+	</div> <!-- close header -->
+	<div id="content">
+		<div id="About">
+			<h2>About ISOT</h2>
+			<div class="intro">
+			<p>ISOT is Japan's largest stationery & office products trade fair.</p>
+			<p>It is the best place for importers, retailers, wholesalers and buyers from across the world to source new products, place orders,as well as finding business partners for OEM/ODM.</p>
+			</div>
+			<img src="img/intro.png" alt="intro">
+			<div class="clearfloat"></div>
+		</div> <!-- close About -->
+		<div class="clearfloat"></div>
+
+		<div id="award">
+			<h2>2020 award-winning stationeries</h2>
+			<div class="clearfloat"></div>
+			<div class="photos">
+			<div class="wrap">
+				<img src="img/award1.jpg" alt="Awards1">
+				<div class="overlay"> <p>BRIDE/GROOM Glass Pen</p></div>
+			</div>
+			<div class="wrap">
+				<img src="img/award2.jpg" alt="Awards2">
+				<div class="overlay"> <p>Drawable Globe</p></div>
+			</div>
+			<div class="wrap">
+				<img src="img/award3.jpg" alt="Awards3">
+				<div class="overlay"> <p>Stickers of Traditional Japanses Color</p></div>
+			</div>
+			</div><!-- close photos -->
+			<div class="clearfloat"></div>
+		</div><!-- close 2020 -->
+		<div class="clearfloat"></div>
+
+		<div id="past">
+			<h2>Previous high-qualities exhibitions</h2>
+			<div class="photos">
+			<div class="wrap">
+				<img src="img/past1.jpg" alt="Previous1">
+				<div class="note"> <p>"Made-in-Japan" Products</p></div>
+			</div>
+			<div class="wrap">
+				<img src="img/past2.jpg" alt="Previous2">
+				<div class="note"> <p>"Kawaii"(cute) Products</p></div>
+			</div>
+			<div class="wrap">
+				<img src="img/past3.jpg" alt="Previous3">
+				<div class="note"> <p>High-functional High-design products</p></div>
+			</div>
+			</div><!-- close photos -->
+			<div class="clearfloat"></div>
+		</div><!-- close past -->
+	<div class="clearfloat"></div>
+	</div><!-- close content -->
+	<div id="footer">
+		<p>Contact Us</p>
+	</div> <!-- close footer -->
+
+
+</body>
+</html>

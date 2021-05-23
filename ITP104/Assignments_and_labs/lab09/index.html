@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Lab 09: Page with Media </title>
+	<style>
+		body{
+			background-image: url('bg.jpg');
+			background-repeat:no-repeat;
+			background-size: cover;
+		}
+		#header{
+			border-radius:30px;
+			font-size:50px;
+			font-weight: bold;
+			font-family: "Lucida Console", Courier, serif;
+			color:rgb(59,177,111);
+			width:400px;
+			height:200px;
+			position: absolute;
+			right:20px;
+			top:50px;
+			background-color:rgb(18,55,34,0.7);
+		}
+		#header p{
+			text-align: center;
+			vertical-align: center;
+			margin:0px;
+			padding:10px;
+			line-height:1.5;
+		}
+		#content{
+			border-radius:30px;
+			font-family:"Times new Roman", san-serif;
+			width:auto;
+			height:auto;
+			position:absolute;
+			top:50px;
+			left:30px;
+			right:450px;
+			background-color: rgb(15,46,29,.9);
+			color:#b8e7cd;
+		}
+		#content p{
+			text-align: left;
+			margin:0px;
+			padding:0px 20px;
+			line-height:1.5;
+		}
+		#content h2,h3{
+			padding:10px 20px;
+			vertical-align: center;
+		}
+		iframe{
+			padding:0px 40px 20px 40px;
+		}
+		audio{
+			padding:20px;
+			volume:20%;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+	<p> Forest: </p>
+	<p> Stay Focus </p>
+	</div>	
+	<div id="content">
+	<h2> Introduction </h2>
+	<p>Forest is a popular productivity app that helps people beat their phone addiction and manage their time in an interesting and pleasant way. Users can earn credits by not using their cell phones and plant real trees around the world with the credits. With Forest, users can have a delightful experience to spend less time on their cell phones, focus on what's more important in their lives, and keep our environment green.</p>
+	<h3> Similar White Noises available in Forest </h3>
+	<audio controls>
+		<source src="white_noise.mp3" type="audio/mpeg">
+	</audio>
+	</div>
+
+
+</body>
+
+</html>

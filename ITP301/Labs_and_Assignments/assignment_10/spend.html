@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Goods-List</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="format.css">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style>
+		#spend-list{
+			float:left;
+		}
+		#cost-chart-div{
+			width:400px;
+			height:400px;
+			margin-top:30px;
+			margin-left:70px;
+			float:left;
+		}
+		#summary{
+			margin:15px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="navbar">
+		<div id="nav">
+			<ul>
+				<li> <a href="shopping.html">My Shopping List</a></li>
+				<li> <a href="overview.html">Overview</a></li>
+				<li> <a class="active">Spending tracker</a></li>
+			</ul>
+			<div class="clearfloat"></div>
+			</div>
+		</div> <!-- close nav -->
+	<div id="header">
+		<div id="title">
+			<h1>Spending Tracker</h1>
+			<p>record your spendings here</p>
+		</div>
+	</div>
+
+	<div id="newspending">
+		<div class="col-12 mt-4">
+			<form id="item-cost">
+				<div class="form-row">
+					<div class="col-12 mt-2 col-sm-6">
+						<label for="item" class="sr-only">Item bought:</label>
+
+						<input type="text" class="form-control" id="item" placeholder="Item you buy...">
+
+					</div> <!-- .col -->
+					<div class="col-12 mt-2 col-sm-3">
+						<label for="money" class="sr-only">Money</label>
+						<div class="input-group">
+							<div class="input-group-append"><div class="input-group-text">$</div></div>
+							<input type="text" class="form-control" id="money" placeholder="cost...">
+						</div>
+					</div> <!-- .col -->
+
+					<div class="col-12 mt-2 col-sm-2">
+						<label for="type" class="sr-only">Type</label>
+						<select id="type" class="form-control">
+							<option value="food">Food</option>
+							<option value="necessities">Necessities</option>
+							<option value="entertainment">Entertainment</option>
+							<option value="study">Study</option>
+							<option value="work">Work</option>
+						</select>
+					</div> <!-- .col -->
+					
+					<div class="col-12 mt-2 col-sm-auto">
+						<button type="submit" class="btn btn-outline-dark">Add</button>
+					</div> <!-- .col -->
+				</div> <!-- .form-row -->
+			</form>
+		</div> <!-- .col -->
+	</div>
+
+	<div class="col-6 col-sm-6" id="spend-list">
+		<button id="delete" class="btn btn-outline-danger mt-3 mb-3">Delete All</button>
+	<ul id="item-list" class="list-group">
+		<li class="list-group-item d-flex justify-content-between">			
+			<div class="col-6 col-sm-2">orange</div>
+			<div class="col-6 col-sm-2">$20</div>
+			<div class="col-6 col-sm-2">
+				<span class="badge rounded-pill mr-3 badge-success">Food</span>
+			</div>
+		</li>
+		<li class="list-group-item d-flex justify-content-between">			
+			<div class="col-6 col-sm-2">calculator</div>
+			<div class="col-6 col-sm-2">$10</div>
+			<div class="col-6 col-sm-2">
+				<span class="badge rounded-pill mr-3 badge-dark">Work</span>
+			</div>
+		</li>
+		<li class="list-group-item d-flex justify-content-between">			
+			<div class="col-6 col-sm-2">paper</div>
+			<div class="col-6 col-sm-2">$2</div>
+			<div class="col-6 col-sm-2">
+				<span class="badge rounded-pill mr-3 badge-primary">Study</span>
+			</div>
+		</li>
+	</ul>
+		<div id="summary">
+			<h4>Total Cost: <span>$</span>32</h4>
+
+		</div>
+	</div> <!-- .col -->
+	<div id="cost-chart-div">
+		<canvas id="cost-chart"> </canvas>
+	</div>
+	<div class="clearfloat"></div>
+
+
+
+
+	</div>
+
+	<script>
+		var food = 20;
+		var necessities = 0;
+		var entertainment = 0;
+		var work = 10;
+		var study = 2;
+		const data = {
+		  labels: [
+		    'Food',
+		    'Necessities',
+		    'Entertainment',
+		    'Work',
+		    'Study'
+		  ],
+		  datasets: [{
+		    label: 'Cost dataset',
+		    data: [food, necessities, entertainment, work, study],
+		    backgroundColor: [
+		      'rgb(37,167,67)',
+		      'rgb(108,117,124)',
+		      'rgb(97,190,205)',
+		      'rgb(50,56,62)',
+		      'rgb(0,122,255)'
+		    ],
+		    hoverOffset: 4
+		  }]
+		};
+		const config = {
+		  type: 'doughnut',
+		  data: data,
+		};
+		var myChart = new Chart(
+			document.getElementById('cost-chart'),
+		    config
+		);
+		console.log(myChart)
+
+	</script>
+</body>
+</html>

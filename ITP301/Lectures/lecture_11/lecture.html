@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DOM Storage</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link href="lib/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+	<style>
+	.todo-remove {
+		cursor: pointer;
+		color: #CCC;
+		margin-right: 5px;
+	}
+	.todo-remove:hover {
+		color: #dc3545;
+	}
+	.todo-remove:active {
+		color: #ba1323;
+	}
+</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="row mt-4">
+			<h2 class="col-12">DOM Storage</h2>
+
+			<div class="col-12 mt-4">
+				<form id="storage-form">
+					<div class="form-row">
+						<div class="col-12 col-sm-5">
+							<label for="storage-name" class="sr-only">Name:</label>
+							<input type="text" class="form-control" id="storage-name" placeholder="Name">
+							<small class="invalid-feedback">Name cannot be empty.</small>
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-5 mt-sm-0">
+							<label for="storage-email" class="sr-only">Email:</label>
+							<input type="text" class="form-control" id="storage-email" placeholder="Email">
+							<small class="invalid-feedback">Email cannot be empty.</small>
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+							<button role="button" type="submit" class="btn btn-primary">Save</button>
+						</div> <!-- .col -->
+					</div> <!-- .form-row -->
+				</form>
+			</div> <!-- .col -->
+
+			<h3 class="col-12 mt-4">Local Storage</h3>
+
+			<div class="col-12">
+				<button id="local-print-all" class="btn mt-2 btn-outline-secondary">Print All</button>
+				<button id="local-print-name" class="btn mt-2 btn-outline-secondary">Print Name</button>
+				<button id="local-print-email" class="btn mt-2 btn-outline-secondary">Print Email</button>
+				<button id="local-clear-name" class="btn mt-2 btn-outline-warning">Clear Name</button>
+				<button id="local-clear-email" class="btn mt-2 btn-outline-warning">Clear Email</button>
+				<button id="local-clear-all" class="btn mt-2 btn-outline-danger">Clear All</button>
+			</div> <!-- .col -->
+
+			<h3 class="col-12 mt-4">Session Storage</h3>
+
+			<div class="col-12">
+				<button id="session-print-all" class="btn mt-2 btn-outline-secondary">Print All</button>
+				<button id="session-print-name" class="btn mt-2 btn-outline-secondary">Print Name</button>
+				<button id="session-print-email" class="btn mt-2 btn-outline-secondary">Print Email</button>
+				<button id="session-clear-name" class="btn mt-2 btn-outline-warning">Clear Name</button>
+				<button id="session-clear-email" class="btn mt-2 btn-outline-warning">Clear Email</button>
+				<button id="session-clear-all" class="btn mt-2 btn-outline-danger">Clear All</button>
+			</div> <!-- .col -->
+
+		</div> <!-- .row -->
+
+		<div class="row mt-5">
+			<h2 class="col-12">USC Task Manager</h2>
+
+			<div class="col-12 mt-4">
+				<form id="todo-form">
+					<div class="form-row">
+						<div class="col-12 mt-2 col-sm-6 mt-sm-0">
+							<label for="todo-item" class="sr-only">Task:</label>
+							<input type="text" class="form-control" id="todo-item" placeholder="Task">
+							<small class="invalid-feedback">This field cannot be empty.</small>
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+							<button role="button" type="submit" class="btn btn-primary">Add</button>
+						</div> <!-- .col -->
+					</div> <!-- .form-row -->
+				</form>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+		<div class="row mb-5">
+			<h3 class="col-12 mt-4">To Do List:</h3>
+
+			<div class="col-12 col-sm-8 mt-3">
+
+				<button id="todo-delete-all" class="btn btn-outline-danger mb-3">Delete All</button>
+
+				<ul id="todo-list" class="list-group">
+
+				<!-- <li class="list-group-item">
+						<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						<span>Cras justo odio</span>
+					</li>
+					
+					<li class="list-group-item">
+						<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						<span>Dapibus ac facilisis in</span>
+					</li>
+					
+					<li class="list-group-item">
+						<span class="todo-remove oi oi-circle-x" title="Remove"></span>
+						<span>Morbi leo risus</span>
+					</li> -->
+				</ul>
+
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<script>
+
+		document.querySelector('#storage-form').onsubmit = function(){
+			var name = document.querySelector('#storage-name').value.trim();
+			var email = document.querySelector('#storage-email').value.trim();
+			
+			// Check whether 'name' field is empty.
+			if ( name.length == 0 ) {
+				document.querySelector('#storage-name').classList.add('is-invalid');
+			} else {
+				document.querySelector('#storage-name').classList.remove('is-invalid');
+			}
+			// Check whether 'email' field is empty.
+			if ( email.length == 0 ) {
+				document.querySelector('#storage-email').classList.add('is-invalid');
+			} else {
+				document.querySelector('#storage-email').classList.remove('is-invalid');
+			}
+
+			if ( name.length > 0 && email.length > 0 ) {
+				// Clear form fields.
+				document.querySelector('#storage-name').value = '';
+				document.querySelector('#storage-email').value = '';
+
+				localStorage.name = name;
+				localStorage.email = email;
+
+			} // END if ( name.length > 0 && email.length > 0 )
+
+			return false;
+		};
+
+
+		/***************
+		*
+		* Local Storage
+		*
+		***************/
+
+		document.querySelector('#local-print-all').onclick = function(){
+			console.log(localStorage);
+		}
+
+		document.querySelector('#local-print-name').onclick = function(){
+			if ( localStorage.name != undefined){
+				//Name is not undefined
+				console.log(localStorage.name);
+			} else {
+				//Name is undefined
+				console.log("Name not set.");
+			}
+		}
+
+		document.querySelector('#local-print-email').onclick = function(){
+			if ( localStorage.email != undefined){
+				//Email is not undefined
+				console.log(localStorage.email);
+			} else {
+				//Email is undefined
+				console.log("Email not set.");
+			}
+		}
+
+		document.querySelector('#local-clear-name').onclick = function(){
+			delete localStorage.name;
+		}
+
+		document.querySelector('#local-clear-email').onclick = function(){
+			delete localStorage.email;
+		}
+		document.querySelector('#local-clear-all').onclick = function(){
+			localStorage.clear();
+		}
+
+		/*
+		console.log(localStorage);
+		localStorage.name = "Tommy";
+		localStorage.age = 18;
+		localStorage.array = [1,2,3,4,5];
+		localStorage.obj = {name:"Tommy",email:"ttrojan@usc.edu"};
+		console.log(localStorage);
+		delete localStorage.obj;
+		console.log(localStorage);
+		localStorage.clear();
+		console.log(localStorage);
+		*/
+
+		/***************
+		*
+		* Session Storage
+		*
+		***************/
+
+
+
+
+		/***************
+		*
+		* Storing Non-Strings
+		*
+		***************/
+
+		// var todoList = "['Item 1', 'Item 2', 'Item 3']";
+
+
+		/***************
+		*
+		* USC Task Manager
+		*
+		***************/
+
+		if (localStorage.todoList != undefined) {
+			// we have some todo list data inside local storage
+			var todoList = localStorage.todoList;
+			todoList = JSON.parse(todoList);
+			// make sure when users open a new web page, the todoList will be displayed
+			for (var i = 0 ; i < todoList.length; i++){
+				addTask(todoList[i]);
+			}
+		}else{
+			// no todo list data in local storage
+			var todoList = [];
+		}
+
+		bindRemoveBtns();
+		
+		document.querySelector('#todo-form').onsubmit = function(){
+			var item = document.querySelector('#todo-item').value.trim();
+
+			if ( item.length > 0 ) {
+				document.querySelector('#todo-item').classList.remove('is-invalid');
+				// Clear the input field
+				document.querySelector('#todo-item').value = '';
+
+				addTask(item);
+
+				todoList.push(item);
+				localStorage.todoList = JSON.stringify(todoList);
+
+				bindRemoveBtns();
+			} else {
+				document.querySelector('#todo-item').classList.add('is-invalid');
+			} // END else item.length > 0
+
+			return false;
+		} // END #todo-form onsubmit()
+
+		document.querySelector('#todo-delete-all').onclick = function(){
+			document.querySelector('#todo-list').innerHTML = '';
+			todoList = [];
+			delete localStorage.todoList;
+		}
+
+		function addTask(task){
+			// Create HTML elements.
+			var li = document.createElement('li');
+			var spanRemove = document.createElement('span');
+			var spanTask = document.createElement('span');
+
+			// Add classes for new elements.
+			li.classList.add('list-group-item');
+			spanRemove.classList.add('todo-remove', 'oi', 'oi-circle-x');
+
+			// Set attributes and properties.
+			spanRemove.title = "Remove";
+			spanTask.innerHTML = task;
+
+			// Add <span> tags to <li> tag.
+			li.appendChild(spanRemove);
+			li.appendChild(spanTask);
+
+			// Add <li> tag to <ul> tag.
+			document.querySelector('#todo-list').appendChild(li);
+		}
+
+		function bindRemoveBtns() {
+			var removeBtns = document.querySelectorAll('.todo-remove');
+			for ( var i = 0; i < removeBtns.length; i++ ) {
+				removeBtns[i].onclick = function(){
+					document.querySelector('#todo-list').removeChild( this.parentElement );
+					//retrieve index # of the task users click on.
+					var index = todoList.indexOf(this.nextElementSibling.innerHTML);
+					//remove the task from "todoList" globnal variable (array);
+					todoList.splice(index,1);
+					//update local storage
+					localStorage.todoList = JSON.stringify(todoList);
+
+				} // END removeBtns[i].onclick
+			} // END for loop
+		} // END bindRemoveBtns()
+
+		// array.splice(index,count)
+			// will delete some element from the array
+		// array.indexOf()
+			// find the index of the element
+
+	</script>
+
+</body>
+</html>

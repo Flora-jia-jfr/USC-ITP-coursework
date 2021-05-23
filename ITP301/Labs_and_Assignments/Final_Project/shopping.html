@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Shopping List</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="format.css">
+	<style>
+		#sort{
+			margin-left:10px;
+		}
+		.check{
+			cursor:pointer;
+			color:#CCC;
+		}
+		#immediate-sort{
+			color:#E63946;
+			font-size:30px;
+		}
+		#priority-sort img{
+			width:50px;
+			height:auto;
+			float:left;
+			padding:0px 5px 0px 5px;
+			margin:0px 5px 10px 5px;
+		}
+		#priority-sort h4{
+			font-family: "bodoni 72 smallcaps", "Times New Roman", serif;
+		}
+		#week-sort{
+			color:#457B9D;
+		}
+		#month-sort{
+			color:#457B9D;
+		}
+		#need-purchased{
+			margin:25px 25px;
+			width:500px;
+			float:left;
+		}
+		#purchased{
+			margin:25px 20px;
+			width:400px;
+			float:left;
+		}
+		.bought{
+			 text-decoration:line-through;
+			 color:darkgray;
+		}
+		.bought-icon{
+			color:darkgray;
+		}
+		#priority-sort{
+			width:50%;
+			float:left;
+		}
+		.prio{
+			width:80%;
+		}
+		#budget-chart-div{
+			width:40%;
+			margin-top:30px;
+			margin-left:70px;
+			float:left;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+	<div id="navbar">
+		<div id="nav">
+			<ul>
+				<li> <a class="active">My Shopping List</a></li>
+				<li> <a href="overview.html">Overview</a></li>
+				<li> <a href="spend.html">Spending Analysis</a></li>
+			</ul>
+			<div class="clearfloat"></div>
+		</div>
+	</div> <!-- close nav -->
+
+	<div id="header">
+		<h1>Good(S) List</h1>
+		<p>Add the items you would like to buy in your list!</p>
+	</div>
+	<div class="clearfloat"></div>
+
+	<div id="toshoplist">
+		<div class="col-12 mt-4">
+			<form id="new-shopping-item">
+				<div class="form-row">
+					<div class="col-12 mt-2 col-sm-5">
+						<label for="item" class="sr-only">Item to buy:</label>
+
+						<input type="text" class="form-control" id="item" placeholder="New shopping item...">
+
+					</div> <!-- .col -->
+
+					<div class="col-12 mt-2 col-sm-2">
+						<label for="budget" class="sr-only">Money</label>
+						<div class="input-group">
+							<div class="input-group-append"><div class="input-group-text">$</div></div>
+							<input type="text" class="form-control" id="budget" placeholder="budget...">
+						</div>
+					</div> <!-- .col -->
+
+					<div class="col-12 mt-2 col-sm-2">
+						<label for="priority" class="sr-only">Priority:</label>
+
+						<select id="priority" class="form-control">
+							<option value="Today">Today</option>
+							<option value="This Week">This week</option>
+							<option value="This month">This month</option>
+						</select>
+
+					</div> <!-- .col -->
+					<div class="col-12 mt-2 col-sm-2">
+						<label for="type" class="sr-only">Type</label>
+
+						<select id="type" class="form-control">
+							<option value="Food">Food</option>
+							<option value="Necessities">Necessities</option>
+							<option value="Entertainment">Entertainment</option>
+							<option value="Study">Study</option>
+							<option value="Work">Work</option>
+						</select>
+
+					</div> <!-- .col -->
+					<div class="col-12 mt-2 col-sm-auto">
+						<button type="submit" class="btn btn-outline-dark">Add</button>
+					</div> <!-- .col -->
+				</div> <!-- .form-row -->
+			</form>
+		</div> <!-- .col -->
+	</div>
+
+	<div id="need-purchased">
+		<p>Need to purchase: (and budget)</p>
+		<ul class="list-group list-group-hover" id ="need">	
+		</ul>
+	</div>
+	<div id="purchased">
+		<p>Purchased:</p>
+		<ul id="no-need" class="list-group">
+		</ul>
+	</div>
+	<div class="clearfloat"></div>
+	<div id="priority-sort" class="row justify-content-center">
+		<div class="mt-3 prio">
+			<img src="image/day.png" alt="today">
+			<h4 id="immediate-sort">Today:</h4>
+			<div class="clearfloat"></div>
+			<ul class="list-group" id="sort-today">
+			</ul>
+		</div>
+		<div class="mt-3 prio">
+			<img src="image/week.png" alt="week">
+			<h4 id="week-sort">This week:</h4>
+			<div class="clearfloat"></div>
+			<ul class="list-group" id="sort-week">
+			</ul>
+		</div>
+		<div class="mt-3 prio">
+			<img src="image/month.png" alt="month">
+			<h4 id="month-sort">This month:</h4>
+			<div class="clearfloat"></div>
+			<ul class="list-group" id="sort-month">
+			</ul>
+		</div>
+	</div>
+
+	<div id="budget-chart-div">
+		<p>Note: This chart records the accumulative budget for each category.</p>
+		<canvas id="budget-chart"> </canvas>
+	</div>
+	<div class="clearfloat"></div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+	if (localStorage.category_cost != undefined){
+		var category_cost = JSON.parse(localStorage.category_cost);
+	} else{
+		var category_cost = [0,0,0,0,0];
+	}
+
+	var category_budget = [0,0,0,0,0];
+
+	if (localStorage.item_to_buy != undefined && localStorage.item_to_buy != "undefined"){
+		var item_to_buy = JSON.parse(localStorage.item_to_buy);
+	} else{
+		var item_to_buy = [];
+	}
+	if (localStorage.budget_to_buy != undefined && localStorage.budget_to_buy != "undefined"){
+		var budget_to_buy = JSON.parse(localStorage.budget_to_buy);
+	} else{
+		var budget_to_buy = [];
+	}
+	if (localStorage.priority_to_buy != undefined && localStorage.priority_to_buy != "undefined"){
+		var priority_to_buy = JSON.parse(localStorage.priority_to_buy);
+	} else{
+		var priority_to_buy = [];
+	}
+	if (localStorage.type_to_buy != undefined && localStorage.type_to_buy != "undefined"){
+		var type_to_buy = JSON.parse(localStorage.type_to_buy);
+	} else{
+		var type_to_buy = [];
+	}
+
+	if (localStorage.item_bought != undefined){
+		var item_bought = JSON.parse(localStorage.item_bought);
+	} else{
+		var item_bought = [];
+	}
+	if (localStorage.budget_bought != undefined){
+		var budget_bought = JSON.parse(localStorage.budget_bought);
+	} else{
+		var budget_bought = [];
+	}
+	if (localStorage.type_bought != undefined){
+		var type_bought = JSON.parse(localStorage.type_bought);
+	} else{
+		var type_bought = [];
+	}
+
+	// chart.js
+	var data = {
+	            labels: ['Food','Necessities','Entertainment','Work','Study'],
+	            datasets:[{
+	            data: category_budget,
+	            backgroundColor:[
+	            	'rgb(37,167,67)',
+	            	'rgb(108,117,124)',
+	            	'rgb(97,190,205)',
+	            	'rgb(50,56,62)',
+	            	'rgb(0,122,255)' 
+			    ],
+	  			hoverOffset: 4
+		    }]
+		}
+	var myChart = new Chart(
+		document.getElementById('budget-chart').getContext('2d'),
+		{	type: 'doughnut',
+			data: data,
+		}	
+		);
+	
+
+	var len = item_to_buy.length;
+	for (var i = 0; i < len; i++){
+		addItemToNeed(item_to_buy[i],budget_to_buy[i],priority_to_buy[i],type_to_buy[i]);
+	}
+
+	var purchasedlen = item_bought.length;
+	for (var i = 0 ; i < purchasedlen; i++){
+		purchasedDisplay(item_bought[i]);
+		if (type_bought[i] == "Food"){
+			category_budget[0] += budget_bought[i];
+		}
+		if (type_bought[i] == "Necessities"){
+			category_budget[1] += budget_bought[i];
+		}
+		if (type_bought[i] == "Entertainment"){
+			category_budget[2] += budget_bought[i];
+		}
+		if (type_bought[i] == "Study"){
+			category_budget[3] += budget_bought[i];
+		}
+		if (type_bought[i] == "Work"){
+			category_budget[4] += budget_bought[i];
+		}
+	}
+	localStorage.category_budget = JSON.stringify(category_budget);
+
+	updateMyChart();
+
+	function addItemToNeed(item,budget,priority,type){
+	if (priority.length > 0 && type.length > 0){
+		var li = document.createElement("li");
+		var divicon = document.createElement("div");
+		var divcontent = document.createElement("div");
+		var divbudget = document.createElement("div");
+		var divprio = document.createElement("div");
+		var divtype = document.createElement("div");
+		var spanprio = document.createElement("span");
+		var spantype = document.createElement("span");
+
+		divicon.innerHTML = "&#9634;";
+		divcontent.innerHTML = item;
+		divbudget.innerHTML = "$" + budget;
+		spanprio.innerHTML = priority;
+		spantype.innerHTML = type;
+
+		li.classList.add('list-group-item','d-flex','justify-content-between','list-group-item-action','to-buy');
+		divicon.classList.add('col-8','col-sm-1');
+		divcontent.classList.add('col-8','col-sm-2');
+		divbudget.classList.add('col-8','col-sm-1');
+		divprio.classList.add('todo-time','col-8','col-sm-2');
+		divtype.classList.add('todo-info','col-8','col-sm-2');
+		if (priority == "Today"){
+			spanprio.classList.add('badge','badge-pill','mr-3','badge-danger');
+		} else if (priority == "This Week"){
+			spanprio.classList.add('badge','badge-pill','mr-3','badge-warning');
+		} else{
+			spanprio.classList.add('badge','badge-pill','mr-3','badge-light');
+		}
+		if (type == "Food"){
+			spantype.classList.add('badge','rounded-pill','mr-3','badge-success');
+			category_budget[0] += budget;
+		} else if (type == "Necessities"){
+			spantype.classList.add('badge','rounded-pill','mr-3','badge-secondary');
+			category_budget[1] += budget;
+		} else if (type == "Entertainment"){
+			spantype.classList.add('badge','rounded-pill','mr-3','badge-info');
+			category_budget[2] += budget;
+		} else if (type == "Study"){
+			spantype.classList.add('badge','rounded-pill','mr-3','badge-primary');
+			category_budget[3] += budget;
+		} else{
+			spantype.classList.add('badge','rounded-pill','mr-3','badge-dark');
+			category_budget[4] += budget;
+		}
+		localStorage.category_budget = JSON.stringify(category_budget);
+
+		divprio.appendChild(spanprio);
+		divtype.appendChild(spantype);
+		li.appendChild(divicon);
+		li.appendChild(divcontent);
+		li.appendChild(divbudget);
+		li.appendChild(divprio);
+		li.appendChild(divtype);
+		document.querySelector("#need").appendChild(li);
+
+		document.querySelector("#item").value = "";
+		document.querySelector('#budget').value = "";
+		document.querySelector('#priority').value = "Today";
+		document.querySelector('#type').value = "Food";
+		li.onclick = function(){
+			done(this);
+		}
+
+		prioli = document.createElement('li');
+		prioli.innerHTML = item;
+		prioli.classList.add('list-group-item','d-flex','justify-content-between','prio-item');
+
+		if (priority == "Today"){
+			// <li class="list-group-item d-flex justify-content-between">orange</li>
+			document.querySelector('#sort-today').appendChild(prioli);			
+		} else if(priority == "This Week"){
+			document.querySelector('#sort-week').appendChild(prioli);			
+		} else {
+			document.querySelector('#sort-month').appendChild(prioli);
+		}
+		resetContainer();
+		updateMyChart();
+	}
+	}
+
+
+	document.querySelector('#new-shopping-item').onsubmit = function(){
+		var item = document.querySelector("#item").value.trim();
+		var budget = document.querySelector('#budget').value.trim();
+		var priority = document.querySelector('#priority').value.trim();
+		var type = document.querySelector('#type').value.trim();
+
+		if(item.length > 0 && budget.length>0){
+			budget = parseInt(budget);
+			item_to_buy.push(item)
+			budget_to_buy.push(budget);
+			priority_to_buy.push(priority);
+			type_to_buy.push(type);
+			localStorage.item_to_buy = JSON.stringify(item_to_buy);
+			localStorage.budget_to_buy = JSON.stringify(budget_to_buy);
+			localStorage.priority_to_buy = JSON.stringify(priority_to_buy);
+			localStorage.type_to_buy = JSON.stringify(type_to_buy);
+			addItemToNeed(item,budget,priority,type);
+		}
+		else if (item.length == 0){
+			alert("Please Enter Your Item");
+		} else{
+			alert("Please Enter Your Budget");
+		}
+		return false;
+	}
+	function updateMyChart(){
+		myChart.data.datasets[0].data = category_budget;
+		myChart.update();
+	}
+
+	//remove item from to-buy
+	var tobuys = document.querySelectorAll('.to-buy');
+	for (var i = 0 ; i < tobuys.length; i++){
+		tobuys[i].onclick = function(){
+			done(this);
+		}
+	}
+
+	function purchasedDisplay(name){
+		var purchasedli = document.createElement("li");
+		var purchaseddivicon = document.createElement('div');
+		var purchaseddivitem = document.createElement('div');
+		purchaseddivicon.innerHTML = "&#x2713;";
+		purchaseddivitem.innerHTML = name;
+		purchasedli.classList.add('list-group-item','d-flex','justify-content-between','list-group-item-action');
+		purchaseddivicon.classList.add('col-12','col-sm-1','bought-icon');
+		purchaseddivitem.classList.add('col-12','col-sm-10','bought');
+		purchasedli.appendChild(purchaseddivicon);
+		purchasedli.appendChild(purchaseddivitem);
+		document.querySelector('#no-need').appendChild(purchasedli);
+	}
+
+	function done(item){
+		var name = item.children[1].innerHTML;
+		var type = item.children[4].children[0].innerHTML;
+		var cost = prompt("What is your actual Cost for this item? (in USD)");
+		var budget = item.children[2].innerHTML;
+		budget = budget.replace(/[^0-9]/ig,"");
+		budget = parseInt(budget);
+		if (cost != null){
+			while (cost.length == 0){
+				cost = prompt("Please enter your cost for this item");
+			}
+			console.log(name,type,cost)
+			cost = parseInt(cost);
+			item_bought.push(name);
+			budget_bought.push(budget);
+			type_bought.push(type);
+
+			var length = item_to_buy.length;
+			for (var i = 0; i < length; i++){
+				if (name == item_to_buy[i]){
+					item_to_buy.splice(i,1);
+					budget_to_buy.splice(i,1);
+					priority_to_buy.splice(i,1);
+					type_to_buy.splice(i,1);
+					localStorage.item_to_buy = JSON.stringify(item_to_buy);
+					localStorage.budget_to_buy = JSON.stringify(budget_to_buy);
+					localStorage.priority_to_buy = JSON.stringify(priority_to_buy);
+					localStorage.type_to_buy = JSON.stringify(type_to_buy);
+				}
+
+			}
+
+			if (type == "Food"){
+				category_cost[0] += cost;
+			}
+			if (type == "Necessities"){
+				category_cost[1] += cost;
+			}
+			if (type == "Entertainment"){
+				category_cost[2] += cost;
+			}
+			if (type == "Study"){
+				category_cost[3] += cost;
+			}
+			if (type == "Work"){
+				category_cost[4] += cost;
+			}			
+			purchasedDisplay(name);
+
+			//update local Storage for new Cost
+			localStorage.item_bought = JSON.stringify(item_bought);
+			localStorage.budget_bought = JSON.stringify(budget_bought); 
+			localStorage.type_bought = JSON.stringify(type_bought);
+			localStorage.category_cost = JSON.stringify(category_cost);
+
+			item.remove()
+		}
+	}
+	
+	function resetContainer(){
+		document.querySelector('#container').style.height = "auto";
+	}
+
+
+
+</script>
+</body>
+</html>

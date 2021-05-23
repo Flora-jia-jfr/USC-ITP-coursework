@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timers, Animations</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		div:focus {
+			outline: none;
+		}
+		.parent-container {
+			box-sizing: content-box;
+			overflow: hidden;
+		}
+		#box, #animation, #progress {
+			height: 50px;
+			width: 50px;
+		}
+		#box-container, #animation-container, #progress-container {
+			height: 50px;
+		}
+	</style>
+</head>
+<body class="py-5">
+	<div class="container">
+		<div class="row no-gutters">
+			<h1 class="col-12 text-center">Timers, Canvas, Animations</h1>
+
+			<h2 class="col-12 mt-4 text-center">Timeout Delay</h2>
+			<div class="col-12">
+				<form id="timeout-form">
+					<div class="form-row">
+						<div class="col-12 mt-2 col-sm-4 mx-auto">
+							<label for="timeout-delay" class="sr-only">Time (seconds):</label>
+							<input type="text" class="form-control" id="timeout-delay" placeholder="Time (seconds)">
+						</div> <!-- .col -->
+					</div> <!-- .form-row -->
+
+					<div class="form-row">
+						<div class="col-12 mt-3 col-sm-auto mx-auto">
+							<button type="submit" class="btn btn-success">Start</button>
+							<button id="timeout-cancel" type="button" class="btn btn-danger">Cancel</button>
+						</div> <!-- .col -->
+
+					</div> <!-- .form-row -->
+				</form>
+
+			</div> <!-- .col -->
+
+			<div id="timeout-message" class="col-12 mt-3 font-italic text-center">
+			</div> <!-- .col -->
+
+			<h2 class="col-12 text-center mt-5">Stopwatch</h2>
+			<div class="col-12 mt-3 text-center">
+				<span id="stopwatch-time">0</span> seconds
+			</div> <!-- .col -->
+			<div class="col-12 mt-4 text-center">
+				<button id="stopwatch-start" class="btn btn-success">Start</button>
+				<button id="stopwatch-stop" class="btn btn-danger">Stop</button>
+				<button id="stopwatch-reset" class="btn btn-warning">Reset</button>
+			</div> <!-- .col -->
+
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<div class="container">
+		<div class="row no-gutters">
+
+			<h2 class="col-12 mt-5 text-center">Box Animation w/ Timers</h2>
+
+			<div id="box-container" class="parent-container position-relative col-12 col-md-9 col-lg-7 ml-auto mr-auto mt-4 border">
+				<div id="box" class="bg-primary position-absolute"></div>
+			</div> <!-- #box-container -->
+
+			<div class="col-12 mt-4 text-center">
+				<button id="box-start" class="btn btn-success">Start</button>
+				<button id="box-stop" class="btn btn-danger">Stop</button>
+			</div>
+
+			<h2 class="col-12 mt-5 text-center">Box Animation w/ RequestAnimationFrame()</h2>
+
+			<div id="animation-container" class="parent-container position-relative col-12 col-md-9 col-lg-7 ml-auto mr-auto mt-4 border">
+				<div id="animation" class="bg-primary position-absolute"></div>
+			</div> <!-- #animation-container -->
+
+			<div class="col-12 mt-4 text-center">
+				<button id="animation-start" class="btn btn-success">Start</button>
+				<button id="animation-stop" class="btn btn-danger">Stop</button>
+			</div>
+
+			<h2 class="col-12 mt-5 text-center">Progress Animation</h2>
+			<div id="progress-container" class="parent-container position-relative col-12 col-md-9 col-lg-7 ml-auto mr-auto mt-4 border">
+				<div id="progress" class="bg-primary position-absolute"></div>
+			</div> <!-- #progress-container -->
+
+			<div class="col-12 mt-4 text-center">
+				<button id="progress-start" class="btn btn-primary">Load</button>
+			</div>
+
+
+			<h2 class="col-12 mt-5 text-center">Tommy Animation</h2>
+
+			<div class="col-12 my-4 text-center">
+				<button id="tommy-in" class="btn btn-primary">Fade In</button>
+				<button id="tommy-out" class="btn btn-secondary">Fade Out</button>
+			</div>
+
+			<div class="col-12 text-center">
+				<img id="tommy" src="img/tommy.jpg" alt="Tommy Trojan" class="img-fluid">
+			</div>
+
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<script>
+
+		/********************
+		*
+		*	Timeout Delay
+		*
+		********************/
+
+		var timeoutId;
+		var timeoutRunning = false;
+
+		document.querySelector('#timeout-form').onsubmit = function(){
+			var delay = document.querySelector('#timeout-delay').value.trim();
+
+			if (delay.length > 0 && timeoutRunning == false){
+
+				delay = parseInt(delay);
+				delay *= 1000;
+
+				document.querySelector('#timeout-delay').value = "";
+				document.querySelector('#timeout-message').innerHTML = "Timeout Started";
+				document.querySelector('#timeout-message').style.color = "#0B0";
+
+				timeoutRunning = true;
+
+				timeoutId = setTimeout(function(){
+					alert('Timeout expired');
+					document.querySelector('#timeout-message').innerHTML = "";
+					timeoutRunning = false;
+				},delay);
+			}
+			return false;
+		}
+
+		document.querySelector('#timeout-cancel').onclick = function(){
+			clearTimeout(timeoutId);
+			timeoutRunning = false;
+			document.querySelector('#timeout-message').innerHTML = "Timeout Cleared";
+			document.querySelector('#timeout-message').style.color = "#A00";
+		}
+
+		/********************
+		*
+		*	Stopwatch
+		*
+		********************/
+
+		var stopwatchRunning = false;
+		var stopwatchID;
+
+		document.querySelector('#stopwatch-start').onclick = function(){
+
+		if (stopwatchRunning == false){
+			stopwatchRunning = true;
+			stopwatchID = setInterval(function(){
+				var time = document.querySelector('#stopwatch-time').innerHTML;
+				time = parseInt(time);
+				time ++;
+				document.querySelector('#stopwatch-time').innerHTML = time;
+			},1000)
+		}
+		}
+
+		document.querySelector('#stopwatch-stop').onclick = function(){
+			clearInterval(stopwatchID);
+			stopwatchRunning = false;
+		}
+
+		document.querySelector('#stopwatch-reset').onclick = function(){
+			clearInterval(stopwatchID);
+			stopwatchRunning = false;
+			document.querySelector('#stopwatch-time').innerHTML = 0;
+		}
+
+
+		/********************
+		*
+		*	Box Animation w/ Timers
+		*
+		********************/
+
+		var boxRunning = false;
+		var boxID;
+
+		document.querySelector('#box-start').onclick = function(){
+			if (boxRunning == false){
+				boxRunning = true;
+				boxID = setInterval(function(){
+					var box = document.querySelector('#box')
+					var left = getComputedStyle(box).getPropertyValue("left");
+					var parentWidth = getComputedStyle(box.parentElement).getPropertyValue('width');
+					parentWidth = parseInt(parentWidth);
+					left = parseInt(left);
+
+					if (left < parentWidth){
+						left += 10;
+					}
+					else{
+						left = 0;
+					}
+					document.querySelector('#box').style.left = left + "px";
+				},20)
+			}
+		}
+
+		document.querySelector('#box-stop').onclick = function(){
+			boxRunning = false;
+			clearInterval(boxID);
+			// document.querySelector("#box").style.left = "0px";
+		}
+
+		/********************
+		*
+		*	Box Animation w/ RequestAnimationFrame()
+		*
+		********************/
+		var boxAnimating = false;
+		var animationID;
+
+		function animateBox(){
+			boxAnimating = true;
+			var box = document.querySelector('#animation');
+			var left = getComputedStyle(box).getPropertyValue('left');
+			var parentWidth = getComputedStyle(box.parentElement).getPropertyValue('width');
+			parentWidth = parseInt(parentWidth);
+			left = parseInt(left);
+			if (left < parentWidth){
+				left += 10;
+			}
+			else{
+				left = 0;
+			}
+			box.style.left = left + "px";
+			animationID = requestAnimationFrame(animateBox);
+		}
+
+		document.querySelector('#animation-start').onclick = function(){
+			if (boxAnimating == false){
+				animationID = requestAnimationFrame(animateBox);
+			}
+		}
+
+		document.querySelector('#animation-stop').onclick = function(){
+			boxAnimating = false;
+			cancelAnimationFrame(animationID);
+
+		}
+
+		/********************
+		*
+		* Progress Animation
+		*
+		********************/
+
+		var progressAnimating = false;
+		var progressID;
+
+		function progressAnimate(){
+			progressAnimating = true;
+			var progress = document.querySelector('#progress');
+			var width = getComputedStyle(progress).getPropertyValue('width');
+			var parentWidth = getComputedStyle(progress.parentElement).getPropertyValue('width');
+			parentWidth = parseInt(parentWidth);
+			width = parseInt(width);
+			if (width < parentWidth){
+				width += 10;
+			}
+			else{
+				cancelAnimationFrame(progressID);
+				progressAnimating = false;
+			}
+			progress.style.width = width + "px";
+			progressID = requestAnimationFrame(progressAnimate);
+		}
+
+		document.querySelector('#progress-start').onclick = function(){
+			if (progressAnimating == false){
+				progressID = requestAnimationFrame(progressAnimate);
+			}
+		}
+
+		/********************
+		*
+		* Tommy Animation
+		*
+		********************/
+
+		var tommyAnimating = false;
+
+		document.querySelector('#tommy-out').onclick = function(){
+			if ( tommyAnimating == false ){
+				tommyAnimating = true;
+				requestAnimationFrame(fadeOutTommy);
+			}
+		}
+
+		document.querySelector('#tommy-in').onclick = function(){
+			if ( tommyAnimating == false ){
+				tommyAnimating = true;
+				requestAnimationFrame(fadeInTommy);
+			}
+		}
+
+		function fadeOutTommy(){
+			var tommy = document.querySelector('#tommy');
+			var opacity = getComputedStyle(tommy).getPropertyValue('opacity');
+			opacity = parseFloat(opacity);
+
+			if ( opacity >= 0.05 ) {
+				opacity -= 0.05
+				tommy.style.opacity = opacity;
+				requestAnimationFrame(fadeOutTommy);
+			} else {
+				tommyAnimating = false;
+			}
+		}
+
+		function fadeInTommy(){
+			var tommy = document.querySelector('#tommy');
+			var opacity = getComputedStyle(tommy).getPropertyValue('opacity');
+			opacity = parseFloat(opacity);
+
+			if ( opacity <= 0.95 ) {
+				opacity += 0.05
+				tommy.style.opacity = opacity;
+				requestAnimationFrame(fadeInTommy);
+			} else {
+				tommyAnimating = false;
+			}
+		}
+
+
+	</script>
+</body>
+</html>

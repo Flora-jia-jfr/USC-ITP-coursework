@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Variables, Variable Scope</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="lecture.css">
+</head>
+<body class="py-5">
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12">Variables, Variable Scope</h1>
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<div id="kanye-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Review</h2>
+		</div> <!-- .row -->
+		<img id="kanye" src="img/kanye-1.jpg" alt="Kanye West">
+	</div> <!-- #kanye-section -->
+
+	<div id="button-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">innerHTML</h2>
+			<p class="col-12">Test these buttons:</p>
+			<div class="col-12 text-center">
+				<button id="btn-click" class="btn btn-primary mx-1">Don't Click Me</button>
+				<button id="btn-touch" class="btn btn-primary mx-1">Don't Touch Me</button>
+			</div>
+			<div id="btn-msg" class="col-12 text-center mt-4">
+				<strong>Message:</strong>
+				<span>Messages go here.</span>
+			</div>
+		</div> <!-- .row -->
+	</div> <!-- #button-section -->
+
+	<div id="name-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Prompt for Name</h2>
+			<div class="col-12 text-center">
+				<button id="btn-name" class="btn btn-success">Enter a Name</button>
+			</div>
+			<div id="name-msg" class="col-12 text-center mt-4">
+				<strong>Message:</strong>
+				<span>Messages go here.</span>
+			</div>
+		</div> <!-- .row -->
+	</div> <!-- #name-section -->
+
+	<div id="global-var-section" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Global Variables</h2>
+			<div class="col-12 text-center">
+				<button id="btn-fname" class="btn btn-warning">Enter First Name</button>
+				<button id="btn-lname" class="btn btn-warning">Enter Last Name</button>
+				<button id="btn-print-name" class="btn btn-light">Print</button>
+			</div>
+			<div id="full-name-msg" class="col-12 text-center mt-4">
+				<strong>Message:</strong>
+				<span>Messages go here.</span>
+			</div>
+		</div> <!-- .row -->
+	</div> <!-- #global-var-section -->
+
+	<div id="color-boxes" class="container mt-4">
+		<div class="row">
+			<h2 class="col-12">Background Color Change</h2>
+			<p class="col-12">Click on a square to change background color:</p>
+		</div> <!-- .row -->
+
+		<div id="color-wrapper" class="row">
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-1">
+				#000
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-2">
+				#FFF
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-3">
+				#CCC
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-4">
+				#777
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-5">
+				#FC0
+			</div>
+			<div class="color-box text-center border border-dark col-4 col-md mx-md-1 my-md-1" id="color-6">
+				#900
+			</div>
+		</div> <!-- #color-wrapper -->
+
+		<div class="row">
+			<p class="col-12 mt-4 text-center">
+				Number of changes: <span id="num-changes">0</span>			
+			</p>
+			<div class="col-12 text-center">
+				<button id="color-reset" class="btn btn-secondary">Reset Color</button>
+			</div>
+		</div> <!-- .row -->
+	</div> <!-- #color-boxes -->
+
+	<script>
+		/***** Review *****/
+		console.log(document.querySelector('#kanye'));
+		console.log(document.querySelector('#kanye').src);
+		console.log(document.querySelector("h1").innerHTML);
+
+		document.querySelector('h1').innerHTML = "New Header Text";
+
+		
+		/***** Button Interaction *****/
+		document.querySelector('#btn-click').onclick = function(){
+			document.querySelector("#btn-msg span").innerHTML = "No Clicking!";
+		};
+
+		document.querySelector('#btn-touch').onmouseenter = function(){
+			document.querySelector("#btn-msg span").innerHTML = "No Touching!";
+		};
+
+		/***** Variables *****/
+		
+		var name = 'Tommy';
+		var age = 18;
+		var knowsWebDev = true;
+		
+		var a = '5';
+		a = parseInt(a); // convert the string to a number
+		console.log(a); 
+
+		/***** Prompt for Name *****/
+
+		document.querySelector('#btn-name').onclick = function(){
+			var name = prompt('Enter your name:');
+			console.log(name);
+			document.querySelector('#name-msg span').innerHTML = "Welcome " + name + "!";
+		}
+
+		/***** Global Variables *****/
+		var firstname;
+		var lastname;
+
+		document.querySelector('#btn-fname').onclick = function(){
+			firstname = prompt('Enter your first name');
+		}
+		document.querySelector('#btn-lname').onclick = function(){
+			lastname = prompt('Enter your last name');
+		}
+		document.querySelector('#btn-print-name').onclick = function(){
+			console.log(firstname + " " + lastname);
+			document.querySelector('#full-name-msg span').innerHTML = "Hello " + firstname + " " + lastname + "!";
+		}
+
+		/***** Background Color Reset *****/
+		console.log(getComputedStyle(document.body).getPropertyValue('background-color'));
+
+
+		/***** Color Boxes *****/
+
+		document.querySelector('#color-1').onclick = function(){
+			var color = getComputedStyle(document.querySelector('#color-1')).getPropertyValue('background-color');
+			document.body.style.backgroundColor = color;
+			var count = document.querySelector('#num-changes').innerHTML;
+			count = parseInt(count);
+			count ++;
+			document.querySelector('#num-changes').innerHTML = count;
+		};
+
+		document.querySelector('#color-2').onclick = function(){
+			var color = getComputedStyle(document.querySelector('#color-2')).getPropertyValue('background-color');
+			document.body.style.backgroundColor = color;
+			var count = document.querySelector('#num-changes').innerHTML;
+			count = parseInt(count);
+			count ++;
+			document.querySelector('#num-changes').innerHTML = count;
+		};
+
+		document.querySelector('#color-3').onclick = function(){
+			var color = getComputedStyle(document.querySelector('#color-3')).getPropertyValue('background-color');
+			document.body.style.backgroundColor = color;
+			var count = document.querySelector('#num-changes').innerHTML;
+			count = parseInt(count);
+			count ++;
+			document.querySelector('#num-changes').innerHTML = count;
+		};
+
+		document.querySelector('#color-4').onclick = function(){
+			var color = getComputedStyle(document.querySelector('#color-4')).getPropertyValue('background-color');
+			document.body.style.backgroundColor = color;
+			var count = document.querySelector('#num-changes').innerHTML;
+			count = parseInt(count);
+			count ++;
+			document.querySelector('#num-changes').innerHTML = count;
+		};
+
+		document.querySelector('#color-5').onclick = function(){
+			var color = getComputedStyle(document.querySelector('#color-5')).getPropertyValue('background-color');
+			document.body.style.backgroundColor = color;
+			var count = document.querySelector('#num-changes').innerHTML;
+			count = parseInt(count);
+			count ++;
+			document.querySelector('#num-changes').innerHTML = count;
+		};
+
+		document.querySelector('#color-6').onclick = function(){
+			var color = getComputedStyle(document.querySelector('#color-6')).getPropertyValue('background-color');
+			document.body.style.backgroundColor = color;
+			var count = document.querySelector('#num-changes').innerHTML;
+			count = parseInt(count);
+			count ++;
+			document.querySelector('#num-changes').innerHTML = count;
+		};
+
+	/* Workflow:	
+		1) detect user click on a box (.onclick)
+		2) read the current count (from innerHTML) save it into a 'count' variable
+		3) convert 'count' to a numerical value using parseInt().
+			- This is because all values from innerHTML are treated as strings(text).
+		4) increment 'count' by 1
+		5) display 'count' in the DOM (set .innerHTML to the value of 'count')
+
+
+	*/
+
+	</script>
+
+</body>
+</html>

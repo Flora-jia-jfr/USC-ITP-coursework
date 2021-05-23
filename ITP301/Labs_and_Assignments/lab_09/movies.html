@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>The Movie DB API</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<style>
+		#movie-container img {
+			max-width: 100%;
+			height: auto;
+			margin-bottom: 10px;
+		}
+		h5 + div {
+			font-style: italic;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12 mt-4">Movie Search</h1>
+		</div> <!-- .row -->
+
+		<div class="row">
+			<form class="col-12" id="search-form">
+				<div class="form-row">
+					<div class="col-12 mt-4 col-sm-6 col-md-4 col-lg-3">
+						<label for="search-term" class="sr-only">Search:</label>
+
+						<input type="text" id="search-term" class="form-control" placeholder="Search...">
+
+					</div>
+					<div class="col-12 mt-4 col-sm-auto">
+						<button type="submit" class="btn btn-primary btn-block">Search</button>
+					</div>
+				</div> <!-- .form-row -->
+			</form>
+		</div> <!-- .row -->
+
+		<div class="row">
+			<div class="col-12 mt-4 mb-4">
+
+				Showing <span id="num-results" class="font-weight-bold">0</span> of <span id="num-total" class="font-weight-bold">0</span> result(s).
+				
+			</div>
+		</div> <!-- .row -->
+		
+		<div id="movie-container" class="row">
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="Venom" src="http://image.tmdb.org/t/p/w500/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg">
+				<h5>Venom</h5>
+				<div>2018-10-03</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="A Star Is Born" src="http://image.tmdb.org/t/p/w500/wrFpXMNBRj2PBiN4Z5kix51XaIZ.jpg">
+				<h5>A Star Is Born</h5>
+				<div>2018-10-03</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="The Predator" src="http://image.tmdb.org/t/p/w500/wMq9kQXTeQCHUZOG4fAe5cAxyUA.jpg">
+				<h5>The Predator</h5>
+				<div>2018-09-13</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="Halloween" src="http://image.tmdb.org/t/p/w500/lNkDYKmrVem1J0aAfCnQlJOCKnT.jpg">
+				<h5>Halloween</h5>
+				<div>2018-10-18</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="First Man" src="http://image.tmdb.org/t/p/w500/i91mfvFcPPlaegcbOyjGgiWfZzh.jpg">
+				<h5>First Man</h5>
+				<div>2018-10-11</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="The Nun" src="http://image.tmdb.org/t/p/w500/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg">
+				<h5>The Nun</h5>
+				<div>2018-09-05</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="Mile 22" src="http://image.tmdb.org/t/p/w500/dT1XzjxRDR56xOm4Ph0INV4EmWJ.jpg">
+				<h5>Mile 22</h5>
+				<div>2018-08-16</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="Johnny English Strikes Again" src="http://image.tmdb.org/t/p/w500/tCBxnZwLiY1BOKw3tH6AxHZdqPh.jpg">
+				<h5>Johnny English Strikes Again</h5>
+				<div>2018-09-13</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="Incredibles 2" src="http://image.tmdb.org/t/p/w500/x1txcDXkcM65gl7w20PwYSxAYah.jpg">
+				<h5>Incredibles 2</h5>
+				<div>2018-06-14</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="Goosebumps 2: Haunted Halloween" src="http://image.tmdb.org/t/p/w500/8bcpki9GfXdXj9esFpPtlate8v0.jpg">
+				<h5>Goosebumps 2: Haunted Halloween</h5>
+				<div>2018-10-11</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="Smallfoot" src="http://image.tmdb.org/t/p/w500/4nKoB6wMVXfsYgRZK5lHZ5VMQ6J.jpg">
+				<h5>Smallfoot</h5>
+				<div>2018-09-20</div>
+			</div>
+
+			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+				<img alt="Skyscraper" src="http://image.tmdb.org/t/p/w500/5LYSsOPzuP13201qSzMjNxi8FxN.jpg">
+				<h5>Skyscraper</h5>
+				<div>2018-07-11</div>
+			</div>
+
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script>
+
+		document.querySelector('#search-form').onsubmit = function(){
+			var term = document.querySelector('#search-term').value.trim();
+			if (term.length > 0){
+				$.ajax({
+					url:"https://api.themoviedb.org/3/search/movie?api_key=788f88b9b6402bdd2202af2219b2723f&query=" + term,
+					dataType:"json",
+					success:function(data){
+					document.querySelector("#num-results").innerHTML = data.results.length;
+					document.querySelector("#num-total").innerHTML = data.total_results;
+					document.querySelector('#movie-container').innerHTML = "";
+					document.querySelector('#search-term').value = "";
+
+					for (var i = 0; i < data.results.length; i++){
+						console.log(data.results[i]);
+						createMovie(data.results[i]);
+						}
+					},
+					error:function(error){
+						alert('AJAX error');
+						console.log(error);
+					}
+				});
+			}
+			return false;
+		}
+
+		function createMovie(movie){
+			var div = document.createElement('div');
+			var img = document.createElement('img');
+			var h5 = document.createElement('h5');
+			var divDate = document.createElement('div');
+
+			h5.innerHTML = movie.title;
+			divDate.innerHTML = movie.release_date;
+			if (movie.poster_path == null){
+				img.src = "404.jpg";
+			}
+			else{
+				img.src = "http://image.tmdb.org/t/p/w500/" + movie.poster_path;
+			}
+			img.alt = movie.title;
+
+			div.classList.add('text-center','my-3','col-6','col-sm-4','col-md-3','col-lg-2');
+
+			div.appendChild(img);
+			div.appendChild(h5);
+			div.appendChild(divDate);
+
+			document.querySelector('#movie-container').appendChild(div);
+
+		}
+	</script>
+
+</body>
+</html>

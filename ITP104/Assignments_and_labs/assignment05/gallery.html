@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Furong Jia | Movie Image Gallery</title>
+<link rel="stylesheet" href="style.css">
+<style>
+	#header{
+		background-image: url("bg2.jpg");
+		height:600px;
+		background-position: bottom;
+		}
+	.tall1, .wide, .square, .tall2{
+		float:left;
+		margin:0px;
+		padding:0px;
+	}
+	.tall1{
+		width:200px;
+		height:500px;
+	}
+	.wide{
+		width:400px;
+		height:200px;
+	}
+	.square{
+		width:200px;
+		height:200px;
+	}
+	.tall2{
+		width:300px;
+		height:500px;
+	}
+	img{
+		width:auto;
+		height:100%;
+	}
+	#group1{
+		width:200px;
+		height:900px;
+		float:left;
+	}
+	#group2{
+		width:600px;
+		height:900px;
+		float:left;
+	}
+	#group3{
+		width:200px;
+		height:900px;
+		float:left;
+	}
+</style>
+</head>
+<body>
+<div id="header">
+	<h1>Gallery</h1>
+</div><!-- close header -->
+<div id="container">
+<div id="nav-wrapper">
+<div id="nav">
+	<a href="index.html">Home</a>
+	<a href="gallery.html" class="active">Gallery</a>
+</div>
+</div><!-- close navigator -->
+<div id="gallery">
+<div id="group1">
+<div class="tall1"><img src="gallery/3.jpg" alt="image 3"></div>
+<div class="square"><img src="gallery/11.JPG" alt="image 11"></div>
+<div class="square"><img src="gallery/12.JPG" alt="image 12"></div>
+<div class="clearfloat"></div>
+</div>
+<div id="group2">
+<div class="wide"><img src="gallery/10.JPG" alt="image 10"></div>
+<div class="square"><img src="gallery/1.jpg" alt="image 1"></div>
+<div class="square"><img src="gallery/8.JPG" alt="image 8"></div>
+<div class="square"><img src="gallery/7.JPG" alt="image 7"></div>
+<div class="square"><img src="gallery/9.JPG" alt="image 9"></div>
+<div class="tall2"><img src="gallery/5.jpg" alt="image 5"></div>
+<div class="tall2"><img src="gallery/6.jpg" alt="image 6"></div>
+<div class="clearfloat"></div>
+</div>
+<div id="group3">
+<div class="tall1"><img src="gallery/4.jpg" alt="image 4"></div>
+<div class="square"><img src="gallery/2.jpg" alt="image 2"></div>
+<div class="square"><img src="gallery/13.JPG" alt="image 13"></div>
+</div>
+<div class="clearfloat"></div>
+</div><!--close gallery-->
+</div><!--close container-->
+<div id="footer">
+	<p>Catch it on Netflix</p>
+</div>	
+</body>
+</html>

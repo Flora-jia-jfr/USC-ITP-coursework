@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 07: DOM Manipulation</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		body{
+			width:800px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		h1{
+			text-align: center;
+			margin:20px;
+		}
+		h4{
+			margin: 20px 20px 20px 0px;
+		}
+		th{
+			text-align: center;
+			width:200px;
+			padding:0px;
+			margin:0px;
+		}
+		td{
+			text-align: center;
+			margin:0px;
+			padding:0px;
+		}
+		img{
+			margin:0px;
+			padding:0px;
+			width:200px;
+			height:auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>My Movie Ticket List</h1>
+	<div id="add-movie">
+		<h4>New Movie Ticket</h4>
+		<div class="form-group row">
+			<label for="title" class="col-sm-2 col-form-label">Title:</label>
+			<div class="col-sm-10">
+				<input type="text" name="title" class="form-control" placeholder="Movie Title" id="title">
+				<small class="form-text text-danger"></small>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="price" class="col-sm-2 col-form-label">Price:</label>
+			<div class="col-sm-10">
+				<input type="text" name="price" class="form-control" placeholder="10$" id="price">
+				<small class="form-text text-danger"></small>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="url" class="col-sm-2 col-form-label">Image URL:</label>
+			<div class="col-sm-10">
+				<input type="text" name="url" class="form-control" placeholder="https://..." id="url">
+				<small class="form-text text-danger"></small>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<button id = "add" type="submit" class="btn btn-primary">Add</button>
+			</div> <!-- .col -->
+		</div> <!-- .form-group -->
+	</div>
+
+	<div id="movie-list">
+		<h4>Movie Ticket List</h4>
+		<button id="delete" class="btn btn-outline-danger mb-3">Delete All</button>
+		<p>You can not have two tickets of the same movie.</p>
+		<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><img src="titanic.jpg" alt="titanic"></td>
+				<td>Titanic</td>
+				<td>$5</td>
+				<td><button class="btn btn-outline-danger mb-3 remove">Remove</button></td>
+			</tr>
+			<tr>
+				<td><img src="frozen.jpg" alt="frozen"></td>
+				<td>frozen</td>
+				<td>$12</td>
+				<td><button class="btn btn-outline-danger mb-3 remove">Remove</button></td>
+			</tr>
+		</tbody>
+		</table>
+		
+	</div>
+
+	<script>
+		document.querySelector("#delete").onclick = function(){
+			document.querySelector("tbody").innerHTML = "";
+			return false;
+		}
+
+		document.querySelector('#add').onclick = function(){
+			var title = document.querySelector('#title').value.trim();
+			var price = document.querySelector('#price').value.trim();
+			var url = document.querySelector('#url').value.trim();
+			if (url == ""){
+				url = "image404.png";
+			}
+			if (title.length > 0 && price.length >0){
+				document.querySelectorAll('small')[0].innerHTML = "";
+				document.querySelectorAll('small')[1].innerHTML = "";
+				var existedList = document.querySelectorAll('tr');
+				document.querySelector('#title').value = "";
+				document.querySelector('#price').value = "";
+				document.querySelector('#url').value = "";
+				for (var i = 0; i < existedList.length; i++){
+					if (existedList[i].children[1].innerHTML.trim() == title){
+						alert(title + " is already on the list");
+						return false;
+					}
+				}
+				var tr = document.createElement('tr');
+				var tdImg = document.createElement('td');
+				var tdTitle = document.createElement('td');
+				var tdPrice = document.createElement('td');
+				var tdButton = document.createElement('td');
+				var img = document.createElement('img');
+				var button = document.createElement('button');
+				img.src = url;
+				img.alt = title;
+				tdTitle.innerHTML = title;
+				tdPrice.innerHTML = "$" + price;
+				button.innerHTML = "Remove";
+				button.classList.add('btn','btn-outline-danger','mb-3','remove');
+				tdImg.appendChild(img);
+				tdButton.appendChild(button);
+				tr.appendChild(tdImg);
+				tr.appendChild(tdTitle);
+				tr.appendChild(tdPrice);
+				tr.appendChild(tdButton);
+				document.querySelector('tbody').appendChild(tr);
+				button.onclick = function(){
+					remove(button);
+				}
+			}
+			if(title.length == 0){
+				document.querySelectorAll('small')[0].innerHTML = "Title is required.";
+			}
+			else{
+				document.querySelectorAll('small')[0].innerHTML = "";
+			}
+			if(price.length == 0){
+				document.querySelectorAll('small')[1].innerHTML = "Price is required.";
+			}
+			else{
+				document.querySelectorAll('small')[1].innerHTML = "";
+			}
+			return false;
+		}
+		var list = document.querySelectorAll('.remove');
+		for (var i = 0; i<list.length; i++){
+			list[i].onclick = function(){
+				remove(this);
+			}
+		}
+		function remove(x){
+			x.parentNode.parentNode.remove();
+		}
+
+	</script>
+
+</body>
+</html>

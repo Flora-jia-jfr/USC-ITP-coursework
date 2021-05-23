@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS Templating Engines</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+</head>
+<body class="pt-4 pb-5">
+
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12 mb-5">JavaScript Templating Engines</h1>
+		</div> <!-- .row -->
+		
+		<div class="row">
+			<h2 class="col-12 mb-4">Handlebars.js</h2>
+			<div class="col-12" id="handlebarsContent"></div>
+		</div> <!-- .row -->
+
+		<div class="row">
+			<h2 class="col-12 mt-5 mb-4">Arrays</h2>
+			<div class="col-12" id="handlebarsArray"></div>
+		</div> <!-- .row -->
+
+	</div> <!-- .container -->
+	<script src="handlebars.min-v4.7.7.js"></script>
+	<script id="handlebarsTemplate" type="text/x-handlebars-template">
+		<p>Hello {{firstName}} {{lastName}}!</p>
+	</script>
+
+	<script id="arrayTemplate" type="text/x-handlebars-template">
+		<p>To Do List:</p>
+		<ul>
+			{{#each todoList}}
+			<li>{{this}}</li>
+			{{/each}}
+		</ul>
+	</script>
+
+	<script>
+	 /********************
+	 	*
+	 	* Handlebar.js
+	 	*
+		********************/
+		var source = document.querySelector('#handlebarsTemplate').innerHTML;
+		var template = Handlebars.compile(source);
+		// Handlebars.compile('<p>Hellow World!</p>')
+		var data = {
+			"firstName":"Tommy",
+			"lastName":"Trojan",
+			"phone":{
+				"cell":"123-123-1234",
+				"home":"456-456-4567"
+			}
+		}
+
+		document.querySelector('#handlebarsContent').innerHTML = template(data);
+
+	 /********************
+		*
+	 	* Arrays
+	 	*
+		********************/
+
+		var arraySource = document.querySelector('#arrayTemplate').innerHTML;
+		var arrayTemplate = Handlebars.compile(arraySource);
+		var arrayData = {
+			"todoList":[
+			"ITP 301 Final Project",
+			"Dinner",
+			"Rest"
+			]
+		}
+
+		document.querySelector('#handlebarsArray').innerHTML = arrayTemplate(arrayData);
+
+
+	</script>
+
+</body>
+</html>

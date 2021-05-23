@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab_04: Updated Photo Gallery</title>
+	<style>
+		body{
+			font-family: "Times New Roman", serif;
+			width:800px;
+			margin-left:auto;
+			margin-right: auto;
+			text-align: center;
+		}
+		#gallery{
+			margin-bottom:20px;
+		}
+		#gallery img{
+			width:100px;
+			height:auto;
+		}
+		.thumbnail{
+			margin-left:30px;
+			margin-right: 30px;
+			padding:0px;
+			float:left;
+			cursor: pointer;
+		}
+		#main{
+			position:relative;
+		}
+		#main img{
+			padding:30px;
+			width:740px;
+			height:auto;
+		}
+		p{
+			width:800px;
+			background-color: rgba(255,255,255,.7);
+			position:absolute;
+			bottom:80px;
+			font-size:30px;
+			text-align: center;
+			padding:10px 0px 10px 0px;
+			margin:0px;
+		}
+		.clearfloat{
+			clear:both;
+		}
+	</style>
+</head>
+<body>
+	<h1> Popular Cat Breeds </h1>
+	<div id="gallery">
+	<div class="thumbnail">
+		<img src = "American.jpg" alt = "American Shorthair Cat">
+	</div>
+	<div class="thumbnail">
+		<img src = "British.jpg" alt = "British Shorthair Cat">
+	</div>
+	<div class="thumbnail">
+		<img src = "Maine.jpg" alt = "Maine Coon Cat">
+	</div>
+	<div class="thumbnail">
+		<img src = "Ragdoll.jpg" alt = "Ragdoll Cat">
+	</div>
+	<div class="thumbnail">
+		<img src = "Scottish.jpg" alt = "Scottish Fold Cat">
+	</div>
+	<div class="clearfloat"></div>
+	</div> <!-- close gallery -->
+	<div id="main">
+		<p> American Shorthair Cat</p>
+		<img src = "American.jpg" alt = "American Shorthair Cat">
+		
+	</div> <!-- close main -->
+	<script>
+		var images = document.querySelectorAll('#gallery img');
+		var mainimg = document.querySelector("#main img")
+		var mainp = document.querySelector("#main p");
+
+		function change(image){
+			console.log("here")
+			mainimg.src = image.src;
+			console.log(image.src)
+			mainimg.alt = image.alt;
+			mainp.innerHTML = image.alt;
+			console.log(mainp.innerHTML)
+		}
+
+		for (var i = 0 ; i < images.length; i++){
+			images[i].onclick = function(){
+				change(this);
+			}
+		}
+
+		function change(image){
+			//console.log("here")
+			mainimg.src = image.src;
+			//console.log(image.src)
+			mainimg.alt = image.alt;
+			mainp.innerHTML = image.alt;
+			//console.log(mainp.innerHTML)
+		}
+
+	</script>
+</body>
+</html>

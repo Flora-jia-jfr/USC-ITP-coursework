@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab06: Simple Image Gallery</title>
+	<style>
+	body{
+		margin:0px;
+		background:beige;
+		}
+	#container{
+		width:1000px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	#header {
+		background-image: url('image/bg.jpg');
+		height:550px;
+		background-position: center;
+		background-size: cover;
+		text-align:center;
+		line-height:100px;
+		margin:0px;
+	}
+	#header h1{
+		font-size:50px;
+		font-weight: bold;
+		text-align:center;
+		margin:0px;
+		color:darkseagreen;
+	}
+	.icon-wrapper{
+		width:180px;
+		height:180px;
+		margin: 10px;
+		overflow: hidden;
+		border-radius: 10%;
+	}
+	.icon {
+		width: auto;
+		height: 100%;
+	}
+	.app{
+		float: left;
+		text-align: center;
+	}
+	.app p{
+		color:darkgreen;
+		font-size:20px;
+		visibility: hidden;
+	}
+	.app:hover p{
+		visibility:visible;
+	}
+
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<div id="header">
+			<div id="bubble">
+			<h1>My Favorite Study Apps</h1>
+			</div>
+		</div>
+
+		<div id="gallery">
+		<div class="app">
+			<div class="icon-wrapper">
+				<a href="https://apps.apple.com/us/app/forest-stay-focused/id866450515" target="_blank"><img class="icon" src="image/forest.png" alt="forest icon"></a>
+			</div>
+			<p>Forest</p>
+		</div>
+		<div class="app">
+			<div class="icon-wrapper">
+				<a href="https://apps.apple.com/us/app/marginnote-3/id1348317163" target="_blank"><img class="icon" src="image/marginnote.JPG" alt="marginnote icon"></a>
+			</div>
+			<p>Marginnote</p>
+		</div>
+		<div class="app">
+			<div class="icon-wrapper">
+				<a href="https://apps.apple.com/us/app/notability/id360593530" target="_blank"><img class="icon" src="image/nota.JPG" alt="notability icon"></a>
+			</div>
+			<p>Notability</p>
+		</div>
+		<div class="app">
+			<div class="icon-wrapper">
+				<a href="https://apps.apple.com/us/app/notion-notes-projects-docs/id1232780281" target="_blank"><img class="icon" src="image/notion.jpg" alt="notion icon"></a>
+			</div>
+			<p>Notion</p>
+		</div>
+		<div class="app">
+			<div class="icon-wrapper">
+				<a href="https://apps.apple.com/us/app/microsoft-onenote/id410395246" target="_blank"><img class="icon" src="image/onenote.jpg" alt="onenote icon"></a>
+			</div>
+			<p>Onenote</p>
+		</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

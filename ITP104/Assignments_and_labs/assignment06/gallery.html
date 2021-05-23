@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Furong Jia | Movie Image Gallery</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+<style>
+	#header{
+		background-image: url("bg2.jpg");
+		height:600px;
+		background-position: bottom;
+		}
+	.tall1, .wide, .square, .tall2{
+		float:left;
+		margin:0px;
+		padding:0px;
+		position:relative;
+	}
+	.tall1{
+		width:200px;
+		height:500px;
+	}
+	.wide{
+		width:400px;
+		height:200px;
+	}
+	.square{
+		width:200px;
+		height:200px;
+	}
+	.tall2{
+		width:300px;
+		height:500px;
+	}
+	img{
+		width:auto;
+		height:100%;
+	}
+	#group1{
+		width:200px;
+		height:900px;
+		float:left;
+	}
+	#group2{
+		width:600px;
+		height:900px;
+		float:left;
+	}
+	#group3{
+		width:200px;
+		height:900px;
+		float:left;
+	}
+	.overlay{
+		background-color: rgba(128,0,0,.5); 
+		/* using the rgba can only change the background color while not affecting the texts */
+		color:white;
+		position:absolute;
+		top:0px;
+		bottom:0px;
+		left:0px;
+		right:0px;
+		text-align: center;
+		visibility: hidden;
+		font-size: 20px;
+		font-style: italic;
+		font-family: 'Courgette', cursive, serif;
+	}
+	.square .overlay{
+		padding-top:70px;
+		/* Add the overlay hover effect */
+	}
+	.tall1 .overlay{
+		padding-top: 200px;
+	}
+	.tall2 .overlay{
+		padding-top:200px;
+	}
+	.tall1:hover .overlay{
+		visibility: visible;
+	}
+	.tall2:hover .overlay{
+		visibility: visible;
+	}
+	.wide:hover .overlay{
+		visibility: visible;
+	}
+	.square:hover .overlay{
+		visibility: visible;
+	}
+</style>
+</head>
+<body>
+<div id="header">
+	<h1>Gallery</h1>
+</div><!-- close header -->
+<div id="container">
+<div id="navbar">
+<div id="nav">
+	<ul>
+		<li><a href="index.html">Home</a>
+			<ul>
+				<li><a href="index.html#one">About</a></li>
+				<li><a href="index.html#two">Plot</a></li>
+				<li><a href="index.html#three">Production</a></li>
+			</ul>
+		</li>
+		<li><a href="gallery.html" class="active">Gallery</a></li>
+	</ul>
+	<div class="clearfloat"></div>
+</div>
+</div>
+<div id="gallery">
+<div id="group1">
+<div class="tall1"><img src="gallery/3.jpg" alt="image 3">
+	<div class="overlay">
+		<p>Nezha and Aobing</p>
+	</div>
+</div>
+<div class="square"><img src="gallery/11.JPG" alt="image 11">
+	<div class="overlay">
+		<p>Nezha</p>
+	</div>
+</div>
+<div class="square"><img src="gallery/12.JPG" alt="image 12">
+	<div class="overlay">
+		<p>Nezha</p>
+	</div>
+</div>
+<div class="clearfloat"></div>
+</div>
+<div id="group2">
+<div class="wide"><img src="gallery/10.JPG" alt="image 10">
+	<div class="overlay">
+		<p>Nezha</p>
+	</div>
+</div>
+<div class="square"><img src="gallery/1.jpg" alt="image 1">
+	<div class="overlay">
+		<p>Aobing</p>
+	</div>
+</div>
+<div class="square"><img src="gallery/8.JPG" alt="image 8">
+	<div class="overlay">
+		<p>Nezha</p>
+	</div>
+</div>
+<div class="square"><img src="gallery/7.JPG" alt="image 7">
+	<div class="overlay">
+		<p>Nezha</p>
+	</div>
+</div>
+<div class="square"><img src="gallery/9.JPG" alt="image 9">
+	<div class="overlay">
+		<p>Nezha</p>
+	</div>
+</div>
+<div class="tall2"><img src="gallery/5.jpg" alt="image 5">
+	<div class="overlay">
+		<p>Aobing</p>
+	</div>
+</div>
+<div class="tall2"><img src="gallery/6.jpg" alt="image 6">
+	<div class="overlay">
+		<p>Nezha</p>
+	</div>
+</div>
+<div class="clearfloat"></div>
+</div>
+<div id="group3">
+<div class="tall1"><img src="gallery/4.jpg" alt="image 4">
+	<div class="overlay">
+		<p>Nezha and Aobing</p>
+	</div>
+</div>
+<div class="square"><img src="gallery/2.jpg" alt="image 2">
+	<div class="overlay">
+		<p>Nezha</p>
+	</div>
+</div>
+<div class="square"><img src="gallery/13.JPG" alt="image 13">
+	<div class="overlay">
+		<p>Nezha</p>
+	</div>
+</div>
+</div>
+<div class="clearfloat"></div>
+</div><!--close gallery-->
+</div><!--close container-->
+<div id="footer">
+	<p>Catch it on Netflix</p>
+</div>	
+</body>
+</html>

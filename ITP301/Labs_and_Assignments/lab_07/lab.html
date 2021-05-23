@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic Photo Gallery</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		.thumbnail {
+			cursor: pointer;
+		}
+		.thumbnail:hover {
+			opacity: 0.8;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-4">
+			<h1 class="col-12">Dynamic Photo Gallery</h1>
+			<div class="col-12 mt-4">
+				<form id="img-form">
+					<div class="form-row">
+						<div class="col-12 mt-2 col-sm-5 mt-sm-0">
+							<label for="img-src" class="sr-only">Image Source:</label>
+							<input type="text" class="form-control" id="img-src" placeholder="Image Source...">
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-5 mt-sm-0">
+							<label for="img-alt" class="sr-only">Image Title (alt):</label>
+							<input type="text" class="form-control" id="img-alt" placeholder="Image Title (alt attribute)...">
+						</div> <!-- .col -->
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+							<button role="button" type="submit" class="btn btn-primary">Add</button>
+						</div> <!-- .col -->
+					</div> <!-- .form-row -->
+				</form>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+		<div class="row">
+			<h2 class="col-12 mt-4">Photo Gallery:</h2>
+
+			<div class="col-10 col-lg-7 ml-auto mr-auto mt-3" id="main-img">
+				<img src="https://admissionblog.usc.edu/files/2016/09/Move-in-day-1024x681.jpg" alt="USC Campus" class="img-fluid">
+				<h4 class="text-center mt-3">Leavey Library</h4>
+			</div> <!-- .col -->
+
+			<div class="col-12 mt-3">
+				<button id="delete-all" class="btn btn-outline-danger mb-3">Delete All</button>
+			</div> <!-- .col -->
+
+			<div class="col-12 mb-5">
+
+				<div id="thumbnails" class="row">
+
+					<div class="col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail">
+						<img src="img/leavey.jpg" alt="Leavey Fountain" class="img-fluid">
+					</div> <!-- .col -->
+
+					<div class="col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail">
+						<img src="img/football.jpg" alt="USC Football" class="img-fluid">
+					</div> <!-- .col -->
+
+					<div class="col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail">
+						<img src="img/usc_village.jpg" alt="USC Village" class="img-fluid">
+					</div> <!-- .col -->
+
+				</div> <!-- #thumbnails -->
+
+			</div> <!-- .col -->
+
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+	<script>
+		document.querySelector("#delete-all").onclick = function(){
+			document.querySelector('#thumbnails').innerHTML = "";
+			return false;
+		}
+
+		document.querySelector('.btn-primary').onclick = function(){
+			var imgSrc = document.querySelector('#img-src').value.trim();
+			var imgAlt = document.querySelector('#img-alt').value.trim();
+			if (imgSrc.length > 1 && imgAlt.length > 1){
+				var div = document.createElement('div');
+				var img = document.createElement('img');
+				img.src = imgSrc;
+				img.alt = imgAlt;
+				div.appendChild(img);
+				div.classList.add('col-4','col-md-3','col-lg-2','mt-2','mt-md-3','thumbnail');
+				img.classList.add('img-fluid');
+				document.querySelector('#thumbnails').appendChild(div);
+				document.querySelector('#img-src').value = "";
+				document.querySelector('#img-alt').value = "";
+				img.onclick = function(){
+					enlarge(this);
+				}
+			}
+			return false;
+		}
+
+		var list = document.querySelectorAll(".img-fluid");
+		for (var i = 0 ; i < list.length; i++ ){
+			list[i].onclick = function(){
+				enlarge(this);
+			}
+
+		}
+		function enlarge(image){
+			document.querySelector("#main-img img").src = image.src;
+			document.querySelector("#main-img img").alt = image.alt;
+			document.querySelector('#main-img h4').innerHTML = image.alt;
+			console.log("enlarge")
+		}
+
+	</script>
+</body>
+</html>

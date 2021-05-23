@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 04: Liar's Dice</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		body{
+			width:800px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		h1{
+			margin:20px;
+			font-size:50px;
+			text-align: center;
+		}
+		#guess{
+			padding:10px;
+		}
+		input{
+			margin-left: 10px;
+			height:30px;
+		}
+		#result p{
+			font-size:30px;
+			padding:10px;
+		}
+		#correct{
+			display:none;
+			color:green;
+		}
+		#incorrect{
+			display:none;
+			color:red;
+		}
+		img{
+			margin:20px;
+			width:120px;
+			float:left;
+		}
+		.clearfloat{
+			clear:both;
+		}
+	</style>
+</head>
+<body>
+	<h1>Liar's Dice</h1>
+	<div id="guess">
+		Your Guess: <input type="text" id="input_guess">
+		<button id="submit" class="btn btn-secondary mx-1">Submit</button>
+	</div>
+	<div id="result">
+		<p>Results: <span id="correct">You Guessed it!</span><span id="incorrect">Try Again!</span></p>
+		<img class="dice" src="1.png" alt="1">
+		<img class="dice" src="1.png" alt="1">
+		<img class="dice" src="1.png" alt="1">
+		<img class="dice" src="1.png" alt="1">
+		<img class="dice" src="1.png" alt="1">
+		<div class="clearfloat"></div>
+	</div>
+
+	<script>
+		var input;
+		var images = document.querySelectorAll(".dice");
+		var randomNumbers = []
+		function randomize(){
+			for (var i = 0; i < 5; i++){
+				randomNumbers[i] = Math.floor(Math.random()*6+1);
+			}
+			console.log(randomNumbers);
+		}
+		function replace(randomNumbers){
+			for (var i = 0; i < 5; i++){
+				images[i].src = randomNumbers[i] +".png";
+				images[i].alt = randomNumbers[i];
+				console.log(images[i])
+				}
+		}
+		function compare(input){
+			input = document.querySelector("input").value;
+			input = parseInt(input);
+			if(input != 1 & input != 2 & input != 3 & input != 4 & input != 5 & input != 6){
+				alert("incorrect input!")
+			}
+			else{
+				if (randomNumbers.indexOf(input) == -1){
+					document.querySelector("#incorrect").style.display = 'inline';
+				}
+				else{
+					document.querySelector("#correct").style.display = 'inline';
+				}
+			}
+		}
+		document.querySelector("button").onclick = function(){
+			document.querySelector("#correct").style.display = 'none';
+			document.querySelector("#incorrect").style.display = 'none';
+			randomize();
+			replace(randomNumbers);
+			compare(input);
+		}
+
+
+	</script>
+</body>
+</html>

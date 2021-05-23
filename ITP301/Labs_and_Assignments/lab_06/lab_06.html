@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Password Validator</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+
+	<style>
+		.rules {
+			background-color: #FF0;
+			margin:	10px 0px;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div class="row">
+			<h1 class="col-12 text-center mt-5">Password Validator</h1>
+		</div> <!-- .row -->
+
+		<div class="row mt-5">
+			<div class="col-12 col-sm-5">
+				<h3 class="mb-4">Password:</h3>
+				<input type="text" name="" id="pass-input" class="form-control">
+			</div>
+
+			<div class="col-12 col-sm-7">
+				<h3 class="mb-4">Validation Rules:</h3>
+				<div class="rules">1: Cannot be empty/blank.</div>
+				<div class="rules">2: Must contain at least 5 characters.</div>
+				<div class="rules">3: Must have at least one special character @ or #.</div>
+				<div class="rules">4: Must contain upper AND lower case characters.</div>
+				<div class="rules">5: Cannot contain word 'pass' (case insensitive).</div>
+			</div>
+		</div> <!-- .row -->
+	</div> <!-- .container-fluid -->
+	<script>
+		document.querySelector('#pass-input').oninput = function(){
+			var input = document.querySelector('#pass-input').value.trim();
+			console.log(input);
+
+			if (/^$/.test(input)){
+				document.querySelectorAll(".rules")[0].style.backgroundColor = "#E00";
+			}
+			else{
+				document.querySelectorAll(".rules")[0].style.backgroundColor = "#0B0"
+			}
+			if(/.{5,}/.test(input)){
+				document.querySelectorAll(".rules")[1].style.backgroundColor = "#0B0";
+			}
+			else{
+				document.querySelectorAll(".rules")[1].style.backgroundColor = "#E00"
+			}
+
+			if(/[@|#]/.test(input)){
+				document.querySelectorAll(".rules")[2].style.backgroundColor = "#0B0";
+			}
+			else{
+				document.querySelectorAll(".rules")[2].style.backgroundColor = "#E00"
+
+			}
+			if(/[A-Z]/.test(input) && /[a-z]/.test(input)){
+				document.querySelectorAll(".rules")[3].style.backgroundColor = "#0B0";
+			}
+			else{
+				document.querySelectorAll(".rules")[3].style.backgroundColor = "#E00"
+			}
+			
+			if(/(pass)/.test(input)){
+				document.querySelectorAll(".rules")[4].style.backgroundColor = "#E00";
+			}
+			else{
+				document.querySelectorAll(".rules")[4].style.backgroundColor = "#0B0"
+			}
+		}
+
+	</script>
+</body>
+</html>
