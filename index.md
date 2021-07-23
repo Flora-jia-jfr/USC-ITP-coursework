@@ -6,17 +6,13 @@ This repository is do document my projects for USC web development courseworks, 
 
 <details>
 <summary>ITP 104 Web Publishing:</summary>
-  
-<a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs">Assignments and Labs</a>
-  
-[Lectures](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Lectures)
-  
-[Midterm Exam](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Midterm%20Exam)
-  
-[Syllabus](https://github.com/Flora-jia-jfr/USC-ITP-coursework/blob/master/ITP104/syllabus.pdf)
-  
-[My Final Project](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs/final_project)
-  
+<ul>
+  <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs">Assignments and Labs</a></li>
+  <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Lectures">Lectures</a></li>
+  <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Midterm%20Exam">Midterm Exam</a></li>
+  <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/blob/master/ITP104/syllabus.pdf">Syllabus</a></li>
+  <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs/final_project"></a></li>
+</ul>
 </details>
 
 <details>
