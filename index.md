@@ -1,37 +1,34 @@
-## Welcome to GitHub Pages
+# Flora Jia's repository for USC Web Dev Coursework
 
-You can use the [editor on GitHub](https://github.com/Flora-jia-jfr/USC-ITP-coursework/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+My Github: [Flora Jia](https://github.com/Flora-jia-jfr)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### USC Web Dev
 
-### Markdown
+This repository is do document my projects for USC web development courseworks, currently including ITP 104 Web Publishing and ITP 301 Front-end. Materials over HTML, CSS, Javascript, some jQuery, AJAX, and JSON have been covered.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<details>
+<summary> ITP 104 Web Publishing:</summary>
+  
+- [Assignments and Labs](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs)
+  
+- [Lectures](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Lectures)
+  
+- [Midterm Exam](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Midterm%20Exam)
+  
+- [Syllabus](https://github.com/Flora-jia-jfr/USC-ITP-coursework/blob/master/ITP104/syllabus.pdf)
+  
+- [My Final Project](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs/final_project)
+  
+</details>
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Flora-jia-jfr/USC-ITP-coursework/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+<details>
+  <summary>ITP 301 Front-end:</summary>
+  
+  - [Assignments and Labs](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP301/Labs_and_Assignments)
+  
+  - [Lectures] (https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP301/Lectures)
+  
+  - [Syllabus](https://github.com/Flora-jia-jfr/USC-ITP-coursework/blob/master/ITP301/syllabus.pdf)
+  
+  - [My Final Project](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP301/Labs_and_Assignments/Final_Project)
+ </details>
