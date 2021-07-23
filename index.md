@@ -10,11 +10,12 @@ This repository holds my projects for USC web development courseworks, currently
 <details>
 <summary>ITP 104 Web Publishing:</summary>
 <ul>
+  <li><a href="https://viterbi-web.usc.edu/~florajia/itp104/">My Course Page</a></li>
   <li><a href="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs">Assignments and Labs</a></li>
   <li><a href="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Lectures">Lectures</a></li>
   <li><a href="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Midterm%20Exam">Midterm Exam</a></li>
   <li><a href="https://github.com/Flora-jia-jfr/USC-ITP-coursework/blob/master/ITP104/syllabus.pdf">Syllabus</a></li>
-  <li><a href="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs/final_project">My Final Projects</a></li>
+  <li><a href="https://viterbi-web.usc.edu/~florajia/itp104/final_project/index.html">My Final Projects</a></li>
 </ul>
 </details>
 
