@@ -19,7 +19,7 @@ This repository holds my projects for USC web development courseworks, currently
 <details>
 <summary>ITP 301 Front-end:</summary>
 <ul>
-  <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP301/Labs_and_Assignments">Assignments and Labs</li>
+  <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP301/Labs_and_Assignments">Assignments and Labs</a></li>
   <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP301/Lectures">Lectures</a></li>
   <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/blob/master/ITP301/syllabus.pdf">Syllabus</a></li>
   <li><a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP301/Labs_and_Assignments/Final_Project">My Final Projects</a></li>
