@@ -7,7 +7,7 @@ This repository is do document my projects for USC web development courseworks, 
 <details>
 <summary>ITP 104 Web Publishing:</summary>
   
-[Assignments and Labs](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs)
+<a src="https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Assignments_and_labs">Assignments and Labs</a>
   
 [Lectures](https://github.com/Flora-jia-jfr/USC-ITP-coursework/tree/master/ITP104/Lectures)
   
